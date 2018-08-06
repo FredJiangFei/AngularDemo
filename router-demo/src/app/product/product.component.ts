@@ -12,7 +12,6 @@ export class ProductComponent implements OnInit {
 
   constructor(private activedRouter: ActivatedRoute,
     private router: Router) {
-
   }
 
   ngOnInit() {

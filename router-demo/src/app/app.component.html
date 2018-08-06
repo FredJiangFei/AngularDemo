@@ -9,6 +9,9 @@
             <a [routerLink]="['/products']">Products</a>
         </li>
         <li role="presentation">
+            <a [routerLink]="['/products']" [queryParams]="{id:123}">Products Router Query Params</a>
+        </li>
+        <li role="presentation">
             <a href="#" (click)="goToProducts()">Router Products</a>
         </li>
         <li role="presentation">
