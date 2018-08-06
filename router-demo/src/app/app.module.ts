@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductComponent } from './product/product.component';
+import { ProductNameComponent } from './product/product-name/product-name.component';
+import { ProductDescComponent } from './product/product-desc/product-desc.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { ProductComponent } from './product/product.component';
     HomeComponent,
     ProductsComponent,
     NotFoundComponent,
-    ProductComponent
+    ProductComponent,
+    ProductNameComponent,
+    ProductDescComponent
   ],
   imports: [
     BrowserModule,
