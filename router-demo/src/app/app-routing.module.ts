@@ -1,3 +1,5 @@
+import { UnsavedGuard } from './guard/unsave.guard';
+import { LoginGuard } from './guard/login.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -12,7 +14,12 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'chat', component: ChatComponent, outlet: 'aux' },
-  { path: 'products', component: ProductsComponent },
+  {
+    path: 'products',
+    component: ProductsComponent,
+    canActivate: [LoginGuard],
+    canDeactivate: [UnsavedGuard]
+  },
   {
     path: 'products/:id', component: ProductComponent,
     children: [
@@ -25,6 +32,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [LoginGuard, UnsavedGuard]
 })
 export class AppRoutingModule { }
