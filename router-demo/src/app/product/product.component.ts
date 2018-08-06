@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -7,15 +7,26 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  public snapshotId: string;
-  public subscribeId: string;
+  public snapshotId: number;
+  public subscribeId: number;
 
-  constructor(private activedRouter: ActivatedRoute) { }
+  constructor(private activedRouter: ActivatedRoute,
+    private router: Router) {
+
+  }
 
   ngOnInit() {
     this.snapshotId = this.activedRouter.snapshot.params['id'];
-    this.activedRouter.params.subscribe((param: Params) => this.subscribeId = param['id']);
+    this.activedRouter.params.subscribe((param: Params) => this.subscribeId = Number.parseInt(param['id']));
   }
 
-  
+  goPre() {
+    this.router.navigate(['/products', this.subscribeId - 1]);
+    return false;
+  }
+
+  goNext() {
+    this.router.navigate(['/products', this.subscribeId + 1]);
+    return false;
+  }
 }
