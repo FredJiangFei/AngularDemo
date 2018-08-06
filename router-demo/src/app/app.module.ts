@@ -10,6 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductComponent } from './product/product.component';
 import { ProductNameComponent } from './product/product-name/product-name.component';
 import { ProductDescComponent } from './product/product-desc/product-desc.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ProductDescComponent } from './product/product-desc/product-desc.compon
     NotFoundComponent,
     ProductComponent,
     ProductNameComponent,
-    ProductDescComponent
+    ProductDescComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

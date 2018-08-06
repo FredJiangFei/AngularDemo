@@ -6,10 +6,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductComponent } from './product/product.component';
 import { ProductDescComponent } from './product/product-desc/product-desc.component';
 import { ProductNameComponent } from './product/product-name/product-name.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'chat', component: ChatComponent, outlet: 'aux' },
   { path: 'products', component: ProductsComponent },
   {
     path: 'products/:id', component: ProductComponent,
