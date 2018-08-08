@@ -23,7 +23,7 @@ export class ProductComponent implements OnInit {
     }, 1000);
   }
 
-  addToCart() {
+  add() {
     this.addCart.emit(new Product(this.product.name, this.product.price));
   }
 }
