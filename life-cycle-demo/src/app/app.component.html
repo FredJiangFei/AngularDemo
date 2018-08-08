@@ -1,0 +1,9 @@
+<h3>Parent</h3>
+<p>greeting</p>
+<input type="text" [(ngModel)]="greeting">
+
+<p>user name</p>
+<input type="text" [(ngModel)]="user.name">
+
+<h3>Child</h3>
+<app-onchanges [greeting]="greeting" [user]="user"></app-onchanges>
