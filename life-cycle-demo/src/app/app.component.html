@@ -13,3 +13,15 @@
 <app-view #viewB></app-view>
 {{message}}
 <button (click)="viewB.greeting('Jerry')">greeting</button>
+
+<div class="wrapper">
+    <h3>ng Content</h3>
+    <app-content>
+        <div class="header">
+            This is header
+        </div>
+        <div class="footer">
+            This is footer {{title}}
+        </div>
+    </app-content>
+</div>

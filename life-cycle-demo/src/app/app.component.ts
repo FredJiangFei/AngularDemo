@@ -1,5 +1,5 @@
 import { ViewComponent } from './view/view.component';
-import { Component, ViewChild, OnInit, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, ViewChild, OnInit, AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked } from '@angular/core';
 
 @Component({
   selector: 'app-root',
