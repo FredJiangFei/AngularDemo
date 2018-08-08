@@ -1,0 +1,15 @@
+.redFont{
+    background-color: yellow;
+}
+
+.isBig{
+    font-size: 30px;
+}
+
+.addPadding{
+    padding: 5px;
+}
+
+.addBorder{
+   border: 1px dotted black;
+}

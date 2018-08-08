@@ -1,2 +1,19 @@
-<app-product (addToCart)="addToCartHandler($event)"></app-product>
-<app-cart [product]="product"></app-cart>
+<span [class]="sellClass" [class.isBig]="isBig" [ngClass]="{addPadding:true, addBorder:true}" 
+    [style.color]="isSpecial?'red':'green'"
+    [ngStyle]="{'font-style': isItalic?'italic':'normal'}">Sell phone</span>
+
+<table>
+    <tr>
+        <td [attr.colspan]="2">
+            <app-product (addToCart)="addToCartHandler($event)"></app-product>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <app-cart [product]="product"></app-cart>
+        </td>
+        <td>
+
+        </td>
+    </tr>
+</table>
