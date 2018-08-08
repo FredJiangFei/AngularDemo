@@ -7,7 +7,7 @@ import { Product } from '../models/product';
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css'],
-  providers: [{ provide: ProductService, useClass: AppleService }],
+  // providers: [{ provide: ProductService, useClass: AppleService }],
 })
 export class ProductComponent implements OnInit {
 
