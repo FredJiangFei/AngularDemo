@@ -1,4 +1,4 @@
-<h3>Parent</h3>
+<!-- <h3>Parent</h3>
 <p>greeting</p>
 <input type="text" [(ngModel)]="greeting">
 
@@ -6,4 +6,10 @@
 <input type="text" [(ngModel)]="user.name">
 
 <h3>Child</h3>
-<app-onchanges [greeting]="greeting" [user]="user"></app-onchanges>
+<app-onchanges [greeting]="greeting" [user]="user"></app-onchanges> -->
+
+<h3>ng View</h3>
+<app-view #viewA></app-view>
+<app-view #viewB></app-view>
+{{message}}
+<button (click)="viewB.greeting('Jerry')">greeting</button>
