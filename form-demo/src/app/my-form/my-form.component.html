@@ -12,12 +12,12 @@
     </div>
   </div>
 
-  <div ngModelGroup="passwordGroup" passwordEqual>
+  <div ngModelGroup="passwordGroup" passwordEqual #passwordGroup="ngModelGroup">
     <div>Password: <input type="password" ngModel name="password"></div>
     <div>Confirm password: <input type="password" ngModel name="confirm"></div>
     
-    <div [hidden]="!myForm.form.hasError('equal','passwordGroup')" class="alert alert-danger">
-        {{myForm.form.getError('equal','passwordGroup')}}
+    <div *ngIf="passwordGroup.errors?.equal" class="alert alert-danger">
+        {{passwordGroup.errors.equal}}
       </div>
   </div>
 
