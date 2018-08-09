@@ -1,0 +1,11 @@
+<form #myForm="ngForm" (ngSubmit)="register(myForm.value)">
+  <div>Username: <input type="text" ngModel name="username"></div>
+  <div>Mobile: <input type="text" ngModel name="mobile"></div>
+
+  <div ngModelGroup="passwordGroup">
+    <div>Password: <input type="password" ngModel name="password"></div>
+    <div>Confirm password: <input type="password" ngModel name="confirmpassword"></div>
+  </div>
+
+  <button type="submit">Register</button>
+</form>
