@@ -12,8 +12,9 @@ export class MyFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  register(value: any){
+  register(value: any, valid: boolean){
     console.log(value);
+    console.log(valid);
   }
 
 }
