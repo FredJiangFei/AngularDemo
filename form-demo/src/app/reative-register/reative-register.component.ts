@@ -1,6 +1,6 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { mobileValidator, passwordEqualValidator } from './register.validates';
+import { mobileValidator, passwordEqualValidator, nameAsyncValidator } from './register.validates';
 
 @Component({
   selector: 'app-reative-register',
@@ -13,22 +13,25 @@ export class ReativeRegisterComponent implements OnInit {
 
   constructor(fb: FormBuilder) {
     this.formModel = fb.group({
-      username: ['', [Validators.required, Validators.minLength(6)]],
+      username: ['', [Validators.required], nameAsyncValidator],
       mobile: ['', mobileValidator],
       passwordGroup: fb.group({
-        password: ['',Validators.minLength(6)],
+        password: ['', Validators.minLength(6)],
         confirm: ['']
       }, {
           validator: passwordEqualValidator
         })
     });
   }
+  
+  ngOnInit() {
+  }
 
   register() {
     console.log(this.formModel.value);
   }
 
-  ngOnInit() {
+  get username() {
+    return this.formModel.get('username');
   }
-
 }

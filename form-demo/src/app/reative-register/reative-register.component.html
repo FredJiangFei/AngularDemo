@@ -1,27 +1,40 @@
-<form [formGroup]="formModel" (submit)="register()">
+<form [formGroup]="formModel" (ngSubmit)="register()">
   <div>
-    Username: <input type="text" formControlName="username">
+    Username:
+    <input type="text" formControlName="username"> <span *ngIf="username.pending">Checking.....</span>
+
     <div [hidden]="!formModel.hasError('required','username')">
-        Username is required
+      Username is required
+    </div>
+    
+    <div class="alert alert-danger" *ngIf="username.invalid">
+      <div [hidden]="!username.errors.nameExist">
+        Username is exist
+      </div>
     </div>
   </div>
   <div>
-    Mobile: <input type="text" formControlName="mobile">
+    Mobile:
+    <input type="text" formControlName="mobile">
     <div [hidden]="!formModel.hasError('mobile','mobile')">
-       Mobile is invalid
+      Mobile is invalid
     </div>
   </div>
 
   <div formGroupName="passwordGroup">
-    <div>Password: <input type="password" formControlName="password"></div>
+    <div>Password:
+      <input type="password" formControlName="password">
+    </div>
     <div [hidden]="!formModel.hasError('minlength',['passwordGroup','password'])">
-        Password can not less than 6
-     </div>
-    <div>Confirm password: <input type="password" formControlName="confirm"></div>
+      Password can not less than 6
+    </div>
+    <div>Confirm password:
+      <input type="password" formControlName="confirm">
+    </div>
     <div [hidden]="!formModel.hasError('equal','passwordGroup')">
-        {{formModel.getError('equal','passwordGroup')}}
-     </div>
+      {{formModel.getError('equal','passwordGroup')}}
+    </div>
   </div>
-
+  {{formModel.status}}
   <button type="submit">Register</button>
 </form>

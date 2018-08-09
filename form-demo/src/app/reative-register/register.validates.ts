@@ -1,4 +1,11 @@
 import { FormControl, AbstractControl } from "@angular/forms";
+import { Observable } from "rxjs";
+
+
+export function nameAsyncValidator(control: AbstractControl): any {
+    var nameExist = control.value == 'Fred';
+    return Observable.of(nameExist ? { nameExist: true } : null).delay(3000);
+}
 
 
 export function mobileValidator(control: AbstractControl): any {
