@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -8,22 +8,34 @@ import { FormControl, FormGroup, FormArray } from '@angular/forms';
   styleUrls: ['./reative-form.component.css']
 })
 export class ReativeFormComponent implements OnInit {
+  formModel: FormGroup;
 
-  formModel: FormGroup = new FormGroup({
-    dateRange: new FormGroup({
-      from: new FormControl(),
-      to: new FormControl()
-    }),
-    emails: new FormArray([
-      new FormControl("123@qq.com"),
-      new FormControl("456@qq.com"),
-      new FormControl("789@qq.com")
-    ])
-  });
+  constructor(fb: FormBuilder) {
+    // this.formModel = new FormGroup({
+    //   dateRange: new FormGroup({
+    //     from: new FormControl(),
+    //     to: new FormControl()
+    //   }),
+    //   emails: new FormArray([
+    //     new FormControl("123@qq.com"),
+    //     new FormControl("456@qq.com"),
+    //     new FormControl("789@qq.com")
+    //   ])
+    // });
 
-  username: FormControl = new FormControl('aaaa');
-
-  constructor() { }
+    //use form builder
+    this.formModel = fb.group({
+      dateRange: fb.group({
+        from: [''],
+        to: ['']
+      }),
+      emails: fb.array([
+        ["123@qq.com"],
+        ["456@qq.com"],
+        ["789@qq.com"]
+      ])
+    });
+  }
 
   ngOnInit() {
   }
