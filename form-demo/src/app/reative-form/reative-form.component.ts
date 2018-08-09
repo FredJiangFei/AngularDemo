@@ -9,23 +9,31 @@ import { FormControl, FormGroup, FormArray } from '@angular/forms';
 })
 export class ReativeFormComponent implements OnInit {
 
-  username: FormControl = new FormControl('aaaa');
-
-  formDate: FormGroup = new FormGroup({
-    from: new FormControl(),
-    to: new FormControl()
+  formModel: FormGroup = new FormGroup({
+    dateRange: new FormGroup({
+      from: new FormControl(),
+      to: new FormControl()
+    }),
+    emails: new FormArray([
+      new FormControl("123@qq.com"),
+      new FormControl("456@qq.com"),
+      new FormControl("789@qq.com")
+    ])
   });
 
-  emails: FormArray = new FormArray([
-    new FormControl("123@qq.com"),
-    new FormControl("456@qq.com"),
-    new FormControl("789@qq.com")
-  ]);
-
+  username: FormControl = new FormControl('aaaa');
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  save() {
+    console.log(this.formModel.value);
+  }
+
+  addEmail() {
+    let emails = this.formModel.get('emails') as FormArray;
+    emails.push(new FormControl());
+  }
 }
