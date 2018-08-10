@@ -12,11 +12,11 @@ let products: Product[] =Array<Product>(
     new Product(2,"vivo r11", 2000)
 );
 
-app.get('/products', (req, res) => {
+app.get('/api/products', (req, res) => {
     res.send(products);
 });
 
-app.get('/products/:id', (req, res) => {
+app.get('/api/products/:id', (req, res) => {
     let product = products.find( x=> x.id == req.params['id']);
     res.send(product);
 });

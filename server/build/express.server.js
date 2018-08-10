@@ -7,10 +7,10 @@ app.get('/', function (req, res) {
     res.send('Hello express');
 });
 var products = Array(new product_1.Product(1, "iphone7", 5000), new product_1.Product(2, "vivo r11", 2000));
-app.get('/products', function (req, res) {
+app.get('/api/products', function (req, res) {
     res.send(products);
 });
-app.get('/products/:id', function (req, res) {
+app.get('/api/products/:id', function (req, res) {
     var product = products.find(function (x) { return x.id == req.params['id']; });
     res.send(product);
 });
