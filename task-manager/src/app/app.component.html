@@ -1,0 +1,21 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over">
+    <app-sidebar>
+
+    </app-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="site">
+      <header>
+        <app-header></app-header>
+      </header>
+      <main>
+        <button (click)="sidenav.toggle()">Open sidenav</button>
+      </main>
+      <footer>
+        <app-footer></app-footer>
+      </footer>
+    </div>
+  </mat-sidenav-content>
+  
+</mat-sidenav-container>

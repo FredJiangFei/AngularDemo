@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+html, body, app-root, .mat-drawer-container, .site{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.site{
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex: 1;
+}
+
+header{
+    background-color: aqua;
+}
+
+footer{
+    background-color: cadetblue;
+}
