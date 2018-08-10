@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Product } from './product';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/Rx'
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,15 +14,18 @@ import 'rxjs/Rx'
 export class ProductComponent implements OnInit {
 
   products: Observable<Product>;
+  id: string;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private activedRoute: ActivatedRoute) {
+    activedRoute.params.subscribe(param => this.id = param['id']);
+  }
 
   ngOnInit() {
     let myheaders: Headers = new Headers();
     myheaders.append("Authorization", "Basci 123456");
 
-    this.products = this.http.get('/api/products', { headers: myheaders })
+    let url = this.id ? '/api/products/' + this.id : '/api/products';
+    this.products = this.http.get(url, { headers: myheaders })
       .map(res => res.json());
   }
-
 }
