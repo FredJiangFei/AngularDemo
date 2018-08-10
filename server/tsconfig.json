@@ -6,7 +6,8 @@
         "experimentalDecorators": true,
         "lib": [
             "es6"
-        ]
+        ],
+        "outDir": "build"
     },
     "exclude": [
         "./node_modules"

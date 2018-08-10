@@ -1,0 +1,2 @@
+代码行缩进  Ctrl+[， Ctrl+]
+【Ctrl+Shift+B】 :vscode下编译运行命令；
