@@ -5,9 +5,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ShareModule } from './share/share.module';
 
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -15,9 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     CoreModule,
-    ShareModule,
-    MatSidenavModule,
-    BrowserAnimationsModule
+    ShareModule
   ],
   providers: [],
   bootstrap: [AppComponent]
