@@ -5,10 +5,10 @@
   <mat-sidenav-content>
     <div class="site">
       <header>
-        <app-header></app-header>
+        <app-header (toggle)="sidenav.toggle()"></app-header>
       </header>
       <main>
-        <button (click)="sidenav.toggle()">Open sidenav</button>
+        Main
       </main>
       <footer>
         <app-footer></app-footer>
