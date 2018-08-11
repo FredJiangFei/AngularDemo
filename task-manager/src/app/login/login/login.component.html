@@ -6,17 +6,28 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-form-field hintLabel="email is required">
+      <mat-form-field class="full-width" hintLabel="email is required">
         <input matInput placeholder="User name">
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field  class="full-width">
         <input matInput placeholder="Password">
       </mat-form-field>
     </mat-card-content>
 
-    <mat-card-actions>
+    <mat-card-actions class="text-right">
       <button type="button" mat-raised-button>Login</button>
     </mat-card-actions>
   </mat-card>
 
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        Hello world
+      </mat-card-title>
+      <mat-card-subtitle>
+          This is login page for task manager.
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="../../../assets/imgs/pexels-photo-1310181.jpeg" alt="">
+  </mat-card>
 </form>
