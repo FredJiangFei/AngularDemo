@@ -11,13 +11,19 @@ import {
   MatListModule,
   MatSlideToggleModule,
   MatGridListModule,
-  MatDialogModule
+  MatDialogModule,
+  MatAutocompleteModule
 } from '@angular/material';
+import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
@@ -27,10 +33,14 @@ import {
     MatListModule,
     MatSlideToggleModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule
   ],
   exports: [
     CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
@@ -40,7 +50,8 @@ import {
     MatListModule,
     MatSlideToggleModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule
   ],
   declarations: []
 })

@@ -1,4 +1,3 @@
-
 <form>
   <h2 mat-dialog-title>Add new product</h2>
 
@@ -9,6 +8,15 @@
     <mat-form-field class="full-width">
       <input type="text" cdkFocusInitial matInput placeholder="Product desc">
     </mat-form-field>
+    <mat-form-field class="full-width">
+      <input type="text" matInput placeholder="Product category" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{ category.name }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    
   </mat-dialog-content>
 
   <mat-dialog-actions>

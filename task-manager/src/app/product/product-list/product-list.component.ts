@@ -24,9 +24,9 @@ export class ProductListComponent implements OnInit {
   openAddProductModal() {
     const dialogRef = this.dialog.open(NewProductComponent,
       {
-        width: '500px',
-        height: '300px',
-        position: { left: '0', top: '0' },
+        // width: '500px',
+        // height: '300px',
+        // position: { left: '0', top: '0' },
         data: 'this is a product create dialog!'
       });
 
