@@ -10,13 +10,7 @@
     </mat-form-field>
     <mat-form-field class="full-width">
       <input type="text" matInput placeholder="Product category" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let category of categories" [value]="category">
-          {{ category.name }}
-        </mat-option>
-      </mat-autocomplete>
     </mat-form-field>
-    
   </mat-dialog-content>
 
   <mat-dialog-actions>
@@ -24,3 +18,9 @@
     <button type="button" mat-button mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
 </form>
+
+<mat-autocomplete #auto="matAutocomplete">
+  <mat-option *ngFor="let category of categories" [value]="category">
+    {{ category.name }}
+  </mat-option>
+</mat-autocomplete>

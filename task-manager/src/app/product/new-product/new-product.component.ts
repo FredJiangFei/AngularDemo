@@ -17,12 +17,10 @@ export class NewProductComponent implements OnInit {
   ];
 
   constructor(@Inject(MAT_DIALOG_DATA) private data,
-    private dialogRef: MatDialogRef<NewProductComponent>,
-    private overlayContainer: OverlayContainer) { }
+    private dialogRef: MatDialogRef<NewProductComponent>) { }
 
   ngOnInit() {
     console.log(this.data);
-    this.overlayContainer.getContainerElement().className = null;
   }
 
   create() {
