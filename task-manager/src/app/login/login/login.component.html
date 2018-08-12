@@ -12,10 +12,11 @@
       <mat-form-field  class="full-width">
         <input matInput placeholder="Password">
       </mat-form-field>
+      <button type="button" mat-raised-button>Login</button>
     </mat-card-content>
 
     <mat-card-actions class="text-right">
-      <button type="button" mat-raised-button>Login</button>
+      <a [routerLink]="['/register']">Register</a>
     </mat-card-actions>
   </mat-card>
 
