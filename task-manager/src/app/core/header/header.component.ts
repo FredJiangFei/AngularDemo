@@ -9,6 +9,10 @@ export class HeaderComponent implements OnInit {
 
   @Output()
   toggle = new EventEmitter();
+
+  @Output()
+  toggleTheme = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit() {
@@ -16,5 +20,9 @@ export class HeaderComponent implements OnInit {
 
   toggleMenu(){
     this.toggle.emit();
+  }
+
+  onChange(checked: boolean){
+    this.toggleTheme.emit(checked);
   }
 }
