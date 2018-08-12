@@ -7,6 +7,7 @@ import { ShareModule } from './share/share.module';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
 import { OverlayContainer } from '../../node_modules/@angular/cdk/overlay';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { OverlayContainer } from '../../node_modules/@angular/cdk/overlay';
     ShareModule,
     CoreModule,
     LoginModule,
+    ProductModule,
     AppRoutingModule
   ],
   providers: [],

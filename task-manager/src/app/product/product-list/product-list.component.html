@@ -1,0 +1,8 @@
+
+<app-product-item *ngFor="let product of products" [item]="product" class="card">
+
+</app-product-item>
+
+<button class="fab-button" mat-fab type="button" (click)="openProductModal()">
+  <mat-icon>add</mat-icon>
+</button>
