@@ -12,7 +12,9 @@ import {
   MatSlideToggleModule,
   MatGridListModule,
   MatDialogModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatMenuModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -36,7 +38,9 @@ import { RouterModule } from '@angular/router';
     MatSlideToggleModule,
     MatGridListModule,
     MatDialogModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatMenuModule,
+    MatCheckboxModule
   ],
   exports: [
     CommonModule,
@@ -54,7 +58,9 @@ import { RouterModule } from '@angular/router';
     MatSlideToggleModule,
     MatGridListModule,
     MatDialogModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatMenuModule,
+    MatCheckboxModule
   ],
   declarations: []
 })

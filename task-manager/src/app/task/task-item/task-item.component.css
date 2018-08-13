@@ -1,0 +1,11 @@
+.task-check{
+    order:-1;
+    margin-right: 20px;
+}
+
+mat-icon.avatar{
+    overflow: hidden;
+    height: 64px;
+    width: 64px;
+    border-radius: 50%;
+}

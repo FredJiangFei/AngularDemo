@@ -1,3 +1,33 @@
-<p>
-  {{taskList.status}}  task-list-header works!
-</p>
+<div mat-subheader class="header-container">
+  <div>
+    <h3>{{taskList.status}}</h3>
+  </div>
+
+  <div class="fill">
+    <button mat-button>
+      <mat-icon>add_circle_outline</mat-icon>
+      <span>New task</span>
+    </button>
+  </div>
+
+  <div>
+    <button mat-icon-button [matMenuTriggerFor]="taskMenu">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+  </div>
+</div>
+
+<mat-menu #taskMenu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>border_color</mat-icon>
+    <span>Edit</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>move_to_inbox</mat-icon>
+    <span>Move</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>delete_forver</mat-icon>
+    <span>Delete</span>
+  </button>
+</mat-menu>
