@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task, TaskList } from '../../domain/task.domain';
-import { MatDialogRef, MatDialog } from '@angular/material';
-import { NewTaskComponent } from '../new-task/new-task.component';
 
 @Component({
   selector: 'app-task-list',
@@ -10,16 +8,8 @@ import { NewTaskComponent } from '../new-task/new-task.component';
 })
 export class TaskListComponent implements OnInit {
 
-  @Input()
-  taskList: TaskList;
-
-  constructor(private dialogRef: MatDialog) { }
+  constructor() { }
 
   ngOnInit() {
   }
-
-  addTask() {
-    this.dialogRef.open(NewTaskComponent);
-  }
-
 }

@@ -1,6 +1,4 @@
-<app-task-list-header [taskList]="taskList" (addTask)="addTask()"></app-task-list-header>
-
-<mat-list role="list">
-    <app-task-item *ngFor="let task of taskList.tasks" [task]="task"></app-task-item>
+<mat-list>
+    <ng-content></ng-content>
 </mat-list>
 

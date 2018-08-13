@@ -17,7 +17,8 @@ import {
   MatCheckboxModule,
   MatRadioModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSelectModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -46,7 +47,8 @@ import { RouterModule } from '@angular/router';
     MatCheckboxModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   exports: [
     CommonModule,
@@ -69,7 +71,8 @@ import { RouterModule } from '@angular/router';
     MatCheckboxModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSelectModule
   ],
   declarations: []
 })

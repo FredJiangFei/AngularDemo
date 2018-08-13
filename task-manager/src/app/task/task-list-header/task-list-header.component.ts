@@ -13,6 +13,9 @@ export class TaskListHeaderComponent implements OnInit {
 
   @Output()
   addTask = new EventEmitter<void>();
+ 
+  @Output()
+  move = new EventEmitter<void>();
 
   constructor() { }
 
@@ -23,4 +26,7 @@ export class TaskListHeaderComponent implements OnInit {
     this.addTask.emit();
   }
 
+  showMoveModal(){
+    this.move.emit();
+  }
 }

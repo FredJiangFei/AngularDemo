@@ -1,3 +1,6 @@
+import { MoveTaskComponent } from './../move-task/move-task.component';
+import { NewTaskComponent } from './../new-task/new-task.component';
+import { MatDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
 import { Task, TaskList } from '../../domain/task.domain';
 import { User } from '../../domain/user.domain';
@@ -10,7 +13,7 @@ import { User } from '../../domain/user.domain';
 export class TaskHomeComponent implements OnInit {
 
   taskLists = [];
-  constructor() { }
+  constructor(private dialogRef: MatDialog) { }
 
   ngOnInit() {
     let assignedUser = new User('lily', 'lily');
@@ -29,4 +32,11 @@ export class TaskHomeComponent implements OnInit {
     ];
   }
 
+  addTask() {
+    this.dialogRef.open(NewTaskComponent);
+  }
+
+  moveTaskTo() {
+    this.dialogRef.open(MoveTaskComponent, { data: { taskLists: this.taskLists } });
+  }
 }
