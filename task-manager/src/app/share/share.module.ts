@@ -16,6 +16,7 @@ import {
 } from '@angular/material';
 import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
 
     MatToolbarModule,
     MatIconModule,
@@ -40,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
 
     MatToolbarModule,
     MatIconModule,

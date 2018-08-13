@@ -1,10 +1,14 @@
 <mat-nav-list>
     <!-- dense -->
   <h3 mat-subheader>Product</h3>
-  <mat-list-item>
+  <mat-list-item (click)="navigateTo('/products')">
       <mat-icon mat-list-icon>home</mat-icon> 
       <span mat-line>Index</span>
       <span mat-line mat-subheader>Show index page of project</span>
+  </mat-list-item>
+  <mat-list-item (click)="navigateTo('/tasks')">
+      <mat-icon mat-list-icon>schedule</mat-icon> 
+      <span mat-line>Tasks</span>
   </mat-list-item>
   
   <h3 mat-subheader>Calendar</h3>
