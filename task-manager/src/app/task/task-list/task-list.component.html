@@ -1,7 +1,2 @@
-<p>
-  task-list works!
-</p>
-
-<app-task-list-header></app-task-list-header>
-
-<app-task-item></app-task-item>
+<app-task-list-header [taskList]="taskList"></app-task-list-header>
+<app-task-item *ngFor="let task of taskList.tasks" [task]="task"></app-task-item>

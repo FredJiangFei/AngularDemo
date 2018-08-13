@@ -1,5 +1,5 @@
-<p>
-  task-home works!
-</p>
 
-<app-task-list></app-task-list>
+<div class="task-lists-container">
+  <app-task-list *ngFor="let taskList of taskLists" [taskList]="taskList"></app-task-list>
+</div>
+
