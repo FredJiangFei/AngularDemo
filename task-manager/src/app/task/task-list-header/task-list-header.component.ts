@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TaskList } from '../../domain/task.domain';
 
 @Component({
@@ -11,9 +11,16 @@ export class TaskListHeaderComponent implements OnInit {
   @Input()
   taskList: TaskList;
 
+  @Output()
+  addTask = new EventEmitter<void>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showAddTaskModal(){
+    this.addTask.emit();
   }
 
 }

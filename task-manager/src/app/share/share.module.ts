@@ -14,7 +14,10 @@ import {
   MatDialogModule,
   MatAutocompleteModule,
   MatMenuModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatRadioModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -40,7 +43,10 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     MatAutocompleteModule,
     MatMenuModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     CommonModule,
@@ -60,7 +66,10 @@ import { RouterModule } from '@angular/router';
     MatDialogModule,
     MatAutocompleteModule,
     MatMenuModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   declarations: []
 })
