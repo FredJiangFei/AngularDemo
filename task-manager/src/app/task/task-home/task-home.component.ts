@@ -32,8 +32,12 @@ export class TaskHomeComponent implements OnInit {
     ];
   }
 
-  addTask() {
-    this.dialogRef.open(NewTaskComponent);
+  openAddModal() {
+    this.dialogRef.open(NewTaskComponent, { data: { title: 'Create task' } });
+  }
+
+  openEditModal(task) {
+    this.dialogRef.open(NewTaskComponent, { data: { title: 'Edit task', task: task } });
   }
 
   moveTaskTo() {

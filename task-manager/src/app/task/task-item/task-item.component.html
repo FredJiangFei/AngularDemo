@@ -1,5 +1,5 @@
-<mat-list-item>
-    <mat-checkbox class="task-check"></mat-checkbox>
+<mat-list-item (click)="openEditModal()">
+    <mat-checkbox class="task-check" (click)="whenCheckTask($event)"></mat-checkbox>
     <p matLine>{{task.title}}</p>
     <p matLine>{{task.desc}}</p>
     <mat-icon [svgIcon]="task.assigned.avatar" class="avatar"></mat-icon>

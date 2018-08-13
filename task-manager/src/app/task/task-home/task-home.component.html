@@ -1,11 +1,11 @@
 
 <div class="task-lists-container">
   <app-task-list *ngFor="let taskList of taskLists">
-      <app-task-list-header [taskList]="taskList" (addTask)="addTask()" (move)="moveTaskTo()">
+      <app-task-list-header [taskList]="taskList" (addTask)="openAddModal()" (move)="moveTaskTo()">
       </app-task-list-header>
 
       <mat-list role="list">
-          <app-task-item *ngFor="let task of taskList.tasks" [task]="task"></app-task-item>
+          <app-task-item *ngFor="let task of taskList.tasks" [task]="task" (editTask)="openEditModal(task)"></app-task-item>
       </mat-list>
   </app-task-list>
 </div>

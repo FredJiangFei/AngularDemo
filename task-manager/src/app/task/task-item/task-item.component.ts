@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Task } from '../../domain/task.domain';
 
 @Component({
@@ -11,9 +11,18 @@ export class TaskItemComponent implements OnInit {
   @Input()
   task: Task;
 
+  @Output()
+  editTask = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit() {
   }
 
+  openEditModal() {
+    this.editTask.emit();
+  }
+
+  whenCheckTask(e: Event) {
+    e.stopPropagation();
+  }
 }
