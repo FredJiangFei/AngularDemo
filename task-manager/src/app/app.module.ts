@@ -9,6 +9,8 @@ import { LoginModule } from './login/login.module';
 import { OverlayContainer } from '../../node_modules/@angular/cdk/overlay';
 import { ProductModule } from './product/product.module';
 import { TaskModule } from './task/task.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { TaskModule } from './task/task.module';
     LoginModule,
     ProductModule,
     TaskModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

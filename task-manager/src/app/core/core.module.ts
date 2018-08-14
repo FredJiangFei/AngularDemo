@@ -8,12 +8,10 @@ import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { loadSvgResoures } from '../utils/svg.util';
 import { ShareModule } from '../share/share.module';
-import { BrowserAnimationsModule } from '../../../node_modules/@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     HttpClientModule,
-    BrowserAnimationsModule,
     ShareModule
   ],
   declarations: [
