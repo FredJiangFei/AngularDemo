@@ -8,8 +8,8 @@
         <app-header (toggle)="sidenav.toggle()" (toggleTheme)="switchThem($event)"></app-header>
       </header>
       <main>
-        <!-- <router-outlet></router-outlet> -->
-        <div class="square" [@square]="squareState" (click)="onClick()"></div>
+        <router-outlet></router-outlet>
+        <!-- <div class="square" [@square]="squareState" (click)="onClick()"></div> -->
 
       </main>
       <footer>
