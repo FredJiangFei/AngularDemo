@@ -1,16 +1,22 @@
 import { MoveTaskComponent } from './../move-task/move-task.component';
 import { NewTaskComponent } from './../new-task/new-task.component';
 import { MatDialog } from '@angular/material';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Task, TaskList } from '../../domain/task.domain';
 import { User } from '../../domain/user.domain';
+import { slideToRight } from '../../animates/route.animate';
 
 @Component({
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
-  styleUrls: ['./task-home.component.css']
+  styleUrls: ['./task-home.component.css'],
+  animations:[
+    slideToRight
+  ]
 })
 export class TaskHomeComponent implements OnInit {
+
+  @HostBinding('@routeAnim') state;
 
   taskLists = [];
   constructor(private dialogRef: MatDialog) { }

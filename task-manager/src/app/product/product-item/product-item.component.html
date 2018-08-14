@@ -1,5 +1,4 @@
 <mat-card>
-
   <mat-card-header>
     <mat-card-title>
       {{item.name}}
@@ -17,7 +16,7 @@
       <mat-icon>edit</mat-icon>
       Edit
     </button>
-    <button mat-raised-button>
+    <button mat-raised-button (click)="showDeleteModal()">
       <mat-icon>delete</mat-icon>
       Delete
     </button>

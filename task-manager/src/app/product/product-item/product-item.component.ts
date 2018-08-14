@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input, HostBinding, HostListener } from '@angular/core';
+import { Component, OnInit, Output, Input, HostBinding, HostListener, EventEmitter } from '@angular/core';
 import { Product } from '../../domain/product.domain';
 import { cardAmin } from '../../animates/card.animate';
 
@@ -6,28 +6,35 @@ import { cardAmin } from '../../animates/card.animate';
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.css'],
-  animations:[ cardAmin ]
+  animations: [cardAmin]
 })
 export class ProductItemComponent implements OnInit {
-  
+
   @Input()
   public item: Product;
+
+  @Output()
+  delete = new EventEmitter<number>();
 
   @HostBinding('@card') cardState = 'out';
 
   @HostListener('mouseenter')
-  onMouseEnter(){
+  onMouseEnter() {
     this.cardState = 'hover';
   }
 
   @HostListener('mouseleave')
-  onmouseleave(){
+  onmouseleave() {
     this.cardState = 'out';
   }
 
   constructor() { }
 
   ngOnInit() {
-    
+
+  }
+
+  showDeleteModal() {
+    this.delete.emit(this.item.id);
   }
 }
