@@ -1,12 +1,16 @@
 import { Component, OnInit, Output, Input, HostBinding, HostListener, EventEmitter } from '@angular/core';
 import { Product } from '../../domain/product.domain';
-import { cardAmin } from '../../animates/card.animate';
+import { cardAnim } from '../../animates/card.animate';
+import { itemAnim } from '../../animates/list.animate';
 
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.css'],
-  animations: [cardAmin]
+  animations: [
+    cardAnim,
+    itemAnim
+  ]
 })
 export class ProductItemComponent implements OnInit {
 
@@ -17,6 +21,7 @@ export class ProductItemComponent implements OnInit {
   delete = new EventEmitter<number>();
 
   @HostBinding('@card') cardState = 'out';
+  @HostBinding('@itemAnim') itemAnim;
 
   @HostListener('mouseenter')
   onMouseEnter() {

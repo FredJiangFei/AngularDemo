@@ -4,21 +4,19 @@ import { MatDialog } from '../../../../node_modules/@angular/material';
 import { NewProductComponent } from '../new-product/new-product.component';
 import { slideToRight } from '../../animates/route.animate';
 import { DeleteProductComponent } from '../delete-product/delete-product.component';
-import { listAnim } from '../../animates/list.animate';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
   animations: [
-    slideToRight,
-    listAnim
+    slideToRight
   ]
 })
 export class ProductListComponent implements OnInit {
 
-  @HostBinding('@routeAnim') state;
-  @HostBinding('@listAnim') listAnim;
+   @HostBinding('@routeAnim') state;
+  
   pic = "../../../assets/imgs/pexels-photo-1310181.jpeg";
   products: Product[];
   constructor(private dialog: MatDialog) { }
