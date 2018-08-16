@@ -17,26 +17,30 @@ export class DragDirective {
   set isDraggable(val: boolean) {
     this._isDraggble = val;
     this.rd.setAttribute(this.el.nativeElement, 'draggable', `${val}`);
-    this.dragService.setDragData({data: this.dragData });
   }
 
   get isDraggable() {
     return this._isDraggble;
   }
 
-  @Input() draggedClass: string;
-  @Input() dragData: any;
+  @Input() 
+  draggedClass: string;
+
+  @Input() 
+  dragData: any;
 
   @HostListener('dragstart', ['$event'])
   onDragStart(e: Event) {
+    console.log(this.dragData);
     if (this.el.nativeElement == e.target) {
+      this.dragService.setDragData({data: this.dragData });
       this.rd.addClass(this.el.nativeElement, this.draggedClass);
     }
   }
 
   @HostListener('dragend', ['$event'])
   onDragEnd(e: Event) {
-    if (this.el.nativeElement == e.target) {
+    if (this.el.nativeElement == e.target) { 
       this.rd.removeClass(this.el.nativeElement, this.draggedClass);
     }
   }

@@ -11,30 +11,30 @@ import { DragData } from '../../directive/drag-drop.service';
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
   styleUrls: ['./task-home.component.css'],
-  animations:[
+  animations: [
     slideToRight
   ]
 })
 export class TaskHomeComponent implements OnInit {
 
   @HostBinding('@routeAnim') state;
+  assignedUser = new User('lily', 'lily');
 
   taskLists = [];
   constructor(private dialogRef: MatDialog) { }
 
   ngOnInit() {
-    let assignedUser = new User('lily', 'lily');
     this.taskLists = [
       new TaskList([
-        new Task('T1', 'this is t1', assignedUser),
-        new Task('T1', 'this is t1', assignedUser),
-        new Task('T1', 'this is t1', assignedUser),
-        new Task('T1', 'this is t1', assignedUser),
+        new Task(1, 'T1', 'this is t1', this.assignedUser),
+        new Task(2, 'T1', 'this is t1', this.assignedUser),
+        new Task(3, 'T1', 'this is t1', this.assignedUser),
+        new Task(4, 'T1', 'this is t1', this.assignedUser),
       ], 'Ready'),
       new TaskList([
-        new Task('T2', 'this is t2', assignedUser),
-        new Task('T2', 'this is t2', assignedUser),
-        new Task('T2', 'this is t2', assignedUser)
+        new Task(5, 'T2', 'this is t2', this.assignedUser),
+        new Task(6, 'T2', 'this is t2', this.assignedUser),
+        new Task(7, 'T2', 'this is t2', this.assignedUser)
       ], 'Developing')
     ];
   }
@@ -51,8 +51,8 @@ export class TaskHomeComponent implements OnInit {
     this.dialogRef.open(MoveTaskComponent, { data: { taskLists: this.taskLists } });
   }
 
-  addDataToList(data: DragData){
-    console.log(data);
-    this.taskLists = [...this.taskLists, data.data];
+  addDataToList(data: DragData, taskList: TaskList) {
+    console.log(data.data);
+    taskList.tasks = [...taskList.tasks, new Task(8, 'T1', 'this is t1', this.assignedUser)];
   }
 }
