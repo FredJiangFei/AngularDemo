@@ -23,6 +23,7 @@ import {
 import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { DirectiveModule } from '../directive/directive.module';
 
 
 @NgModule({
@@ -48,7 +49,9 @@ import { RouterModule } from '@angular/router';
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+
+    DirectiveModule
   ],
   exports: [
     CommonModule,
@@ -72,7 +75,9 @@ import { RouterModule } from '@angular/router';
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+
+    DirectiveModule
   ],
   declarations: []
 })

@@ -9,3 +9,8 @@ mat-icon.avatar{
     width: 64px;
     border-radius: 50%;
 }
+
+.drag-start{
+    opacity: 0.5;
+    border: #ff525b dashed 2px;
+}

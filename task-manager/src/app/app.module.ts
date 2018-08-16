@@ -11,7 +11,6 @@ import { ProductModule } from './product/product.module';
 import { TaskModule } from './task/task.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 @NgModule({
   declarations: [
     AppComponent
