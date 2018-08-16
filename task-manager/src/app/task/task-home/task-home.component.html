@@ -1,6 +1,6 @@
 
 <div class="task-lists-container">
-  <app-task-list *ngFor="let taskList of taskLists" app-drop [dragEnterClass]="'drag-enter'">
+  <app-task-list *ngFor="let taskList of taskLists" app-drop [dragEnterClass]="'drag-enter'" (dropped)="addDataToList($event)">
       <app-task-list-header [taskList]="taskList" (addTask)="openAddModal()" (move)="moveTaskTo()">
       </app-task-list-header>
 

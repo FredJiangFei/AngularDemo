@@ -1,5 +1,6 @@
-import { Directive, HostListener, ElementRef, Renderer2, Input } from '@angular/core';
-import { DragDropService } from './drag-drop.service';
+import { Directive, HostListener, ElementRef, Renderer2, Input, Output, EventEmitter } from '@angular/core';
+import { DragDropService, DragData } from './drag-drop.service';
+// import { take } from 'rxjs/add/operator/take'
 
 @Directive({
   selector: '[app-drop]'
@@ -7,7 +8,8 @@ import { DragDropService } from './drag-drop.service';
 export class DropDirective {
 
   @Input() dragEnterClass:string;
-  @Input() dragTags: string[] = [];
+  @Output() dropped = new EventEmitter<DragData>();
+
   private data$;
 
   constructor(
@@ -15,11 +17,13 @@ export class DropDirective {
     private rd: Renderer2,
     private dragService: DragDropService
   ) { 
-    // this.data$ = dragService.getDragData().take(1);
+      this.data$ = dragService.getDragData();//.take(1);
   }
 
   @HostListener('dragenter', ['$event'])
   onDragEnter(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
     if (this.el.nativeElement == e.target) {
       this.rd.addClass(this.el.nativeElement, this.dragEnterClass);
     }
@@ -27,6 +31,8 @@ export class DropDirective {
 
   @HostListener('dragover', ['$event'])
   onDragOver(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
     if (this.el.nativeElement == e.target) {
 
     }
@@ -34,6 +40,8 @@ export class DropDirective {
 
   @HostListener('dragleave', ['$event'])
   onDragLeave(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
     if (this.el.nativeElement == e.target) {
       this.rd.removeClass(this.el.nativeElement, this.dragEnterClass);
     }
@@ -41,8 +49,13 @@ export class DropDirective {
 
   @HostListener('drop', ['$event'])
   onDrop(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
     if (this.el.nativeElement == e.target) {
       this.rd.removeClass(this.el.nativeElement, this.dragEnterClass);
+
+      this.dropped.emit(this.data$);
+      this.dragService.clearDragData();
     }
   }
 }

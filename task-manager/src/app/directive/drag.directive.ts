@@ -17,7 +17,7 @@ export class DragDirective {
   set isDraggable(val: boolean) {
     this._isDraggble = val;
     this.rd.setAttribute(this.el.nativeElement, 'draggable', `${val}`);
-    this.dragService.setDragData({ tag: this.dragTag, data: this.dragData });
+    this.dragService.setDragData({data: this.dragData });
   }
 
   get isDraggable() {
@@ -25,7 +25,6 @@ export class DragDirective {
   }
 
   @Input() draggedClass: string;
-  @Input() dragTag: string;
   @Input() dragData: any;
 
   @HostListener('dragstart', ['$event'])

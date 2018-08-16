@@ -5,6 +5,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Task, TaskList } from '../../domain/task.domain';
 import { User } from '../../domain/user.domain';
 import { slideToRight } from '../../animates/route.animate';
+import { DragData } from '../../directive/drag-drop.service';
 
 @Component({
   selector: 'app-task-home',
@@ -48,5 +49,10 @@ export class TaskHomeComponent implements OnInit {
 
   moveTaskTo() {
     this.dialogRef.open(MoveTaskComponent, { data: { taskLists: this.taskLists } });
+  }
+
+  addDataToList(data: DragData){
+    console.log(data);
+    this.taskLists = [...this.taskLists, data.data];
   }
 }

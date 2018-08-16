@@ -3,7 +3,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 
 export interface DragData {
-  tag: string,
   data: any
 }
 
