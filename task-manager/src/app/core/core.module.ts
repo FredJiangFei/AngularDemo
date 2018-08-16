@@ -23,6 +23,13 @@ import { ShareModule } from '../share/share.module';
     HeaderComponent,
     FooterComponent,
     SidebarComponent
+  ],
+  providers: [
+    {
+      provide: 'BASE_CONFIG', useValue: {
+        host: 'http://localhost:3000'
+      }
+    }
   ]
 })
 export class CoreModule {

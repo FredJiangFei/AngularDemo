@@ -1,0 +1,24 @@
+{
+    "quotes":[
+        {
+            "id":"1",
+            "title":"Helllo world",
+            "desc":"This is login page for task manager."
+        },
+        {
+            "id":"2",
+            "title":"Helllo angular",
+            "desc":"Learning angular."
+        },
+        {
+            "id":"3",
+            "title":"Helllo rxjs",
+            "desc":"Rxjs is not easy to learn"
+        },
+        {
+            "id":"4",
+            "title":"Helllo iphone",
+            "desc":"I have a iphone 6."
+        }
+    ]
+} 
