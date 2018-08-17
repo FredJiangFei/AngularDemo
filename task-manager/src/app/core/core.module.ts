@@ -10,6 +10,7 @@ import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer, BrowserModule } from '@angular/platform-browser';
 import { loadSvgResoures } from '../utils/svg.util';
 import { ShareModule } from '../share/share.module';
+import '../utils/debug.util'
 
 @NgModule({
   imports: [

@@ -10,6 +10,6 @@ export class QuoteService {
     @Inject('BASE_CONFIG') private config) { }
 
   getQuote(): Observable<Quote> {
-    return this.http.get<Quote>(`${this.config.host}/quotes/1`)//.map(res => res.json() as Quote);
+    return this.http.get<Quote>(`${this.config.host}/quotes/1`);//.map(res => res.json() as Quote);
   }
 }
