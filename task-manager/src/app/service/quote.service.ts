@@ -1,7 +1,8 @@
-import { Quote } from './../domain/quote.domain';
 import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { mydebug, mydebug2 } from '../utils/debug.util';
 
 @Injectable()
 export class QuoteService {
@@ -9,7 +10,10 @@ export class QuoteService {
   constructor(private http: HttpClient,
     @Inject('BASE_CONFIG') private config) { }
 
-  getQuote(): Observable<Quote> {
-    return this.http.get<Quote>(`${this.config.host}/quotes/1`);//.map(res => res.json() as Quote);
+  getQuote(): Observable<any> {
+    return this.http.get(`${this.config.host}/quotes/2`).pipe(
+      mydebug2('ww'),
+      map((res: Response) => res)
+    );
   }
 }

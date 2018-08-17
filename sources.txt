@@ -4,3 +4,5 @@ http://iconfont.cn/
 https://www.flaticon.com/packs
 
 huan dong han shu:  http://cubic-bezier.com/#.17,.67,.83,.67
+
+pipe: https://github.com/ReactiveX/rxjs/blob/master/doc/pipeable-operators.md

@@ -1,7 +1,6 @@
 import { QuoteService } from './../../service/quote.service';
 import { Quote } from './../../domain/quote.domain';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +16,5 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.quoteService.getQuote().subscribe(res => this.quote = res);
-    
   }
 }
