@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceModule } from './../service/service.module';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -5,14 +7,17 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, BrowserModule } from '@angular/platform-browser';
 import { loadSvgResoures } from '../utils/svg.util';
 import { ShareModule } from '../share/share.module';
 
 @NgModule({
   imports: [
+    BrowserModule,
     HttpClientModule,
-    ShareModule
+    ShareModule,
+    ServiceModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     HeaderComponent,
