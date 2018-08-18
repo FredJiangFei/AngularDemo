@@ -25,3 +25,7 @@ main {
 .fill-remaining-place {
     flex: 1 1 auto;
 }
+
+.hand{
+    cursor: pointer;
+}

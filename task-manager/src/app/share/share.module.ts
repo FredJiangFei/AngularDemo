@@ -24,6 +24,7 @@ import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DirectiveModule } from '../directive/directive.module';
+import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { DirectiveModule } from '../directive/directive.module';
     MatNativeDateModule,
     MatSelectModule,
 
-    DirectiveModule
+    DirectiveModule,
   ],
   exports: [
     CommonModule,
@@ -77,8 +78,10 @@ import { DirectiveModule } from '../directive/directive.module';
     MatNativeDateModule,
     MatSelectModule,
 
-    DirectiveModule
+    DirectiveModule,
+
+    ImageListSelectComponent
   ],
-  declarations: []
+  declarations: [ImageListSelectComponent]
 })
 export class ShareModule { }

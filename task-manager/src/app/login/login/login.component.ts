@@ -15,6 +15,6 @@ export class LoginComponent implements OnInit {
   constructor(private quoteService: QuoteService) { }
 
   ngOnInit() {
-    this.quoteService.getQuote().subscribe(res => this.quote = res);
+    // this.quoteService.getQuote().subscribe(res => this.quote = res);
   }
 }
