@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DirectiveModule } from '../directive/directive.module';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
+import { CounterComponent } from './counter/counter.component';
 
 
 @NgModule({
@@ -80,8 +81,9 @@ import { ImageListSelectComponent } from './image-list-select/image-list-select.
 
     DirectiveModule,
 
-    ImageListSelectComponent
+    ImageListSelectComponent,
+    CounterComponent
   ],
-  declarations: [ImageListSelectComponent]
+  declarations: [ImageListSelectComponent, CounterComponent]
 })
 export class ShareModule { }
