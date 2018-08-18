@@ -1,4 +1,4 @@
-<form #form class="login-container">
+<form #form (ngSubmit)="login(form)" class="login-container">
   <mat-card>
     <mat-card-header>
       <mat-card-title>
@@ -6,17 +6,18 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-form-field class="full-width" hintLabel="email is required">
+      <!-- <mat-form-field class="full-width" hintLabel="email is required">
         <input matInput placeholder="User name">
       </mat-form-field>
       <mat-form-field  class="full-width">
         <input matInput placeholder="Password">
-      </mat-form-field>
+      </mat-form-field> -->
 
-      <app-counter [(ngModel)]="counter" name="counter" [max]='8' [min]='2'></app-counter>
+      <app-counter ngModel name="counter" max="8" min="2"></app-counter>
       <p *ngIf="!form.valid">Counter is invalid!</p>
+      {{form.value | json}}
       
-      <button type="button" mat-raised-button>Login</button>
+      <button type="submit" mat-raised-button>Login</button>
     </mat-card-content>
 
     <mat-card-actions class="text-right">

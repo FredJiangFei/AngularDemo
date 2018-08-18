@@ -17,4 +17,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // this.quoteService.getQuote().subscribe(res => this.quote = res);
   }
+
+  login(value: any) {
+    console.log(value);
+  }
 }

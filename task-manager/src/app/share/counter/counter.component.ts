@@ -14,31 +14,43 @@ import { createCounterRangeValidator, validateCounterRange } from '../../validat
     },
     {
       provide: NG_VALIDATORS,
-      useValue: forwardRef(() => CounterComponent), //validateCounterRange,
+      useValue: forwardRef(() => CounterComponent),
       multi: true
     }
   ]
 })
 
-export class CounterComponent implements ControlValueAccessor,Validator,OnChanges { // 
+export class CounterComponent implements ControlValueAccessor,Validator,OnInit,OnChanges {
   @Input() min: number;
   @Input() max: number;
 
   private _validator: ValidatorFn;
-  private _createValidator(): void {
+  ngOnInit() {
     this._validator = createCounterRangeValidator(this.max, this.min);
   }
-  validate(c: AbstractControl): ValidationErrors | null {
-    return this.min == null || this.max == null ? null : this._validator(c);
-  }
 
-  ngOnChanges(changes: SimpleChanges): void{
+  ngOnChanges(changes) {
     if (changes.min || changes.max) {
-      this._createValidator();
+      this._validator = createCounterRangeValidator(this.max, this.min);
     }
   }
 
+  validate(c: AbstractControl): ValidationErrors | null {
+    return this._validator(c);
+  }
+
   @Input() count: number = 0;
+
+
+  increment() {
+    this.count++;
+    this.propagateChange(this.count);
+  }
+
+  decrement() {
+    this.count--;
+    this.propagateChange(this.count);
+  }
 
   writeValue(obj: any): void {
     if (obj) {
@@ -49,16 +61,6 @@ export class CounterComponent implements ControlValueAccessor,Validator,OnChange
   propagateChange = (_: any) => { };
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
-  }
-
-  increment() {
-    this.count++;
-    this.propagateChange(this.count);
-  }
-
-  decrement() {
-    this.count--;
-    this.propagateChange(this.count);
   }
 
   registerOnTouched(fn: any): void {}

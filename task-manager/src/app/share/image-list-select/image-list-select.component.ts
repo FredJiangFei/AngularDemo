@@ -9,7 +9,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl } f
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: ImageListSelectComponent,
-      // useExisting: forwardRef(() => ImageListSelectComponent),
       multi: true
     },
     {
