@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, ValidatorFn, Validator, AbstractControl, ValidationErrors } from '../../../../node_modules/@angular/forms';
-import { createCounterRangeValidator, validateCounterRange } from '../../validate/validate';
+import { createCounterRangeValidator } from '../../validate/validate';
 
 @Component({
   selector: 'app-counter',
@@ -29,7 +29,7 @@ export class CounterComponent implements ControlValueAccessor,Validator,OnInit,O
     this._validator = createCounterRangeValidator(this.max, this.min);
   }
 
-  ngOnChanges(changes) {
+  ngOnChanges(changes: SimpleChanges) {
     if (changes.min || changes.max) {
       this._validator = createCounterRangeValidator(this.max, this.min);
     }
@@ -39,17 +39,20 @@ export class CounterComponent implements ControlValueAccessor,Validator,OnInit,O
     return this._validator(c);
   }
 
-  @Input() count: number = 0;
-
+  @Input() _count: number = 0;
+  set count(val:number){
+    this._count = val;
+    this.propagateChange(this.count);
+  }
+  get count(){
+    return this._count;
+  }
 
   increment() {
     this.count++;
-    this.propagateChange(this.count);
   }
-
   decrement() {
     this.count--;
-    this.propagateChange(this.count);
   }
 
   writeValue(obj: any): void {

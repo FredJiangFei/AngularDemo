@@ -11,6 +11,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   quote: Quote;
+  initCounter = 5;
 
   constructor(private quoteService: QuoteService) { }
 
