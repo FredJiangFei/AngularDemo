@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '../../../../node_modules/@angular/material';
 import { OverlayContainer } from '../../../../node_modules/@angular/cdk/overlay';
 import { Category } from '../../domain/category.domain';
+import { Product } from '../../domain/product.domain';
 
 @Component({
   selector: 'app-new-product',
@@ -10,6 +11,7 @@ import { Category } from '../../domain/category.domain';
 })
 export class NewProductComponent implements OnInit {
 
+  product:Product = new Product();
   categories: Category[] = [
     new Category(1, 'fruit'),
     new Category(2, 'mobile phone'),
@@ -24,6 +26,7 @@ export class NewProductComponent implements OnInit {
   }
 
   create() {
-    this.dialogRef.close('create product succesfully');
+    console.log(this.product);
+    this.dialogRef.close(this.product);
   }
 }

@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Iphone7",
+      "pic": "../../../assets/imgs/pexels-photo-1310181.jpeg",
+      "desc": "This is Iphone7."
+    },
+    {
+      "id": "2",
+      "name": "vivo r11",
+      "pic": "../../../assets/imgs/pexels-photo-1310181.jpeg",
+      "desc": "This is vivo r11."
+    },
+    {
+      "id": "3",
+      "name": "Hua wei note",
+      "pic": "../../../assets/imgs/pexels-photo-1310181.jpeg",
+      "desc": "This is Hua wei note."
+    },
+    {
+      "id": "4",
+      "name": "Xiao mi 2",
+      "pic": "../../../assets/imgs/pexels-photo-1310181.jpeg",
+      "desc": "This is Xiao mi 2."
+    }
+  ]
+}

@@ -2,10 +2,10 @@
   <h2 mat-dialog-title>Add new product</h2>
   <mat-dialog-content>
     <mat-form-field class="full-width">
-      <input type="text" matInput placeholder="Product name">
+      <input type="text" matInput [(ngModel)]="product.name" name="productName">
     </mat-form-field>
     <mat-form-field class="full-width">
-      <input type="text" cdkFocusInitial matInput placeholder="Product desc">
+      <input type="text" cdkFocusInitial matInput [(ngModel)]="product.desc" name="productDesc">
     </mat-form-field>
     <mat-form-field class="full-width">
       <input type="text" matInput placeholder="Product category" [matAutocomplete]="auto">
