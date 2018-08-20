@@ -1,4 +1,4 @@
-<app-product-item *ngFor="let product of products | async" [item]="product" class="card"
+<app-product-item *ngFor="let product of products" [item]="product" class="card"
 (delete)="showDeleteModal($event)">
 
 </app-product-item>

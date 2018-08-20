@@ -5,7 +5,6 @@ import { NewProductComponent } from '../new-product/new-product.component';
 import { slideToRight } from '../../animates/route.animate';
 import { DeleteProductComponent } from '../delete-product/delete-product.component';
 import { ProductService } from '../../service/product.service.';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -19,7 +18,7 @@ export class ProductListComponent implements OnInit {
 
   @HostBinding('@routeAnim') state;
 
-  products: Observable<Product>;
+  products: Array<Product>;
   constructor(private dialog: MatDialog, private productService: ProductService) { }
 
   ngOnInit() {
@@ -31,7 +30,7 @@ export class ProductListComponent implements OnInit {
   }
 
   loadProducts(){
-    this.products = this.productService.getAll();
+    this.productService.getAll().subscribe(products => this.products = products);
   }
 
   openAddProductModal() {
@@ -44,17 +43,18 @@ export class ProductListComponent implements OnInit {
       });
 
     dialogRef.afterClosed().subscribe((result: Product) => {
-      this.productService.add(result).subscribe(x => this.loadProducts());
-      // this.products = [...this.products, new Product(3, 'huawei', this.pic, 'huawei phone')]
+      this.productService.add(result).subscribe(x => this.products = [...this.products, result]);
+       
     });
   }
 
-  showDeleteModal(productId: number) {
+  showDeleteModal(productId: string) {
     const dialogRef = this.dialog.open(DeleteProductComponent);
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
-        this.loadProducts();
-        // this.products = this.products.filter(x => x.id != productId);
+        this.productService.delete(productId).subscribe(x => {
+          this.products = this.products.filter(x => x.id != productId);
+        });
       }
     });
   }
