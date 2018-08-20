@@ -1,5 +1,5 @@
 <app-product-item *ngFor="let product of products" [item]="product" class="card"
-(delete)="showDeleteModal($event)">
+(delete)="showDeleteModal($event)" (edit)="showEditModal($event)">
 
 </app-product-item>
 

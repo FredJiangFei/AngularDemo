@@ -22,14 +22,10 @@ export class ProductListComponent implements OnInit {
   constructor(private dialog: MatDialog, private productService: ProductService) { }
 
   ngOnInit() {
-    // this.products = [
-    //   new Product(1, 'iphone7', this.pic, 'this is apple iphon7'),
-    //   new Product(2, 'vivo r11', this.pic, 'this is vivo r11')
-    // ]
     this.loadProducts();
   }
 
-  loadProducts(){
+  loadProducts() {
     this.productService.getAll().subscribe(products => this.products = products);
   }
 
@@ -39,13 +35,27 @@ export class ProductListComponent implements OnInit {
         // width: '500px',
         // height: '300px',
         // position: { left: '0', top: '0' },
-        data: 'this is a product create dialog!'
+        data: {
+          product: new Product()
+        }
       });
 
     dialogRef.afterClosed().subscribe((result: Product) => {
-      this.productService.add(result).subscribe(x => this.products = [...this.products, result]);
-       
+      if(!result.id){
+        this.productService.add(result).subscribe(x => this.products = [...this.products, result]);
+      }else{
+        this.productService.update(result).subscribe(x => this.loadProducts());
+      }
     });
+  }
+
+  showEditModal(product: Product) {
+    const dialogRef = this.dialog.open(NewProductComponent,
+      {
+        data: {
+          product: product
+        }
+      });
   }
 
   showDeleteModal(productId: string) {

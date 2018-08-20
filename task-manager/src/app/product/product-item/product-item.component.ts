@@ -20,6 +20,9 @@ export class ProductItemComponent implements OnInit {
   @Output()
   delete = new EventEmitter<string>();
 
+  @Output()
+  edit = new EventEmitter<Product>();
+
   @HostBinding('@card') cardState = 'out';
   @HostBinding('@itemAnim') itemAnim;
 
@@ -41,5 +44,9 @@ export class ProductItemComponent implements OnInit {
 
   showDeleteModal() {
     this.delete.emit(this.item.id);
+  }
+
+  showEditModal() {
+    this.edit.emit(this.item);
   }
 }

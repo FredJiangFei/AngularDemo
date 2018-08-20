@@ -1,4 +1,4 @@
-<form (ngSubmit)="create()">
+<form (ngSubmit)="save()">
   <h2 mat-dialog-title>Add new product</h2>
   <mat-dialog-content>
     <mat-form-field class="full-width">
@@ -7,12 +7,12 @@
     <mat-form-field class="full-width">
       <input type="text" cdkFocusInitial matInput [(ngModel)]="product.desc" name="productDesc" required placeholder="Product desc">
     </mat-form-field>
-    <mat-form-field class="full-width">
+    <!-- <mat-form-field class="full-width">
       <input type="text" matInput placeholder="Product category" [matAutocomplete]="auto">
-    </mat-form-field>
+    </mat-form-field> -->
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button type="submit" mat-raised-button>Create</button>
+    <button type="submit" mat-raised-button>Save</button>
     <button type="button" mat-button mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
 </form>

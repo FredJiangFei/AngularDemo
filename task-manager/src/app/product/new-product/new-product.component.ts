@@ -11,7 +11,7 @@ import { Product } from '../../domain/product.domain';
 })
 export class NewProductComponent implements OnInit {
 
-  product:Product = new Product();
+  product:Product;
   categories: Category[] = [
     new Category(1, 'fruit'),
     new Category(2, 'mobile phone'),
@@ -22,11 +22,10 @@ export class NewProductComponent implements OnInit {
     private dialogRef: MatDialogRef<NewProductComponent>) { }
 
   ngOnInit() {
-    console.log(this.data);
+    this.product = this.data.product;
   }
 
-  create() {
-    console.log(this.product);
+  save() {
     this.dialogRef.close(this.product);
   }
 }
