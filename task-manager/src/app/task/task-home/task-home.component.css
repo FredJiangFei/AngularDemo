@@ -12,3 +12,9 @@
 .drag-enter{
    background-color: dimgray;
 }
+
+:host{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

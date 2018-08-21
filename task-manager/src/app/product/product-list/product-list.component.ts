@@ -58,7 +58,7 @@ export class ProductListComponent implements OnInit {
       });
   }
 
-  showDeleteModal(productId: string) {
+  showDeleteModal(productId: number) {
     const dialogRef = this.dialog.open(DeleteProductComponent);
     dialogRef.afterClosed().subscribe(res => {
       if (res) {

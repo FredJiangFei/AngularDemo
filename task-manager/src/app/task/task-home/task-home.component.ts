@@ -6,6 +6,9 @@ import { Task, TaskList } from '../../domain/task.domain';
 import { User } from '../../domain/user.domain';
 import { slideToRight } from '../../animates/route.animate';
 import { DragData } from '../../directive/drag-drop.service';
+import { NewTaskListComponent } from '../new-task-list/new-task-list.component';
+import { ActivatedRoute } from '@angular/router';
+import { TaskService } from '../../service/task.service';
 
 @Component({
   selector: 'app-task-home',
@@ -19,28 +22,26 @@ export class TaskHomeComponent implements OnInit {
 
   @HostBinding('@routeAnim') state;
   assignedUser = new User('lily', 'lily');
+  productId: number;
 
   taskLists = [];
-  constructor(private dialogRef: MatDialog) { }
-
-  ngOnInit() {
-    this.taskLists = [
-      new TaskList([
-        new Task(1, 'T1', 'this is t1', this.assignedUser),
-        new Task(2, 'T1', 'this is t1', this.assignedUser),
-        new Task(3, 'T1', 'this is t1', this.assignedUser),
-        new Task(4, 'T1', 'this is t1', this.assignedUser),
-      ], 'Ready'),
-      new TaskList([
-        new Task(5, 'T2', 'this is t2', this.assignedUser),
-        new Task(6, 'T2', 'this is t2', this.assignedUser),
-        new Task(7, 'T2', 'this is t2', this.assignedUser)
-      ], 'Developing')
-    ];
+  constructor(private dialogRef: MatDialog,
+    private activedRoute: ActivatedRoute,
+    private taskService: TaskService) {
+    this.productId = parseInt(activedRoute.snapshot.params['id']);
   }
 
-  openAddModal() {
-    this.dialogRef.open(NewTaskComponent, { data: { title: 'Create task' } });
+  ngOnInit() {
+    this.taskService.getTasklistByProductId(this.productId).subscribe(x => this.taskLists = x);
+  }
+
+  openAddModal(taskList: TaskList) {
+    let addTaskModal = this.dialogRef.open(NewTaskComponent, { data: { title: 'Create task' } });
+
+    addTaskModal.afterClosed().subscribe((task:Task) => {
+      task.taskListId = taskList.id;
+
+    });
   }
 
   openEditModal(task) {
@@ -53,6 +54,13 @@ export class TaskHomeComponent implements OnInit {
 
   addDataToList(data: DragData, taskList: TaskList) {
     console.log(data.data);
-    taskList.tasks = [...taskList.tasks, new Task(8, 'T1', 'this is t1', this.assignedUser)];
+  }
+
+  openAddTaskListModal() {
+    let addTaskListModal = this.dialogRef.open(NewTaskListComponent);
+    addTaskListModal.afterClosed().subscribe((list: TaskList) => {
+      list.productId = this.productId;
+      this.taskService.addTasklist(list).subscribe(x => this.taskLists = [...this.taskLists, list]);
+    })
   }
 }

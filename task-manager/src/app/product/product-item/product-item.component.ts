@@ -18,7 +18,7 @@ export class ProductItemComponent implements OnInit {
   public item: Product;
 
   @Output()
-  delete = new EventEmitter<string>();
+  delete = new EventEmitter<number>();
 
   @Output()
   edit = new EventEmitter<Product>();

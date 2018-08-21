@@ -1,43 +1,63 @@
 {
-    "products": [
-        {
-            "id": "1",
-            "name": "Iphone7",
-            "pic": "../../../assets/imgs/pexels-photo-1310181.jpeg",
-            "desc": "This is Iphone7."
-        },
-        {
-            "id": "2",
-            "name": "vivo r11",
-            "pic": "../../../assets/imgs/pexels-photo-1310181.jpeg",
-            "desc": "This is vivo r11."
-        },
-        {
-            "name": "feng shan",
-            "desc": "ai mei te",
-            "id": "_gS4PYd"
-        }
-    ],
-    "quotes": [
-        {
-            "id": "1",
-            "title": "Helllo world",
-            "desc": "This is login page for task manager."
-        },
-        {
-            "id": "2",
-            "title": "Helllo angular",
-            "desc": "Learning angular."
-        },
-        {
-            "id": "3",
-            "title": "Helllo rxjs",
-            "desc": "Rxjs is not easy to learn"
-        },
-        {
-            "id": "4",
-            "title": "Helllo iphone",
-            "desc": "I have a iphone 6."
-        }
-    ]
+  "products": [
+    {
+      "name": "Apple",
+      "desc": "This is iphone 7.",
+      "price": 2,
+      "id": 1
+    },
+    {
+      "name": "Vivo",
+      "desc": "This is Vivo r11",
+      "price": 3,
+      "id": 2
+    }
+  ],
+  "tasklists": [
+    {
+      "status": "develop",
+      "productId": "undefined",
+      "id": 1
+    },
+    {
+      "status": "test",
+      "productId": "undefined",
+      "id": 2
+    },
+    {
+      "status": "develop",
+      "productId": "1",
+      "id": 3
+    },
+    {
+      "status": "develop",
+      "productId": 1,
+      "id": 4
+    }
+  ],
+  "tasks": [
+   
+  ],
+  "quotes": [
+    {
+      "id": 1,
+      "title": "Helllo world",
+      "desc": "This is login page for task manager."
+    },
+    {
+      "id": 2,
+      "title": "Helllo angular",
+      "desc": "Learning angular."
+    },
+    {
+      "id": 3,
+      "title": "Helllo rxjs",
+      "desc": "Rxjs is not easy to learn"
+    },
+    {
+      "id": 4,
+      "title": "Helllo iphone",
+      "desc": "I have a iphone 6."
+    }
+  ]
 }

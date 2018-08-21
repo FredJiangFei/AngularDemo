@@ -1,17 +1,15 @@
 import { User } from "./user.domain";
 
 export class Task {
-    constructor(
-        public id: number, 
-        public title: string, 
-        public desc: string, 
-        public assigned: User) {
-
-    }
+    public id: number; 
+    public taskListId: number; 
+    public title: string;
+    public desc: string;
+    public assigned: User;
 }
 
 export class TaskList {
-    constructor(public tasks: Task[], public status: string) {
-
-    }
+    public id: number; 
+    public status: string;
+    public productId: number;
 }

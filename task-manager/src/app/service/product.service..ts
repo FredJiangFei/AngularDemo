@@ -27,7 +27,7 @@ export class ProductService {
     return this.http.patch<Product>(`${this.config.host}/products/${product.id}`, request);
   }
 
-  delete(productId: string) {
+  delete(productId: number) {
     return this.http.delete(`${this.config.host}/products/` + productId);
   }
 }
