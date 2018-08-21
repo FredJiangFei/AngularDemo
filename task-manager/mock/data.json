@@ -1,0 +1,43 @@
+{
+    "products": [
+        {
+            "id": "1",
+            "name": "Iphone7",
+            "pic": "../../../assets/imgs/pexels-photo-1310181.jpeg",
+            "desc": "This is Iphone7."
+        },
+        {
+            "id": "2",
+            "name": "vivo r11",
+            "pic": "../../../assets/imgs/pexels-photo-1310181.jpeg",
+            "desc": "This is vivo r11."
+        },
+        {
+            "name": "feng shan",
+            "desc": "ai mei te",
+            "id": "_gS4PYd"
+        }
+    ],
+    "quotes": [
+        {
+            "id": "1",
+            "title": "Helllo world",
+            "desc": "This is login page for task manager."
+        },
+        {
+            "id": "2",
+            "title": "Helllo angular",
+            "desc": "Learning angular."
+        },
+        {
+            "id": "3",
+            "title": "Helllo rxjs",
+            "desc": "Rxjs is not easy to learn"
+        },
+        {
+            "id": "4",
+            "title": "Helllo iphone",
+            "desc": "I have a iphone 6."
+        }
+    ]
+}
