@@ -12,11 +12,6 @@ import { Product } from '../../domain/product.domain';
 export class NewProductComponent implements OnInit {
 
   product:Product;
-  categories: Category[] = [
-    new Category(1, 'fruit'),
-    new Category(2, 'mobile phone'),
-    new Category(3, 'car')
-  ];
 
   constructor(@Inject(MAT_DIALOG_DATA) private data,
     private dialogRef: MatDialogRef<NewProductComponent>) { }
