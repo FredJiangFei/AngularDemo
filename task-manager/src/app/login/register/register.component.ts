@@ -17,8 +17,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group(
       {
-        avatar: ['1'],
-        counter: [4, createCounterRangeValidator(2, 8)]
+        username:[''],
+        passwordGroup: this.fb.group({
+          password:[''],
+          confirmpassword:['']
+        })
+
+        // avatar: ['1'],
+        // counter: [4, createCounterRangeValidator(2, 8)]
       }
     )
   }
