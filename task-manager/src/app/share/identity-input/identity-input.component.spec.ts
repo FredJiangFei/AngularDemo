@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgeInputComponent } from './age-input.component';
+import { IdentityInputComponent } from './identity-input.component';
 
-describe('AgeInputComponent', () => {
-  let component: AgeInputComponent;
-  let fixture: ComponentFixture<AgeInputComponent>;
+describe('IdentityInputComponent', () => {
+  let component: IdentityInputComponent;
+  let fixture: ComponentFixture<IdentityInputComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AgeInputComponent ]
+      declarations: [ IdentityInputComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AgeInputComponent);
+    fixture = TestBed.createComponent(IdentityInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

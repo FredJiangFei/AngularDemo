@@ -21,7 +21,7 @@ export class NewTaskComponent implements OnInit {
   }
 
   save() {
-    this.task.assigned = new User('lily','lily');
+    this.task.assigned = new User();
     this.matDialogRef.close(this.task);
   }
 }

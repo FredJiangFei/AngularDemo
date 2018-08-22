@@ -27,6 +27,7 @@ import { DirectiveModule } from '../directive/directive.module';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 import { CounterComponent } from './counter/counter.component';
 import { DelModalComponent } from './del-modal/del-modal.component';
+import { IdentityInputComponent } from './identity-input/identity-input.component';
 
 
 @NgModule({
@@ -86,7 +87,7 @@ import { DelModalComponent } from './del-modal/del-modal.component';
     CounterComponent,
     DelModalComponent
   ],
-  declarations: [ImageListSelectComponent, CounterComponent, DelModalComponent],
+  declarations: [ImageListSelectComponent, CounterComponent, DelModalComponent, IdentityInputComponent],
   entryComponents:[DelModalComponent]
 })
 export class ShareModule { }

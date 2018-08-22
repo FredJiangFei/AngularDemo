@@ -28,9 +28,9 @@
       <app-image-list-select [avatars]="avatars" formControlName="avatar"></app-image-list-select>
     </mat-card-content>
 
-    <mat-card-actions class="text-right">
+    <mat-card-actions class="text-right" style="display: flex;">
       <button type="submit" mat-raised-button>Register</button>
-
+      <span class="fill-remaining-place"></span>
       <a [routerLink]="['/login']">Login</a>
     </mat-card-actions>
   </mat-card>

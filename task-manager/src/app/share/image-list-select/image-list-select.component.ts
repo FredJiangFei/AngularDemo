@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl } from '../../../../node_modules/@angular/forms';
+import { ControlValueAccessor, 
+          NG_VALUE_ACCESSOR, 
+          NG_VALIDATORS, 
+          FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-image-list-select',
