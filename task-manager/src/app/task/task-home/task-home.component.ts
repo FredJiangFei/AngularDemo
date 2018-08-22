@@ -21,7 +21,7 @@ import { map, flatMap, subscribeOn } from 'rxjs/operators';
 export class TaskHomeComponent implements OnInit {
 
   @HostBinding('@routeAnim') state;
-  assignedUser = new User('lily', 'lily');
+  assignedUser = new User();
   productId: number;
 
   taskLists: TaskList[] = [];

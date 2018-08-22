@@ -1,21 +1,18 @@
-<form #form="ngForm" (ngSubmit)="login(form.value)" class="login-container">
+<form #form="ngForm" (ngSubmit)="login()" class="login-container">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>
-        Login panel
-      </mat-card-title>
+      <mat-card-title> Login panel </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <mat-form-field class="full-width" hintLabel="email is required">
-        <input matInput placeholder="User name">
+      <mat-form-field class="full-width" hintLabel="userName is required">
+        <input matInput placeholder="User name" [(ngModel)]= "user.name" name="username">
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput placeholder="Password">
+        <input matInput placeholder="Password" [(ngModel)]= "user.password" name="password">
       </mat-form-field>
 
-      <app-counter [(ngModel)]="initCounter" name="counter" [max]="8" [min]="2"></app-counter>
-      <p *ngIf="!form.valid">Counter is invalid!</p>
-      {{form.value | json}}
+      <!-- <app-counter [(ngModel)]="initCounter" name="counter" [max]="8" [min]="2"></app-counter>
+      <p *ngIf="!form.valid">Counter is invalid!</p> -->
 
       <button type="submit" mat-raised-button>Login</button>
     </mat-card-content>

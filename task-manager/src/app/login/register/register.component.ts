@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
 import { createCounterRangeValidator } from '../../validate/validate';
+import { User } from '../../domain/user.domain';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ import { createCounterRangeValidator } from '../../validate/validate';
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
+  user: User = new User();
   avatars = ['man', 'lily', 'sugar', 'jenny', 'boy']
 
   constructor(private fb: FormBuilder) { }
@@ -21,16 +23,17 @@ export class RegisterComponent implements OnInit {
         passwordGroup: this.fb.group({
           password:[''],
           confirmpassword:['']
-        })
-
-        // avatar: ['1'],
+        }),
+        birthDay: [''],
+        avatar: ['']
         // counter: [4, createCounterRangeValidator(2, 8)]
       }
     )
   }
 
   register(value: any) {
-    console.log(value);
+    this.user = value;
+    this.user.password = value.passwordGroup.password;
+    console.log(this.user);
   }
-
 }

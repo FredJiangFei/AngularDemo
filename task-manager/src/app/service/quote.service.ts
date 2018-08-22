@@ -12,7 +12,7 @@ export class QuoteService {
 
   getQuote(): Observable<any> {
     return this.http.get(`${this.config.host}/quotes/2`).pipe(
-      mydebug2('ww'),
+      // mydebug2('ww'),
       map((res: Response) => res)
     );
   }

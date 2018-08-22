@@ -11,52 +11,31 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl } f
       useExisting: ImageListSelectComponent,
       multi: true
     },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: ImageListSelectComponent,
-      multi: true
-    }
+    // {
+    //   provide: NG_VALIDATORS,
+    //   useExisting: ImageListSelectComponent,
+    //   multi: true
+    // }
   ]
 })
 export class ImageListSelectComponent implements ControlValueAccessor {
-  @Input()
-  avatars: string[];
+  @Input() avatars: string[];
 
   choosedAavtar: string;
 
-  constructor() { }
-
-  private propagateChange = (_: any) => { };
-
   selectAvatar(avatar) {
     this.choosedAavtar = avatar
+    this.propagateChange(avatar);
   }
 
-  //设置原生表单控件的值
   writeValue(obj: any): void {
     this.choosedAavtar = obj;
-    // this.propagateChange(this.choosedAavtar);
   }
 
-  //注册由每次原生表单控件值更新时触发的回调函数
+  propagateChange = (_: any) => { };
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
 
-   //注册用户和控件交互时触发的回调
-   registerOnTouched(fn: any): void {
-    
-  }
-
-  validate(c: FormControl): { [key: string]: any } {
-    return this.choosedAavtar ? null : {
-      imageListInvalid: {
-        valid: false
-      }
-    }
-  }
-
-  setDisabledState?(isDisabled: boolean): void {
-    throw new Error("Method not implemented.");
-  }
+   registerOnTouched(fn: any): void {}
 }

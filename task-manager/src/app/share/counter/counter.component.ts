@@ -44,16 +44,10 @@ export class CounterComponent implements ControlValueAccessor,Validator,OnInit,O
     this._count = val;
     this.propagateChange(this.count);
   }
-  get count(){
-    return this._count;
-  }
+  get count(){  return this._count; }
 
-  increment() {
-    this.count++;
-  }
-  decrement() {
-    this.count--;
-  }
+  increment() {  this.count++; }
+  decrement() {  this.count--;  }
 
   writeValue(obj: any): void {
     if (obj) {

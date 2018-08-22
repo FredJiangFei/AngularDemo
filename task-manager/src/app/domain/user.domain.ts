@@ -1,9 +1,11 @@
 export class User {
     id?: string;
-    email: string;
+    name: string;
+    avatar: string;
     password: string;
+    birthDay: Date;
 
-    constructor(public name: string, public avatar: string) {
-
+    constructor() {
+       
     }
 }

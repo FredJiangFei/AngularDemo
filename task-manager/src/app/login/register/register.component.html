@@ -19,18 +19,19 @@
       </ng-container>
 
       <mat-form-field class="full-width">
-        <input matInput type="text" [matDatepicker]="birthDay" placeholder="Birth Day">
+        <input matInput type="text" [matDatepicker]="birthDay" placeholder="Birth Day" formControlName="birthDay">
         <mat-datepicker-toggle matSuffix [for]="birthDay"></mat-datepicker-toggle>
-        <mat-datepicker #birthDay></mat-datepicker>
+        <mat-datepicker touchUi #birthDay></mat-datepicker>
       </mat-form-field>
 
-      <!-- <app-counter formControlName="counter"></app-counter>
-      <p *ngIf="!form.valid">Counter is invalid!</p> -->
-      <!-- <app-image-list-select [avatars]="avatars" formControlName="avatar"></app-image-list-select> -->
+      <!-- <app-counter formControlName="counter"></app-counter> -->
+      <app-image-list-select [avatars]="avatars" formControlName="avatar"></app-image-list-select>
     </mat-card-content>
 
     <mat-card-actions class="text-right">
       <button type="submit" mat-raised-button>Register</button>
+
+      <a [routerLink]="['/login']">Login</a>
     </mat-card-actions>
   </mat-card>
 </form>
