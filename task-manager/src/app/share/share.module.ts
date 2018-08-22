@@ -26,6 +26,7 @@ import { RouterModule } from '@angular/router';
 import { DirectiveModule } from '../directive/directive.module';
 import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 import { CounterComponent } from './counter/counter.component';
+import { DelModalComponent } from './del-modal/del-modal.component';
 
 
 @NgModule({
@@ -82,8 +83,10 @@ import { CounterComponent } from './counter/counter.component';
     DirectiveModule,
 
     ImageListSelectComponent,
-    CounterComponent
+    CounterComponent,
+    DelModalComponent
   ],
-  declarations: [ImageListSelectComponent, CounterComponent]
+  declarations: [ImageListSelectComponent, CounterComponent, DelModalComponent],
+  entryComponents:[DelModalComponent]
 })
 export class ShareModule { }

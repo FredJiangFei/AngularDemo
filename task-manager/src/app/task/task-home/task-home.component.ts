@@ -1,4 +1,3 @@
-import { MoveTaskComponent } from './../move-task/move-task.component';
 import { NewTaskComponent } from './../new-task/new-task.component';
 import { MatDialog } from '@angular/material';
 import { Component, OnInit, HostBinding } from '@angular/core';
@@ -9,6 +8,7 @@ import { DragData } from '../../directive/drag-drop.service';
 import { NewTaskListComponent } from '../new-task-list/new-task-list.component';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from '../../service/task.service';
+import { DelModalComponent } from '../../share/del-modal/del-modal.component';
 
 @Component({
   selector: 'app-task-home',
@@ -32,15 +32,23 @@ export class TaskHomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.taskService.getTasklistByProductId(this.productId).subscribe(x => this.taskLists = x);
+    this.loadTasks();
+  }
+
+  loadTasks() {
+    this.taskService.getTasklistByProductId(this.productId)
+      // .pipe(
+      //   map((taskList:TaskList)=> taskList)//this.taskService.getTasksByListId(taskList.id))
+      // )
+      .subscribe(x => this.taskLists = x);
   }
 
   openAddModal(taskList: TaskList) {
     let addTaskModal = this.dialogRef.open(NewTaskComponent, { data: { title: 'Create task' } });
 
-    addTaskModal.afterClosed().subscribe((task:Task) => {
+    addTaskModal.afterClosed().subscribe((task: Task) => {
       task.taskListId = taskList.id;
-
+      this.taskService.addTask(task).subscribe(x => console.log(x));
     });
   }
 
@@ -48,19 +56,32 @@ export class TaskHomeComponent implements OnInit {
     this.dialogRef.open(NewTaskComponent, { data: { title: 'Edit task', task: task } });
   }
 
-  moveTaskTo() {
-    this.dialogRef.open(MoveTaskComponent, { data: { taskLists: this.taskLists } });
-  }
-
   addDataToList(data: DragData, taskList: TaskList) {
     console.log(data.data);
   }
 
   openAddTaskListModal() {
-    let addTaskListModal = this.dialogRef.open(NewTaskListComponent);
+    let addTaskListModal = this.dialogRef.open(NewTaskListComponent, { data: { title: 'Create task list' } });
     addTaskListModal.afterClosed().subscribe((list: TaskList) => {
       list.productId = this.productId;
       this.taskService.addTasklist(list).subscribe(x => this.taskLists = [...this.taskLists, list]);
     })
+  }
+
+  openEditTaskListModal(taskList: TaskList) {
+    let addTaskListModal = this.dialogRef.open(NewTaskListComponent, { data: { title: 'Edit task list', taskList: taskList } });
+
+    addTaskListModal.afterClosed().subscribe((list: TaskList) => {
+      this.taskService.editTasklist(list).subscribe(x =>  this.loadTasks());
+    })
+  }
+
+  openDeleteTaskListModal(taskListId: number) {
+    const deleteTaskListModal = this.dialogRef.open(DelModalComponent);
+    deleteTaskListModal.afterClosed().subscribe(res => {
+      if (res) {
+        this.taskService.delTasklist(taskListId).subscribe(x =>  this.loadTasks());
+      }
+    });
   }
 }

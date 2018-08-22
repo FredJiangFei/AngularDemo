@@ -5,38 +5,27 @@
       "desc": "This is iphone 7.",
       "price": 2,
       "id": 1
-    },
-    {
-      "name": "Vivo",
-      "desc": "This is Vivo r11",
-      "price": 3,
-      "id": 2
     }
   ],
   "tasklists": [
     {
       "status": "develop",
-      "productId": "undefined",
-      "id": 1
-    },
-    {
-      "status": "test",
-      "productId": "undefined",
-      "id": 2
-    },
-    {
-      "status": "develop",
       "productId": "1",
       "id": 3
-    },
-    {
-      "status": "develop",
-      "productId": 1,
-      "id": 4
     }
   ],
   "tasks": [
-   
+    {
+      "title": "angular2",
+      "desc": "322",
+      "dueDate": "2018-08-20T16:00:00.000Z",
+      "assigned": {
+        "name": "lily",
+        "avatar": "lily"
+      },
+      "taskListId": 4,
+      "id": 1
+    }
   ],
   "quotes": [
     {

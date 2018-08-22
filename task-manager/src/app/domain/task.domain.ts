@@ -5,6 +5,7 @@ export class Task {
     public taskListId: number; 
     public title: string;
     public desc: string;
+    public dueDate: Date;
     public assigned: User;
 }
 
@@ -12,4 +13,5 @@ export class TaskList {
     public id: number; 
     public status: string;
     public productId: number;
+    public tasks: Task[];
 }

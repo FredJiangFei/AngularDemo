@@ -13,9 +13,12 @@ export class TaskListHeaderComponent implements OnInit {
 
   @Output()
   addTask = new EventEmitter<void>();
- 
+
   @Output()
-  move = new EventEmitter<void>();
+  edit = new EventEmitter<TaskList>();
+
+  @Output()
+  delete = new EventEmitter<number>();
 
   constructor() { }
 
@@ -26,7 +29,11 @@ export class TaskListHeaderComponent implements OnInit {
     this.addTask.emit();
   }
 
-  showMoveModal(){
-    this.move.emit();
+  showEditListModal(){
+    this.edit.emit(this.taskList);
+  }
+
+  showDeleteListModal(){
+    this.delete.emit(this.taskList.id);
   }
 }

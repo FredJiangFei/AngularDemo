@@ -3,8 +3,8 @@ import { Product } from '../../domain/product.domain';
 import { MatDialog } from '../../../../node_modules/@angular/material';
 import { NewProductComponent } from '../new-product/new-product.component';
 import { slideToRight } from '../../animates/route.animate';
-import { DeleteProductComponent } from '../delete-product/delete-product.component';
 import { ProductService } from '../../service/product.service.';
+import { DelModalComponent } from '../../share/del-modal/del-modal.component';
 
 @Component({
   selector: 'app-product-list',
@@ -59,7 +59,7 @@ export class ProductListComponent implements OnInit {
   }
 
   showDeleteModal(productId: number) {
-    const dialogRef = this.dialog.open(DeleteProductComponent);
+    const dialogRef = this.dialog.open(DelModalComponent);
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
         this.productService.delete(productId).subscribe(x => {

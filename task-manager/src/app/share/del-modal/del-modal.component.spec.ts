@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MoveTaskComponent } from './move-task.component';
+import { DelModalComponent } from './del-modal.component';
 
-describe('MoveTaskComponent', () => {
-  let component: MoveTaskComponent;
-  let fixture: ComponentFixture<MoveTaskComponent>;
+describe('DelModalComponent', () => {
+  let component: DelModalComponent;
+  let fixture: ComponentFixture<DelModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoveTaskComponent ]
+      declarations: [ DelModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MoveTaskComponent);
+    fixture = TestBed.createComponent(DelModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

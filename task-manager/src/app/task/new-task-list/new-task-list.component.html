@@ -1,8 +1,8 @@
-<h2 mat-dialog-title>Add task list</h2>
+<h2 mat-dialog-title>{{title}}</h2>
 
 <mat-dialog-content>
   
-  <mat-radio-group class="full-width" [(ngModel)]="choosedStatus">
+  <mat-radio-group class="full-width" [(ngModel)]="taskList.status">
     <mat-radio-button *ngFor="let s of status" [value]="s">
       {{s}}
     </mat-radio-button>

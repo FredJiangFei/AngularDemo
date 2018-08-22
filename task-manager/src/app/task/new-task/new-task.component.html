@@ -3,19 +3,17 @@
 
   <mat-dialog-content>
     <mat-form-field>
-      <input type="text" matInput placeholder="task name" [(ngModel)]="task.title" name="title">
+      <input type="text" matInput placeholder="Task Name" [(ngModel)]="task.title" name="title">
     </mat-form-field>
 
     <mat-form-field>
-      <textarea matInput [(ngModel)]="task.desc" name="desc"></textarea>
+      <textarea matInput [(ngModel)]="task.desc" name="desc" placeholder="Task Desc" ></textarea>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="dueDate" placeholder="Choose a date">
-
+      <input matInput [matDatepicker]="dueDate" placeholder="Choose a date" [(ngModel)]="task.dueDate" name="dueDate">
       <mat-datepicker-toggle matSuffix [for]="dueDate"></mat-datepicker-toggle>
-
-      <mat-datepicker #dueDate></mat-datepicker>
+      <mat-datepicker touchUi #dueDate></mat-datepicker>
     </mat-form-field>
 
   </mat-dialog-content>

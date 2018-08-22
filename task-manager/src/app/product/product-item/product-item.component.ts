@@ -42,11 +42,13 @@ export class ProductItemComponent implements OnInit {
 
   }
 
-  showDeleteModal() {
+  showDeleteModal(e:Event) {
+    e.stopPropagation();
     this.delete.emit(this.item.id);
   }
 
-  showEditModal() {
+  showEditModal(e:Event) {
+    e.stopPropagation();
     this.edit.emit(this.item);
   }
 }

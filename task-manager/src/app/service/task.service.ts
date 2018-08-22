@@ -17,7 +17,22 @@ export class TaskService {
     return this.http.post<TaskList>(`${this.config.host}/tasklists`, tasklist);
   }
 
+  editTasklist(tasklist: TaskList): Observable<TaskList> {
+    var command = {
+      status: tasklist.status
+    };
+    return this.http.patch<TaskList>(`${this.config.host}/tasklists/${tasklist.id}`, command);
+  }
+
+  delTasklist(tasklistId: number): Observable<TaskList> {
+    return this.http.delete<TaskList>(`${this.config.host}/tasklists/${tasklistId}`);
+  }
+
   addTask(task: Task): Observable<Task> {
     return this.http.post<Task>(`${this.config.host}/tasks`, task);
+  }
+
+  getTasksByListId(taskListId: number): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.config.host}/tasks?taskListId=${taskListId}`);
   }
 }

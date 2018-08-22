@@ -11,15 +11,13 @@ import { User } from '../../domain/user.domain';
 export class NewTaskComponent implements OnInit {
 
   title: string;
-  task: Task;
+  task: Task = new Task();
   prority = ['emergency', 'important', 'normal']
   constructor(@Inject(MAT_DIALOG_DATA) private data,
     private matDialogRef: MatDialogRef<NewTaskComponent>) { }
 
   ngOnInit() {
     this.title = this.data.title;
-    this.task = new Task();
-    console.log(this.data.task);
   }
 
   save() {
