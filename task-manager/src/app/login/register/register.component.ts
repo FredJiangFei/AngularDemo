@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
 import { createCounterRangeValidator } from '../../validate/validate';
 import { User } from '../../domain/user.domain';
+import { debounceTime, filter } from 'rxjs/operators'
 
 @Component({
   selector: 'app-register',
@@ -20,10 +21,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group(
       {
-        username:[''],
+        username: [''],
         passwordGroup: this.fb.group({
-          password:[''],
-          confirmpassword:['']
+          password: [''],
+          confirmpassword: ['']
         }),
         birthDay: [''],
         avatar: [''],
@@ -31,6 +32,14 @@ export class RegisterComponent implements OnInit {
         // counter: [4, createCounterRangeValidator(2, 8)]
       }
     )
+
+    const id$ = this.form.get('identity').valueChanges
+      .pipe(
+        debounceTime(300),
+        filter(_ => this.form.get('identity').valid)
+      );
+
+    id$.subscribe(x => console.log('haha:'+x));
   }
 
   register(value: any) {

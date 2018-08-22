@@ -1,5 +1,5 @@
 import { IdentityType, Identity } from './../../domain/user.domain';
-import { Component, OnInit, forwardRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, forwardRef, OnDestroy, Renderer2, ElementRef } from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
@@ -73,8 +73,6 @@ export class IdentityInputComponent
         identityNo: _no
       }
     });
-    console.log(this.IdNo);
-    console.log(this.IdType);
     let sub = val$.subscribe(id => this.propagateChange(id));
   }
 
@@ -95,16 +93,22 @@ export class IdentityInputComponent
     this.propagateChange = fn;
   }
 
+  constructor(private _renderer: Renderer2, private _elementRef: ElementRef){
+
+  }
+
   registerOnTouched(fn: any): void { }
-  setDisabledState?(isDisabled: boolean): void { }
+  setDisabledState?(isDisabled: boolean): void { 
+    this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
+  }
 
   validate(c: AbstractControl): { [key: string]: any; } {
+    console.log(c.value);
     const val = c.value;
     if (!val) {
       return null;
     }
 
-    console.log(val);
     switch (val.identityType) {
       case IdentityType.IdCard: {
         return this.validateCard(val.identityNo);
@@ -113,6 +117,7 @@ export class IdentityInputComponent
   }
 
   validateCard(val: string): { [key: string]: any; } {
+    console.log(val);
     if (val.length != 18) {
       return { idInvalid: true };
     }

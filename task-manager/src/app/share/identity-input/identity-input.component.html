@@ -1,14 +1,14 @@
 <div>
-  <mat-select placeholder="Identity Type" (change)="onIdTypeChange(value)" 
+  <select class="form-control" placeholder="Identity Type" (change)="onIdTypeChange(identity.identityType)" 
   [(ngModel)]="identity.identityType">
-    <mat-option *ngFor="let type of identityTypes" [value]="type.value">
+    <option *ngFor="let type of identityTypes" [value]="type.value">
         {{type.label}}
-    </mat-option>
-  </mat-select>
+    </option>
+  </select>
 </div>
 <div class="id-input">
   <mat-form-field class="full-width">
-    <input type="text" matInput placeholder="Identity No" (change)="onIdNoChange(value)"
+    <input type="text" matInput placeholder="Identity No" (change)="onIdNoChange(identity.identityNo)"
     [(ngModel)]="identity.identityNo">
     <mat-error>No wrong</mat-error>
   </mat-form-field>
