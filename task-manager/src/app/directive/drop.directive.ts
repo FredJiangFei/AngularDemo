@@ -1,6 +1,6 @@
 import { Directive, HostListener, ElementRef, Renderer2, Input, Output, EventEmitter } from '@angular/core';
-import { DragDropService, DragData } from './drag-drop.service';
-// import { take } from 'rxjs/add/operator/take'
+import { DragDropService } from './drag-drop.service';
+import { take } from 'rxjs/operators';
 
 @Directive({
   selector: '[app-drop]'
@@ -8,16 +8,13 @@ import { DragDropService, DragData } from './drag-drop.service';
 export class DropDirective {
 
   @Input() dragEnterClass:string;
-  @Output() dropped = new EventEmitter<DragData>();
-
-  private data$;
+  @Output() dropped = new EventEmitter<any>();
 
   constructor(
     private el: ElementRef, 
     private rd: Renderer2,
     private dragService: DragDropService
   ) { 
-      this.data$ = dragService.getDragData();//.take(1);
   }
 
   @HostListener('dragenter', ['$event'])
@@ -51,10 +48,10 @@ export class DropDirective {
   onDrop(e: Event) {
     e.preventDefault();
     e.stopPropagation();
+
     if (this.el.nativeElement == e.target) {
       this.rd.removeClass(this.el.nativeElement, this.dragEnterClass);
-
-      this.dropped.emit(this.data$);
+      this.dragService.getDragData().pipe(take(1)).subscribe(x=>this.dropped.emit(x));
       this.dragService.clearDragData();
     }
   }

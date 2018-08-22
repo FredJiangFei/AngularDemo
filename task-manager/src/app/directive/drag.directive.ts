@@ -23,17 +23,14 @@ export class DragDirective {
     return this._isDraggble;
   }
 
-  @Input() 
-  draggedClass: string;
-
-  @Input() 
-  dragData: any;
+  @Input() draggedClass: string;
+  @Input() dragData: any;
 
   @HostListener('dragstart', ['$event'])
   onDragStart(e: Event) {
-    console.log(this.dragData);
+    
     if (this.el.nativeElement == e.target) {
-      this.dragService.setDragData({data: this.dragData });
+      this.dragService.setDragData(this.dragData);
       this.rd.addClass(this.el.nativeElement, this.draggedClass);
     }
   }

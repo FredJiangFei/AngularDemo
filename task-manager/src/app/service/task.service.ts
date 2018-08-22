@@ -28,11 +28,19 @@ export class TaskService {
     return this.http.delete<TaskList>(`${this.config.host}/tasklists/${tasklistId}`);
   }
 
+  getTasksByListId(taskListId: number): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.config.host}/tasks?taskListId=${taskListId}`);
+  }
+
   addTask(task: Task): Observable<Task> {
     return this.http.post<Task>(`${this.config.host}/tasks`, task);
   }
 
-  getTasksByListId(taskListId: number): Observable<Task[]> {
-    return this.http.get<Task[]>(`${this.config.host}/tasks?taskListId=${taskListId}`);
+  moveTask(taskId: number, targetListId: number): Observable<Task> {
+    var command = {
+      taskListId:targetListId
+    };
+    return this.http.patch<Task>(`${this.config.host}/tasks/${taskId}`, command);
   }
+
 }
