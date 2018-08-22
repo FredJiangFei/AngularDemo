@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
 import { createCounterRangeValidator } from '../../validate/validate';
 import { User } from '../../domain/user.domain';
@@ -6,7 +6,8 @@ import { User } from '../../domain/user.domain';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
 
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
           confirmpassword:['']
         }),
         birthDay: [''],
-        avatar: ['']
+        avatar: [''],
+        identity: ['']
         // counter: [4, createCounterRangeValidator(2, 8)]
       }
     )

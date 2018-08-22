@@ -1,13 +1,14 @@
 import { IdentityType, Identity } from './../../domain/user.domain';
-import { Component, OnInit, forwardRef } from '@angular/core';
+import { Component, OnInit, forwardRef, OnDestroy } from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
   NG_VALIDATORS,
-  FormControl
+  FormControl,
+  Validator,
+  AbstractControl
 } from '@angular/forms';
-import { Subject, Observable } from 'rxjs';
-import { combineLatest } from 'rxjs/operators';
+import { Subject, Observable, combineLatest, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-identity-input',
@@ -27,8 +28,8 @@ import { combineLatest } from 'rxjs/operators';
   ]
 })
 
-export class IdentityInputComponent implements ControlValueAccessor, OnInit {
-
+export class IdentityInputComponent
+  implements ControlValueAccessor, OnInit, OnDestroy, Validator {
   identityTypes = [
     {
       value: IdentityType.IdCard, label: 'IdCard'
@@ -47,6 +48,7 @@ export class IdentityInputComponent implements ControlValueAccessor, OnInit {
     }
   ]
   identity: Identity = { identityType: null, identityNo: null };
+  private sub: Subscription;
 
   private _idType = new Subject<IdentityType>();
   get IdType(): Observable<IdentityType> {
@@ -65,16 +67,27 @@ export class IdentityInputComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit() {
-    // const val$ = Observable.combineLatest(this.IdNo, this.IdType, (_id, _type) =>{
-    //    return {
-    //      identityType: _type,
-    //      identityNo : _id
-    //    }
-    // })
+    const val$ = combineLatest(this.IdNo, this.IdType, (_no, _type) => {
+      return {
+        identityType: _type,
+        identityNo: _no
+      }
+    });
+    console.log(this.IdNo);
+    console.log(this.IdType);
+    let sub = val$.subscribe(id => this.propagateChange(id));
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
   writeValue(obj: any): void {
-
+    if (obj) {
+      this.identity = obj;
+    }
   }
 
   propagateChange = (_: any) => { };
@@ -84,4 +97,30 @@ export class IdentityInputComponent implements ControlValueAccessor, OnInit {
 
   registerOnTouched(fn: any): void { }
   setDisabledState?(isDisabled: boolean): void { }
+
+  validate(c: AbstractControl): { [key: string]: any; } {
+    const val = c.value;
+    if (!val) {
+      return null;
+    }
+
+    console.log(val);
+    switch (val.identityType) {
+      case IdentityType.IdCard: {
+        return this.validateCard(val.identityNo);
+      }
+    }
+  }
+
+  validateCard(val: string): { [key: string]: any; } {
+    if (val.length != 18) {
+      return { idInvalid: true };
+    }
+
+    return null;
+  }
+
+  registerOnValidatorChange?(fn: () => void): void {
+
+  }
 }

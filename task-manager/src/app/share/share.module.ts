@@ -85,7 +85,8 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
 
     ImageListSelectComponent,
     CounterComponent,
-    DelModalComponent
+    DelModalComponent,
+    IdentityInputComponent
   ],
   declarations: [ImageListSelectComponent, CounterComponent, DelModalComponent, IdentityInputComponent],
   entryComponents:[DelModalComponent]
