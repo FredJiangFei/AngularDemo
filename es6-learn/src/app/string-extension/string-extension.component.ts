@@ -9,21 +9,27 @@ export class StringExtensionComponent implements OnInit {
 
   sevenWrong = '\u20BB7';
   seven = '\u{20BB7}';
+  tag : string;
 
   constructor() {
 
     let a = 15;
     let b = 20;
-    this.tag`Hello ${a} world ${a + b}`
+    this.tag = this.passthru`Hello ${a} world ${a + b}`
+
+    // console.log(String.raw({ raw: 'test' }, 0, 1, 2));
   }
 
   ngOnInit() {
   }
 
-  tag(stringArr, ...values) {
-    console.log(stringArr);
-    values.forEach(element => {
-      console.log(element);
-    });
+  passthru(stringArr, ...values) {
+    let output = "";
+    let index;
+    for (index = 0; index < values.length; index++) {
+      output += stringArr[index] + values[index];
+    }
+    output += stringArr[index]
+    return output;
   }
 }
