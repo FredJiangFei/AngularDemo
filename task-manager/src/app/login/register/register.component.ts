@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms'
 import { createCounterRangeValidator } from '../../validate/validate';
 import { User } from '../../domain/user.domain';
 import { debounceTime, filter } from 'rxjs/operators'
+import { UserService } from '../../service/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +18,9 @@ export class RegisterComponent implements OnInit {
   user: User = new User();
   avatars = ['man', 'lily', 'sugar', 'jenny', 'boy']
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+  private userService: UserService,
+  private route: Router) { }
 
   ngOnInit() {
     this.form = this.fb.group(
@@ -45,6 +49,7 @@ export class RegisterComponent implements OnInit {
   register(value: any) {
     this.user = value;
     this.user.password = value.passwordGroup.password;
-    console.log(this.user);
+    this.userService.add(this.user)
+    .subscribe(x=>this.route.navigate(['\login']));
   }
 }

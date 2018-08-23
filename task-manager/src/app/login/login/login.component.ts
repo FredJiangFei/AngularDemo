@@ -3,6 +3,7 @@ import { Quote } from './../../domain/quote.domain';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { User } from '../../domain/user.domain';
 import { UserService } from '../../service/user.service';
+import { LoginService } from '../../service/login.service';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,13 @@ export class LoginComponent implements OnInit {
   user: User = new User();
   initCounter = 5;
 
-  constructor(private quoteService: QuoteService, private userService: UserService) { }
+  constructor(private quoteService: QuoteService, private loginService: LoginService) { }
 
   ngOnInit() {
     this.quoteService.getQuote().subscribe(res => this.quote = res);
   }
 
   login() {
-    this.userService.getByName(this.user.name).subscribe(x=>console.log(x.password == this.user.password));
+    this.loginService.login(this.user);
   }
 }

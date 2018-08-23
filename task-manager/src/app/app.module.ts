@@ -10,6 +10,7 @@ import { LoginModule } from './login/login.module';
 import { OverlayContainer } from '../../node_modules/@angular/cdk/overlay';
 import { ProductModule } from './product/product.module';
 import { TaskModule } from './task/task.module';
+import { LoginGuard } from './share/guard/login.guard';
 
 @NgModule({
   declarations: [

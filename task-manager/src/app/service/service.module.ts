@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ProductService } from './product.service.';
 import { TaskService } from './task.service';
 import { UserService } from './user.service';
+import { LoginService } from './login.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   declarations: [],
-  providers: [QuoteService, ProductService, TaskService, UserService]
+  providers: [QuoteService, ProductService, TaskService, UserService, LoginService]
 })
 export class ServiceModule { }
