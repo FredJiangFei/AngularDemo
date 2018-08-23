@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -87,8 +88,16 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
     CounterComponent,
     DelModalComponent,
     IdentityInputComponent,
+    NotFoundComponent,
   ],
-  declarations: [ImageListSelectComponent, CounterComponent, DelModalComponent, IdentityInputComponent],
-  entryComponents:[DelModalComponent]
+  declarations:
+    [
+      ImageListSelectComponent,
+      CounterComponent,
+      DelModalComponent,
+      IdentityInputComponent,
+      NotFoundComponent
+    ],
+  entryComponents: [DelModalComponent]
 })
 export class ShareModule { }

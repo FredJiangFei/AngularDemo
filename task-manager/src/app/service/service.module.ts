@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthGurd } from './../share/guard/auth.guard';
 import { QuoteService } from './quote.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,6 +13,12 @@ import { LoginService } from './login.service';
     CommonModule
   ],
   declarations: [],
-  providers: [QuoteService, ProductService, TaskService, UserService, LoginService]
+  providers: [
+    QuoteService,
+    ProductService,
+    TaskService,
+    UserService,
+    LoginService,
+    AuthGurd]
 })
 export class ServiceModule { }

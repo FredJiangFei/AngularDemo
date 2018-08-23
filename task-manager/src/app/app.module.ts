@@ -1,3 +1,4 @@
+import { AuthGurd } from './share/guard/auth.guard';
 import { ServiceModule } from './service/service.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,7 +11,6 @@ import { LoginModule } from './login/login.module';
 import { OverlayContainer } from '../../node_modules/@angular/cdk/overlay';
 import { ProductModule } from './product/product.module';
 import { TaskModule } from './task/task.module';
-import { LoginGuard } from './share/guard/login.guard';
 
 @NgModule({
   declarations: [

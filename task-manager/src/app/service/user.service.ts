@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, take, flatMap } from 'rxjs/operators';
 import { mydebug, mydebug2 } from '../utils/debug.util';
 import { Product } from '../domain/product.domain';
 import { User } from '../domain/user.domain';
@@ -17,6 +17,9 @@ export class UserService {
   }
 
   getByName(userName: string): Observable<User> {
-    return this.http.get<User>(`${this.config.host}/users?name=${userName}`);
+    return this.http.get<User>(`${this.config.host}/users?username=${userName}`)
+      .pipe(
+        take(1)
+      );
   }
 }
