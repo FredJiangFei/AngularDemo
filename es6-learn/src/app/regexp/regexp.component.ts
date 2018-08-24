@@ -15,12 +15,6 @@ export class RegexpComponent implements OnInit {
     var regex = new RegExp(/xyz/ig, 'i');
      regex.flags;
 
-    //2. 字符串的正则方法
-    // String.prototype.match 调用 RegExp.prototype[Symbol.match]
-    // String.prototype.replace 调用 RegExp.prototype[Symbol.replace]
-    // String.prototype.search 调用 RegExp.prototype[Symbol.search]
-    // String.prototype.split 调用 RegExp.prototype[Symbol.split]
-
     //3.u 修饰符 
     var withU = new RegExp(/^\uD83D/u);
     var withoutU = new RegExp(/^\uD83D/);
@@ -36,11 +30,6 @@ export class RegexpComponent implements OnInit {
    codePointLength(text) {
     var result = text.match(/[\s\S]/gu);
     return result ? result.length : 0;
-    
-    //y修饰符
-    //g修饰符只要剩余位置中存在匹配就可，而y修饰符确保匹配必须从剩余的第一个位置开始
-
-    //lastIndex属性指定每次搜索的开始位置
   }
 
   ngOnInit() {
