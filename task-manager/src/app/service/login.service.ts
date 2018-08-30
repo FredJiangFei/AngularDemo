@@ -14,11 +14,12 @@ export class LoginService {
     isLogin: boolean;
 
     login(user: User) {
-     return  this.userService.getByName(user.name).pipe(
+     return  this.userService.login(user).pipe(
         tap(x => {
-            if (x[0].password == user.password) {
-                this.isLogin = true;
-            }
+            console.log(x);
+            // if (x[0].password == user.password) {
+            //     this.isLogin = true;
+            // }
         })
      );
     }

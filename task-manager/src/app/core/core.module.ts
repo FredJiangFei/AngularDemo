@@ -33,7 +33,8 @@ import '../utils/debug.util'
   providers: [
     {
       provide: 'BASE_CONFIG', useValue: {
-        host: 'http://localhost:3000'
+        host: 'http://localhost:5000/api'
+        // host: 'http://localhost:3234/api'
       }
     }
   ]

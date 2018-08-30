@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
   register(value: any) {
     this.user = value;
     this.user.password = value.passwordGroup.password;
-    this.userService.add(this.user)
+    this.userService.register(this.user)
     .subscribe(x=>this.route.navigate(['\login']));
   }
 }
