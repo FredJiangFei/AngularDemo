@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   @Output()
   toggleTheme = new EventEmitter<boolean>();
 
-  constructor(private loginService: LoginService) { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit() {
   }

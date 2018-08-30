@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    this.user.username = 'duan';
+    this.user.password = '123';
+
+
     this.quoteService.getQuote().subscribe(res => this.quote = res);
   }
 

@@ -3,10 +3,16 @@ import { UserService } from './user.service';
 import { User } from '../domain/user.domain';
 import { Router } from '@angular/router';
 import { tap, map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable()
 export class LoginService {
-  constructor(private userService: UserService, private router: Router) {}
+  public loginUser: any;
+  jwtService = new JwtHelperService();
+
+  constructor(
+    private userService: UserService,
+    private router: Router) {}
 
   login(user: User) {
     return this.userService.login(user).pipe(
@@ -18,6 +24,7 @@ export class LoginService {
       map((repsonse: any) => {
         const res = repsonse;
         if (res) {
+          this.loginUser = this.jwtService.decodeToken(res.token);
           localStorage.setItem('token', res.token);
         }
       })
@@ -26,7 +33,7 @@ export class LoginService {
 
   loggedIn () {
     const token = localStorage.getItem('token');
-    return !!token;
+    return !  this.jwtService.isTokenExpired(token);
   }
 
   logout() {

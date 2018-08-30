@@ -2,7 +2,7 @@
     <button mat-icon-button (click)="toggleMenu()" *ngIf="loggedIn()">
         <mat-icon>menu</mat-icon>
     </button>
-    <span *ngIf="loggedIn()">Welcome User</span>
+    <span *ngIf="loggedIn()">Welcome {{ loginService.loginUser?.unique_name | titlecase}}</span>
     <span class="fill-remaining-place"></span>
 
     <button mat-button  *ngIf="loggedIn()" (click)="logout()">Logout</button>

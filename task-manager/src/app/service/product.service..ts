@@ -20,10 +20,10 @@ export class ProductService {
   }
 
   update(product: Product): Observable<Product> {
-    var request = {
+    const request = {
       name: product.name,
-      desc:product.desc
-    }
+      desc: product.desc
+    };
     return this.http.patch<Product>(`${this.config.host}/products/${product.id}`, request);
   }
 

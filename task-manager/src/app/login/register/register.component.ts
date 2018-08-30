@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
 import { createCounterRangeValidator } from '../../validate/validate';
 import { User } from '../../domain/user.domain';
-import { debounceTime, filter } from 'rxjs/operators'
+import { debounceTime, filter } from 'rxjs/operators';
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
 
   form: FormGroup;
   user: User = new User();
-  avatars = ['man', 'lily', 'sugar', 'jenny', 'boy']
+  avatars = ['man', 'lily', 'sugar', 'jenny', 'boy'];
 
   constructor(private fb: FormBuilder,
   private userService: UserService,
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
         identity: ['']
         // counter: [4, createCounterRangeValidator(2, 8)]
       }
-    )
+    );
 
     const id$ = this.form.get('identity').valueChanges
       .pipe(

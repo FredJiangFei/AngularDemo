@@ -1,5 +1,6 @@
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { LoginService } from './service/login.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OverlayContainer } from '../../node_modules/@angular/cdk/overlay';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 
@@ -19,9 +20,18 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   darkTheme = false;
   squareState = 'green';
+  jwtService = new JwtHelperService();
+
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.loginService.loginUser = this.jwtService.decodeToken(token);
+    }
+  }
 
   constructor(private oc: OverlayContainer, private loginService: LoginService) {
     this.oc.getContainerElement().className = null;
