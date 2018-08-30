@@ -5,6 +5,14 @@ import { RegisterComponent } from './login/register/register.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
+    // {
+    //     path: '',
+    //     runGuardsAndResolvers: 'always',
+    //     canActivate: [AuthGuard],
+    //     children: [
+    //         {path: 'members', component: MemberListComponent},
+    //     ]
+    // },
     { path: '**', component: NotFoundComponent }
 ];
 
