@@ -29,11 +29,11 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login(this.user)
       .subscribe(x => {
-        if (this.loginService.isLogin) {
-          let returnUrl = this.activedRoute.snapshot.queryParamMap.get('returnUrl');
+        if (this.loginService.loggedIn()) {
+          const returnUrl = this.activedRoute.snapshot.queryParamMap.get('returnUrl');
           this.router.navigate([returnUrl || '/']);
         }
       }
-      );
+    );
   }
 }

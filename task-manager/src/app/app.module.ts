@@ -1,6 +1,3 @@
-import { AuthGurd } from './share/guard/auth.guard';
-import { ServiceModule } from './service/service.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -27,7 +24,7 @@ import { TaskModule } from './task/task.module';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor(overlayContainer: OverlayContainer) {
     overlayContainer.getContainerElement().classList.add('unicorn-dark-theme');
   }

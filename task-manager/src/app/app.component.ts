@@ -1,3 +1,4 @@
+import { LoginService } from './service/login.service';
 import { Component } from '@angular/core';
 import { OverlayContainer } from '../../node_modules/@angular/cdk/overlay';
 import { trigger, state, transition, style, animate } from '@angular/animations';
@@ -12,7 +13,7 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
       state('red', style({ 'background-color': 'red', 'transform': 'translateX(100%)' })),
       // transition('green => red', animate('2s 1s')),
       // transition('red => green', animate(1000)),
-      //keyframes
+      // keyframes
       transition('green => red', animate('1s ease-in')),
       transition('red => green', animate('1s ease-out')),
     ])
@@ -20,9 +21,9 @@ import { trigger, state, transition, style, animate } from '@angular/animations'
 })
 export class AppComponent {
   darkTheme = false;
-  squareState: string ='green';
+  squareState = 'green';
 
-  constructor(private oc: OverlayContainer) {
+  constructor(private oc: OverlayContainer, private loginService: LoginService) {
     this.oc.getContainerElement().className = null;
   }
 
@@ -32,6 +33,6 @@ export class AppComponent {
   }
 
   onClick() {
-    this.squareState = this.squareState == 'red' ? 'green' : 'red';
+    this.squareState = this.squareState === 'red' ? 'green' : 'red';
   }
 }

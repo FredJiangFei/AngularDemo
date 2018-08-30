@@ -43,13 +43,14 @@ export class RegisterComponent implements OnInit {
         filter(_ => this.form.get('identity').valid)
       );
 
-    id$.subscribe(x => console.log('haha:'+x));
+    id$.subscribe(x => console.log('haha:' + x));
   }
 
   register(value: any) {
     this.user = value;
     this.user.password = value.passwordGroup.password;
+
     this.userService.register(this.user)
-    .subscribe(x=>this.route.navigate(['\login']));
+    .subscribe(x => this.route.navigate(['\login']));
   }
 }

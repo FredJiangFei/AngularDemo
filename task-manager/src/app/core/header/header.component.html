@@ -1,8 +1,10 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button (click)="toggleMenu()">
+    <button mat-icon-button (click)="toggleMenu()" *ngIf="loggedIn()">
         <mat-icon>menu</mat-icon>
     </button>
-    Header works
+    <span *ngIf="loggedIn()">Welcome User</span>
     <span class="fill-remaining-place"></span>
+
+    <button mat-button  *ngIf="loggedIn()" (click)="logout()">Logout</button>
     <mat-slide-toggle (change)="onChange($event.checked)">Dark</mat-slide-toggle>
 </mat-toolbar>

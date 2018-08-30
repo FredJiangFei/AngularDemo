@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ErrorInterceptorProvider } from './error.interceptor';
 import { AuthGurd } from './../share/guard/auth.guard';
 import { QuoteService } from './quote.service';
 import { NgModule } from '@angular/core';
@@ -19,6 +19,7 @@ import { LoginService } from './login.service';
     TaskService,
     UserService,
     LoginService,
-    AuthGurd]
+    AuthGurd,
+    ErrorInterceptorProvider]
 })
 export class ServiceModule { }

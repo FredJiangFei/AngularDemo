@@ -14,11 +14,11 @@ import { NewTaskListComponent } from './new-task-list/new-task-list.component';
     TaskRoutingModule
   ],
   declarations: [
-    TaskListComponent, 
-    TaskItemComponent, 
-    TaskListHeaderComponent, 
+    TaskListComponent,
+    TaskItemComponent,
+    TaskListHeaderComponent,
     TaskHomeComponent, NewTaskComponent,  NewTaskListComponent
   ],
-  entryComponents:[NewTaskComponent,NewTaskListComponent]
+  entryComponents: [NewTaskComponent, NewTaskListComponent]
 })
 export class TaskModule { }

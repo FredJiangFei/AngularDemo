@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
-    { path: 'products', component: ProductListComponent,canActivate:[AuthGurd] }
+    { path: 'products', component: ProductListComponent, canActivate: [AuthGurd] }
 ];
 
 @NgModule({

@@ -19,22 +19,10 @@ export class DataService {
   }
 
   update(post) {
-    return this.http.patch(this.url + "/" + post.id, JSON.stringify(post));
+    return this.http.patch(this.url + '/' + post.id, JSON.stringify(post));
   }
 
   delete(id) {
-    return this.http.delete(this.url + "/" + id);
+    return this.http.delete(this.url + '/' + id);
   }
-
-  // private hanldeError(error: Response) {
-  //   if (error.status == 400) {
-  //     return Observable.throw(new BadInput(error.json()));
-  //   }
-
-  //   if (error.status == 404) {
-  //     return Observable.throw(new NotFoundError(error));
-  //   }
-
-  //   return Observable.throw(new AppError(error));
-  // }
-}   
+}
