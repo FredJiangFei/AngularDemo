@@ -1,1 +1,18 @@
 GET http://localhost:3000/products
+
+
+###
+
+POST http://localhost:5000/api/auth/login
+content-type: application/json
+
+{
+    "username": "duan",
+    "password": "123"
+}
+
+###
+
+GET  http://localhost:5000/api/users
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIyIiwidW5pcXVlX25hbWUiOiJkdWFuIiwibmJmIjoxNTM1NzUwNTY4LCJleHAiOjE1MzU4MzY5NjgsImlhdCI6MTUzNTc1MDU2OH0.VmrTAJravit9EqxXIbTGTCCqj0hOVPWGYgJJw9JYmVjVKikYH1zBRxNVsld44Qm9pA0bzZZKJG6lyItOCrUl5Q
