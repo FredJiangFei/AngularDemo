@@ -1,9 +1,3 @@
-代码行缩进  Ctrl+[， Ctrl+]
-【Ctrl+Shift+B】 :vscode下编译运行命令；
-
-
-
-
-
-
-ng-router-featuremodule 快速创建路由模块
+Ctrl+[， Ctrl+]
+【Ctrl+Shift+B】 :vscode
+ng-router-featuremodule 
