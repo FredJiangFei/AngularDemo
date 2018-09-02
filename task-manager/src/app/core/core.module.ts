@@ -11,6 +11,11 @@ import { DomSanitizer, BrowserModule } from '@angular/platform-browser';
 import { loadSvgResoures } from '../utils/svg.util';
 import { ShareModule } from '../share/share.module';
 import '../utils/debug.util';
+import { JwtModule } from '../../../node_modules/@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   imports: [
@@ -18,7 +23,14 @@ import '../utils/debug.util';
     HttpClientModule,
     ShareModule,
     ServiceModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:5000'],
+        blacklistedRoutes: ['localhost:5000/auth/']
+      }
+    })
   ],
   declarations: [
     HeaderComponent,
@@ -34,7 +46,6 @@ import '../utils/debug.util';
     {
       provide: 'BASE_CONFIG', useValue: {
         host: 'http://localhost:5000/api'
-        // host: 'http://localhost:3234/api'
       }
     }
   ]
@@ -43,7 +54,7 @@ export class CoreModule {
   constructor(@Optional() @SkipSelf() parent: CoreModule,
     ir: MatIconRegistry, ds: DomSanitizer) {
     if (parent) {
-      throw new Error('core module can call only once')
+      throw new Error('core module can call only once');
     }
 
     loadSvgResoures(ir, ds);

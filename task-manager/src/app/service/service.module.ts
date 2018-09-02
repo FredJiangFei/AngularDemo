@@ -7,6 +7,7 @@ import { ProductService } from './product.service';
 import { TaskService } from './task.service';
 import { UserService } from './user.service';
 import { LoginService } from './login.service';
+import { MemberDetailResolver } from '../share/resolvers/member-detail.resolver';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { LoginService } from './login.service';
     UserService,
     LoginService,
     AuthGurd,
-    ErrorInterceptorProvider]
+    ErrorInterceptorProvider,
+    MemberDetailResolver]
 })
 export class ServiceModule { }

@@ -7,13 +7,6 @@ import { Product } from '../domain/product.domain';
 import { User } from '../domain/user.domain';
 import { environment } from '../../environments/environment';
 
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Authorization': 'Bearer ' + localStorage.getItem('token')
-  })
-};
-
 @Injectable()
 export class UserService {
   constructor(private http: HttpClient) { }
@@ -27,6 +20,10 @@ export class UserService {
   }
 
   getUsers(): Observable<User> {
-    return this.http.get<User>(`${environment.baseUrl}/users`, httpOptions);
+    return this.http.get<User>(`${environment.baseUrl}/users`);
+  }
+
+  getUser(id: number): Observable<User> {
+    return this.http.get<User>(`${environment.baseUrl}/users/${id}`);
   }
 }

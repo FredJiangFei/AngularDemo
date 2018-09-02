@@ -2,7 +2,8 @@
   user-list works!
 </p>
 <ul>
-  <li *ngFor="let user of users | async">
+  <li *ngFor="let user of users | async" [routerLink]="['/users', user.id]">
+    <img [src]="user.photoUrl" alt="">
     {{user.username}}
   </li>
 </ul>
