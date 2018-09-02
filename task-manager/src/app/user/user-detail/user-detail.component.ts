@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { User } from '../../domain/user.domain';
+import { NgForm } from '../../../../node_modules/@angular/forms';
+import { UserService } from '../../service/user.service';
+import { LoginService } from '../../service/login.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -9,13 +12,26 @@ import { User } from '../../domain/user.domain';
 })
 export class UserDetailComponent implements OnInit {
   user: User;
-  constructor(private route: ActivatedRoute) { }
+  @ViewChild('editForm') editForm: NgForm;
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    if (this.editForm.dirty) {
+      $event.returnValue = true;
+    }
+  }
+
+  constructor(private route: ActivatedRoute,
+  private userServie: UserService,
+private loginService: LoginService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
-      console.log(data['user']);
       this.user = data['user'];
     });
   }
-
+  saveUser() {
+    const currentUserId = this.loginService.loginUser.nameid;
+    this.userServie.updateUser(this.user.id, this.user).subscribe(x => this.editForm.reset(this.user));
+  }
 }

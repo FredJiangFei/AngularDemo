@@ -1,9 +1,14 @@
-import { NewProductComponent } from '../../product/new-product/new-product.component';
 import { CanDeactivate } from '@angular/router';
+import { UserDetailComponent } from '../../user/user-detail/user-detail.component';
+import { Injectable } from '../../../../node_modules/@angular/core';
 
-export class UnsavedGuard implements CanDeactivate<NewProductComponent> {
+@Injectable()
+export class UnsavedGuard implements CanDeactivate<UserDetailComponent> {
 
-    canDeactivate(component: NewProductComponent) {
-        return window.confirm('not saved');
+    canDeactivate(component: UserDetailComponent) {
+        if (component.editForm.dirty) {
+           return confirm('Are you sure ?');
+        }
+        return true;
     }
 }

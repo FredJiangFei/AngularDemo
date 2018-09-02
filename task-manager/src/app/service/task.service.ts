@@ -18,7 +18,7 @@ export class TaskService {
   }
 
   editTasklist(tasklist: TaskList): Observable<TaskList> {
-    var command = {
+    const command = {
       status: tasklist.status
     };
     return this.http.patch<TaskList>(`${this.config.host}/tasklists/${tasklist.id}`, command);
@@ -37,8 +37,8 @@ export class TaskService {
   }
 
   moveTask(taskId: number, targetListId: number): Observable<Task> {
-    var command = {
-      taskListId:targetListId
+    const command = {
+      taskListId: targetListId
     };
     return this.http.patch<Task>(`${this.config.host}/tasks/${taskId}`, command);
   }

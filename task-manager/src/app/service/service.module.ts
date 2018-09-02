@@ -8,6 +8,7 @@ import { TaskService } from './task.service';
 import { UserService } from './user.service';
 import { LoginService } from './login.service';
 import { MemberDetailResolver } from '../share/resolvers/member-detail.resolver';
+import { UnsavedGuard } from '../share/guard/unsave.guard';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { MemberDetailResolver } from '../share/resolvers/member-detail.resolver'
     LoginService,
     AuthGurd,
     ErrorInterceptorProvider,
-    MemberDetailResolver]
+    MemberDetailResolver,
+    UnsavedGuard]
 })
 export class ServiceModule { }

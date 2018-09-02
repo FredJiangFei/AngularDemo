@@ -3,3 +3,10 @@
 </p>
 
 <img src="{{user.photoUrl}}" alt="">
+
+<p *ngIf="editForm.dirty">Unsaved change will lost.</p>
+
+<form #editForm="ngForm" (ngSubmit)="saveUser()">
+  <textarea name="introduction" [(ngModel)]="user.introduction"></textarea>
+  <button type="submit">Save</button>
+</form>

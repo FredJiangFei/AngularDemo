@@ -5,6 +5,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { AuthGurd } from '../share/guard/auth.guard';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MemberDetailResolver } from '../share/resolvers/member-detail.resolver';
+import { UnsavedGuard } from '../share/guard/unsave.guard';
 
 const routes: Routes = [
     { path: 'users',
@@ -17,7 +18,8 @@ const routes: Routes = [
         canActivate: [AuthGurd],
         resolve: {
             user: MemberDetailResolver
-        }
+        },
+        canDeactivate: [UnsavedGuard]
     }
 ];
 
