@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { QuoteService } from './../../service/quote.service';
-import { Quote } from './../../domain/quote.domain';
+import { QuoteService } from '../../service/quote.service';
+import { Quote } from '../../domain/quote.domain';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { User } from '../../domain/user.domain';
 import { UserService } from '../../service/user.service';
@@ -14,7 +14,7 @@ import { LoginService } from '../../service/login.service';
 })
 export class LoginComponent implements OnInit {
   quote: Quote;
-  user: User = new User();
+  user = { };
   initCounter = 5;
 
   constructor(private quoteService: QuoteService,
@@ -23,10 +23,6 @@ export class LoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.user.username = 'duan';
-    this.user.password = '123';
-
-
     this.quoteService.getQuote().subscribe(res => this.quote = res);
   }
 

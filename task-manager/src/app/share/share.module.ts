@@ -21,7 +21,7 @@ import {
   MatNativeDateModule,
   MatSelectModule
 } from '@angular/material';
-import { ReactiveFormsModule } from '../../../node_modules/@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DirectiveModule } from '../directive/directive.module';

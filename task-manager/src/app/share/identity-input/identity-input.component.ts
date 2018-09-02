@@ -1,4 +1,4 @@
-import { IdentityType, Identity } from './../../domain/user.domain';
+import { IdentityType, Identity } from '../../domain/user.domain';
 import { Component, OnInit, forwardRef, OnDestroy, Renderer2, ElementRef } from '@angular/core';
 import {
   ControlValueAccessor,

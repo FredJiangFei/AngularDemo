@@ -1,4 +1,4 @@
-import { ValidatorFn, AbstractControl, ValidationErrors } from "../../../node_modules/@angular/forms";
+import { ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
 
 export const validateCounterRange: ValidatorFn =
     (control: AbstractControl): ValidationErrors => {
@@ -15,7 +15,7 @@ export function createCounterRangeValidator(minValue: number, maxValue: number) 
                     min: minValue
                 }
             } : null;
-    }
+    };
 }
 
 export class UsernameValidators {
@@ -23,7 +23,7 @@ export class UsernameValidators {
         if ((control.value as string).indexOf('1') >= 0) {
             return {
                 cannotContainNumber: true
-            }
+            };
         }
 
         return null;

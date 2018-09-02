@@ -1,4 +1,4 @@
-import { AuthGurd } from './../share/guard/auth.guard';
+import { AuthGurd } from '../share/guard/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';

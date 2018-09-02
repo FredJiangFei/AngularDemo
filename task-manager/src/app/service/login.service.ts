@@ -14,13 +14,8 @@ export class LoginService {
     private userService: UserService,
     private router: Router) {}
 
-  login(user: User) {
+  login(user: any) {
     return this.userService.login(user).pipe(
-      tap(x => {
-        // if (x[0].password == user.password) {
-        //     this.isLogin = true;
-        // }
-      }),
       map((repsonse: any) => {
         const res = repsonse;
         if (res) {

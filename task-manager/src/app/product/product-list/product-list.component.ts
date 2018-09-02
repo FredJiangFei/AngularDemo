@@ -1,9 +1,9 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Product } from '../../domain/product.domain';
-import { MatDialog } from '../../../../node_modules/@angular/material';
+import { MatDialog } from '@angular/material';
 import { NewProductComponent } from '../new-product/new-product.component';
 import { slideToRight } from '../../animates/route.animate';
-import { ProductService } from '../../service/product.service.';
+import { ProductService } from '../../service/product.service';
 import { DelModalComponent } from '../../share/del-modal/del-modal.component';
 
 @Component({

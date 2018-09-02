@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, ValidatorFn, Validator, AbstractControl, ValidationErrors } from '../../../../node_modules/@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS, ValidatorFn, Validator, AbstractControl, ValidationErrors } from '@angular/forms';
 import { createCounterRangeValidator } from '../../validate/validate';
 
 @Component({

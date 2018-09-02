@@ -1,4 +1,4 @@
-import { NewTaskComponent } from './../new-task/new-task.component';
+import { NewTaskComponent } from '../new-task/new-task.component';
 import { MatDialog } from '@angular/material';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Task, TaskList } from '../../domain/task.domain';
@@ -49,7 +49,7 @@ export class TaskHomeComponent implements OnInit {
   }
 
   openAddModal(taskList: TaskList) {
-    let addTaskModal = this.dialogRef.open(NewTaskComponent, { data: { title: 'Create task' } });
+    const addTaskModal = this.dialogRef.open(NewTaskComponent, { data: { title: 'Create task' } });
 
     addTaskModal.afterClosed().subscribe((task: Task) => {
       task.taskListId = taskList.id;
@@ -67,19 +67,19 @@ export class TaskHomeComponent implements OnInit {
   }
 
   openAddTaskListModal() {
-    let addTaskListModal = this.dialogRef.open(NewTaskListComponent, { data: { title: 'Create task list' } });
+    const addTaskListModal = this.dialogRef.open(NewTaskListComponent, { data: { title: 'Create task list' } });
     addTaskListModal.afterClosed().subscribe((list: TaskList) => {
       list.productId = this.productId;
       this.taskService.addTasklist(list).subscribe(x => this.taskLists = [...this.taskLists, list]);
-    })
+    });
   }
 
   openEditTaskListModal(taskList: TaskList) {
-    let addTaskListModal = this.dialogRef.open(NewTaskListComponent, { data: { title: 'Edit task list', taskList: taskList } });
+    const addTaskListModal = this.dialogRef.open(NewTaskListComponent, { data: { title: 'Edit task list', taskList: taskList } });
 
     addTaskListModal.afterClosed().subscribe((list: TaskList) => {
       this.taskService.editTasklist(list).subscribe(x => this.loadTasks());
-    })
+    });
   }
 
   openDeleteTaskListModal(taskListId: number) {

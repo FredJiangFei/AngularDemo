@@ -1,7 +1,7 @@
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LoginService } from './service/login.service';
 import { Component, OnInit } from '@angular/core';
-import { OverlayContainer } from '../../node_modules/@angular/cdk/overlay';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({

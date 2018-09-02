@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Product } from './../../domain/product.domain';
+import { Product } from '../../domain/product.domain';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
 import { Injectable } from "@angular/core";
 

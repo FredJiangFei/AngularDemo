@@ -1,4 +1,4 @@
-import { AuthGurd } from './../share/guard/auth.guard';
+import { AuthGurd } from '../share/guard/auth.guard';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './login/login.component';
 import { ShareModule } from '../share/share.module';

@@ -1,15 +1,19 @@
+import { Photo } from './photo';
+
 export class User {
-    id?: number;
-    username: string;
-    avatar: string;
-    password: string;
-    birthDay: Date;
-    address: Address;
-    identity: Identity;
-
-    constructor() {
-
-    }
+      id: number;
+      username: string;
+      knownAs: string;
+      age: number;
+      created: Date;
+      lastActive: Date;
+      photoUrl: string;
+      city: string;
+      country: string;
+      interests?: string;
+      introduction?: string;
+      lookingFor?: string;
+      photos?: Photo[];
 }
 
 export class Address {

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { createCounterRangeValidator } from '../../validate/validate';
 import { User } from '../../domain/user.domain';
 import { debounceTime, filter } from 'rxjs/operators';
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
-  user: User = new User();
+  user: any;
   avatars = ['man', 'lily', 'sugar', 'jenny', 'boy'];
 
   constructor(private fb: FormBuilder,
@@ -47,9 +47,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register(value: any) {
-    this.user = value;
-    this.user.password = value.passwordGroup.password;
-
+    // this.user = value;
+    // this.user.password = value.passwordGroup.password;
     this.userService.register(this.user)
     .subscribe(x => this.route.navigate(['\login']));
   }

@@ -5,7 +5,7 @@ import { CoreModule } from './core/core.module';
 import { ShareModule } from './share/share.module';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginModule } from './login/login.module';
-import { OverlayContainer } from '../../node_modules/@angular/cdk/overlay';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { ProductModule } from './product/product.module';
 import { TaskModule } from './task/task.module';
 
@@ -19,7 +19,7 @@ import { TaskModule } from './task/task.module';
     LoginModule,
     ProductModule,
     TaskModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '../../../../node_modules/@angular/material';
-import { OverlayContainer } from '../../../../node_modules/@angular/cdk/overlay';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { Category } from '../../domain/category.domain';
 import { Product } from '../../domain/product.domain';
 
@@ -11,7 +11,7 @@ import { Product } from '../../domain/product.domain';
 })
 export class NewProductComponent implements OnInit {
 
-  product:Product;
+  product: Product;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data,
     private dialogRef: MatDialogRef<NewProductComponent>) { }

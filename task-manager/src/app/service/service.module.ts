@@ -1,9 +1,9 @@
 import { ErrorInterceptorProvider } from './error.interceptor';
-import { AuthGurd } from './../share/guard/auth.guard';
+import { AuthGurd } from '../share/guard/auth.guard';
 import { QuoteService } from './quote.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductService } from './product.service.';
+import { ProductService } from './product.service';
 import { TaskService } from './task.service';
 import { UserService } from './user.service';
 import { LoginService } from './login.service';
