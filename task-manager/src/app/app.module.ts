@@ -8,6 +8,7 @@ import { LoginModule } from './login/login.module';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ProductModule } from './product/product.module';
 import { TaskModule } from './task/task.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TaskModule } from './task/task.module';
     LoginModule,
     ProductModule,
     TaskModule,
+    UserModule,
     AppRoutingModule
   ],
   providers: [],
