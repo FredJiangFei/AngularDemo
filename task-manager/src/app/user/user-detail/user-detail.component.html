@@ -8,7 +8,8 @@
 
 <form #editForm="ngForm" (ngSubmit)="saveUser()">
   <textarea name="introduction" [(ngModel)]="user.introduction"></textarea>
-  <app-photo-editor [photos]="user.photos" (getMemberPhotoChange)="updateMainPhoto($event)"></app-photo-editor>
   <button type="submit">Save</button>
 </form>
+
+<app-photo-editor [photos]="user.photos" (getMemberPhotoChange)="updateMainPhoto($event)"></app-photo-editor>
 

@@ -18,11 +18,12 @@ export class PhotoEditorComponent implements OnInit {
   baseUrl = environment.baseUrl;
   currentMain: Photo;
 
-  constructor(private authService: LoginService,
+  constructor(
+    private authService: LoginService,
     private userService: UserService) { }
 
   ngOnInit() {
-    this.initializeUploader();
+    // this.initializeUploader();
   }
 
   fileOverBase(e: any): void {

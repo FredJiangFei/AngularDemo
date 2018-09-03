@@ -3,7 +3,7 @@
 </p>
 <ul>
   <li *ngFor="let user of users | async" [routerLink]="['/users', user.id]">
-    <img [src]="user.photoUrl" alt="">
+    <!-- <img [src]="user.photoUrl" alt=""> -->
     {{user.username}}
   </li>
 </ul>
