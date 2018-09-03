@@ -29,6 +29,7 @@ import { ImageListSelectComponent } from './image-list-select/image-list-select.
 import { CounterComponent } from './counter/counter.component';
 import { DelModalComponent } from './del-modal/del-modal.component';
 import { IdentityInputComponent } from './identity-input/identity-input.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 @NgModule({
@@ -56,6 +57,8 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
     MatNativeDateModule,
     MatSelectModule,
 
+    FileUploadModule,
+
     DirectiveModule,
   ],
   exports: [
@@ -82,6 +85,7 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
     MatNativeDateModule,
     MatSelectModule,
 
+    FileUploadModule,
     DirectiveModule,
 
     ImageListSelectComponent,

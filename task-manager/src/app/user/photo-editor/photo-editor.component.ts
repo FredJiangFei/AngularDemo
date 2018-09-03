@@ -15,7 +15,6 @@ export class PhotoEditorComponent implements OnInit {
   @Output() getMemberPhotoChange = new EventEmitter<string>();
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
-  baseUrl = environment.baseUrl;
   currentMain: Photo;
 
   constructor(
@@ -23,7 +22,7 @@ export class PhotoEditorComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit() {
-    // this.initializeUploader();
+    this.initializeUploader();
   }
 
   fileOverBase(e: any): void {
@@ -32,7 +31,7 @@ export class PhotoEditorComponent implements OnInit {
 
   initializeUploader() {
     this.uploader = new FileUploader({
-      url: this.baseUrl + '/users/' + this.authService.loginUser.nameid + '/photos',
+      url: environment.baseUrl + '/users/' + this.authService.loginUser.nameid + '/photos',
       authToken: 'Bearer ' + localStorage.getItem('token'),
       isHTML5: true,
       allowedFileType: ['image'],
@@ -64,14 +63,12 @@ export class PhotoEditorComponent implements OnInit {
       this.authService.changeMemberPhoto(photo.url);
       this.authService.loginUser.photoUrl = photo.url;
       localStorage.setItem('user', JSON.stringify(this.authService.loginUser));
-    }, error => {
     });
   }
 
   deletePhoto(id: number) {
     this.userService.deletePhoto(this.authService.loginUser.nameid, id).subscribe(() => {
       this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
-    }, error => {
     });
   }
 
