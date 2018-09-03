@@ -29,14 +29,12 @@ export class UserDetailComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
+
+    this.loginService.currentPhotoUrl.subscribe(x => this.user.photoUrl = x);
   }
 
   saveUser() {
-    const currentUserId = this.loginService.loginUser.nameid;
+    const currentUserId = this.loginService.decodedToken.nameid;
     this.userServie.updateUser(this.user.id, this.user).subscribe(x => this.editForm.reset(this.user));
-  }
-
-  updateMainPhoto(photoUrl) {
-    this.user.photoUrl = photoUrl;
   }
 }

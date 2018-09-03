@@ -7,16 +7,14 @@ import { LoginService } from '../../service/login.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  @Output()
-  toggle = new EventEmitter();
-
-  @Output()
-  toggleTheme = new EventEmitter<boolean>();
+  @Output() toggle = new EventEmitter();
+  @Output() toggleTheme = new EventEmitter<boolean>();
+  photoUrl: string;
 
   constructor(public loginService: LoginService) { }
 
   ngOnInit() {
+    this.loginService.currentPhotoUrl.subscribe(x => this.photoUrl = x);
   }
 
   toggleMenu() {

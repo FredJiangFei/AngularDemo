@@ -8,8 +8,10 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class LoginService {
-  public loginUser: any;
+  public decodedToken: any;
+  public currentUser: User;
   jwtService = new JwtHelperService();
+
   photoUrl = new BehaviorSubject<string>('../../assets/user.png');
   currentPhotoUrl = this.photoUrl.asObservable();
 
@@ -21,13 +23,18 @@ export class LoginService {
     this.photoUrl.next(photoUrl);
   }
 
-  login(user: any) {
-    return this.userService.login(user).pipe(
+  login(model: any) {
+    return this.userService.login(model).pipe(
       map((repsonse: any) => {
-        const res = repsonse;
-        if (res) {
-          this.loginUser = this.jwtService.decodeToken(res.token);
-          localStorage.setItem('token', res.token);
+        const user = repsonse;
+        if (user) {
+          localStorage.setItem('token', user.token);
+          this.decodedToken = this.jwtService.decodeToken(user.token);
+
+          localStorage.setItem('user', JSON.stringify(user.user));
+          this.currentUser = user.user;
+
+          this.changeMemberPhoto(this.currentUser.photoUrl);
         }
       })
     );

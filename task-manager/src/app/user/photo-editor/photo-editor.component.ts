@@ -12,7 +12,7 @@ import { FileUploader } from 'ng2-file-upload';
 })
 export class PhotoEditorComponent implements OnInit {
   @Input() photos: Photo[];
-  @Output() getMemberPhotoChange = new EventEmitter<string>();
+  @Output() changeMemberPhoto = new EventEmitter<string>();
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   currentMain: Photo;
@@ -31,7 +31,7 @@ export class PhotoEditorComponent implements OnInit {
 
   initializeUploader() {
     this.uploader = new FileUploader({
-      url: environment.baseUrl + '/users/' + this.authService.loginUser.nameid + '/photos',
+      url: environment.baseUrl + '/users/' + this.authService.decodedToken.nameid + '/photos',
       authToken: 'Bearer ' + localStorage.getItem('token'),
       isHTML5: true,
       allowedFileType: ['image'],
@@ -56,18 +56,20 @@ export class PhotoEditorComponent implements OnInit {
   }
 
   setMainPhoto(photo: Photo) {
-    this.userService.setMainPhoto(this.authService.loginUser.nameid, photo.id).subscribe(() => {
+    this.userService.setMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
       this.currentMain = this.photos.filter(p => p.isMain === true)[0];
       this.currentMain.isMain = false;
       photo.isMain = true;
+
       this.authService.changeMemberPhoto(photo.url);
-      this.authService.loginUser.photoUrl = photo.url;
-      localStorage.setItem('user', JSON.stringify(this.authService.loginUser));
+
+      this.authService.currentUser.photoUrl = photo.url;
+      localStorage.setItem('user', JSON.stringify(this.authService.currentUser));
     });
   }
 
   deletePhoto(id: number) {
-    this.userService.deletePhoto(this.authService.loginUser.nameid, id).subscribe(() => {
+    this.userService.deletePhoto(this.authService.decodedToken.nameid, id).subscribe(() => {
       this.photos.splice(this.photos.findIndex(p => p.id === id), 1);
     });
   }

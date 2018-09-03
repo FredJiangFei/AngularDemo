@@ -2,9 +2,9 @@
     <button mat-icon-button (click)="toggleMenu()" *ngIf="loggedIn()">
         <mat-icon>menu</mat-icon>
     </button>
-    <span *ngIf="loggedIn()">Welcome {{ loginService.loginUser?.unique_name | titlecase}}</span>
+    <span *ngIf="loggedIn()">Welcome {{ loginService.decodedToken?.unique_name | titlecase}}</span>
     <span class="fill-remaining-place"></span>
-
+    <img src="{{photoUrl}}" alt="">
     <button mat-button  *ngIf="loggedIn()" (click)="logout()">Logout</button>
     <mat-slide-toggle (change)="onChange($event.checked)">Dark</mat-slide-toggle>
 </mat-toolbar>
