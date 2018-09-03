@@ -4,15 +4,22 @@ import { User } from '../domain/user.domain';
 import { Router } from '@angular/router';
 import { tap, map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class LoginService {
   public loginUser: any;
   jwtService = new JwtHelperService();
+  photoUrl = new BehaviorSubject<string>('../../assets/user.png');
+  currentPhotoUrl = this.photoUrl.asObservable();
 
   constructor(
     private userService: UserService,
     private router: Router) {}
+
+  changeMemberPhoto(photoUrl: string) {
+    this.photoUrl.next(photoUrl);
+  }
 
   login(user: any) {
     return this.userService.login(user).pipe(

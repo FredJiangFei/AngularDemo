@@ -23,15 +23,20 @@ export class UserDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
   private userServie: UserService,
-private loginService: LoginService) { }
+  private loginService: LoginService) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
   }
+
   saveUser() {
     const currentUserId = this.loginService.loginUser.nameid;
     this.userServie.updateUser(this.user.id, this.user).subscribe(x => this.editForm.reset(this.user));
+  }
+
+  updateMainPhoto(photoUrl) {
+    this.user.photoUrl = photoUrl;
   }
 }

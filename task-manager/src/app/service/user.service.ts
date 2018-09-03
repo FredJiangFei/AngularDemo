@@ -1,9 +1,6 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, take, flatMap } from 'rxjs/operators';
-import { mydebug, mydebug2 } from '../utils/debug.util';
-import { Product } from '../domain/product.domain';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../domain/user.domain';
 import { environment } from '../../environments/environment';
 
@@ -29,5 +26,13 @@ export class UserService {
 
   updateUser(currentUserId: number, user: any): Observable<User> {
     return this.http.put<User>(`${environment.baseUrl}/users/${currentUserId}`, user);
+  }
+
+  setMainPhoto(userId: number, id: number) {
+    return this.http.post(`${environment.baseUrl}/users/${userId}/photos/${id}/setMain`, {});
+  }
+
+  deletePhoto(userId: number, id: number) {
+    return this.http.delete(`${environment.baseUrl}/users/${userId}/photos/${id}`);
   }
 }
