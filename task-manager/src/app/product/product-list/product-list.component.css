@@ -7,8 +7,12 @@
 :host{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: wrap;   
 }
+
+/* :host-context(.unicorn-dark-theme) img {
+    width: 100%;
+} */
 
 .fab-button{
     position: fixed;

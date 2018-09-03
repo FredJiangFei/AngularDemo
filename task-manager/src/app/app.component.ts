@@ -26,15 +26,17 @@ export class AppComponent implements OnInit {
   squareState = 'green';
   jwtService = new JwtHelperService();
 
+  constructor(
+    private oc: OverlayContainer,
+    private loginService: LoginService) {
+    this.oc.getContainerElement().className = null;
+  }
+
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     if (token) {
       this.loginService.loginUser = this.jwtService.decodeToken(token);
     }
-  }
-
-  constructor(private oc: OverlayContainer, private loginService: LoginService) {
-    this.oc.getContainerElement().className = null;
   }
 
   switchThem(isDarkTheme: boolean) {

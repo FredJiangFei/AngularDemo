@@ -12,6 +12,9 @@ import { loadSvgResoures } from '../utils/svg.util';
 import { ShareModule } from '../share/share.module';
 import '../utils/debug.util';
 import { JwtModule } from '../../../node_modules/@auth0/angular-jwt';
+import { BannerComponent } from './banner/banner.component';
+import { HeroJobAdComponent } from './banner/hero-job-ad.component';
+import { HeroProfileComponent } from './banner/hero-profile.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -35,17 +38,22 @@ export function tokenGetter() {
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    BannerComponent,
+    HeroJobAdComponent,
+    HeroProfileComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    BannerComponent
   ],
+  entryComponents: [ HeroJobAdComponent, HeroProfileComponent],
   providers: [
     {
       provide: 'BASE_CONFIG', useValue: {
-        host: 'http://localhost:5000/api'
+        host: 'http://localhost:3000'
       }
     }
   ]

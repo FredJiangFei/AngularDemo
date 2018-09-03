@@ -7,21 +7,21 @@ import { take } from 'rxjs/operators';
 })
 export class DropDirective {
 
-  @Input() dragEnterClass:string;
+  @Input() dragEnterClass: string;
   @Output() dropped = new EventEmitter<any>();
 
   constructor(
-    private el: ElementRef, 
+    private el: ElementRef,
     private rd: Renderer2,
     private dragService: DragDropService
-  ) { 
+  ) {
   }
 
   @HostListener('dragenter', ['$event'])
   onDragEnter(e: Event) {
     e.preventDefault();
     e.stopPropagation();
-    if (this.el.nativeElement == e.target) {
+    if (this.el.nativeElement === e.target) {
       this.rd.addClass(this.el.nativeElement, this.dragEnterClass);
     }
   }
@@ -30,7 +30,7 @@ export class DropDirective {
   onDragOver(e: Event) {
     e.preventDefault();
     e.stopPropagation();
-    if (this.el.nativeElement == e.target) {
+    if (this.el.nativeElement === e.target) {
 
     }
   }
@@ -39,7 +39,7 @@ export class DropDirective {
   onDragLeave(e: Event) {
     e.preventDefault();
     e.stopPropagation();
-    if (this.el.nativeElement == e.target) {
+    if (this.el.nativeElement === e.target) {
       this.rd.removeClass(this.el.nativeElement, this.dragEnterClass);
     }
   }
@@ -49,9 +49,9 @@ export class DropDirective {
     e.preventDefault();
     e.stopPropagation();
 
-    if (this.el.nativeElement == e.target) {
+    if (this.el.nativeElement === e.target) {
       this.rd.removeClass(this.el.nativeElement, this.dragEnterClass);
-      this.dragService.getDragData().pipe(take(1)).subscribe(x=>this.dropped.emit(x));
+      this.dragService.getDragData().pipe(take(1)).subscribe(x => this.dropped.emit(x));
       this.dragService.clearDragData();
     }
   }

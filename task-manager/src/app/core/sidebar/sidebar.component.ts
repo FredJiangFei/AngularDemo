@@ -7,16 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  
+
   @Output()
   closeSideBar = new EventEmitter<void>();
-  
-  constructor(private router:Router) { }
+
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  navigateTo(url: string){
+  navigateTo(url: string) {
     this.router.navigateByUrl(url);
     this.closeSideBar.emit();
   }

@@ -15,7 +15,7 @@ export class DragDropService {
   }
 
   clearDragData() {
-    this._dragData.next(null)
+    this._dragData.next(null);
   }
 
   constructor() { }

@@ -28,8 +28,8 @@ export class DragDirective {
 
   @HostListener('dragstart', ['$event'])
   onDragStart(e: Event) {
-    
-    if (this.el.nativeElement == e.target) {
+
+    if (this.el.nativeElement === e.target) {
       this.dragService.setDragData(this.dragData);
       this.rd.addClass(this.el.nativeElement, this.draggedClass);
     }
@@ -37,7 +37,7 @@ export class DragDirective {
 
   @HostListener('dragend', ['$event'])
   onDragEnd(e: Event) {
-    if (this.el.nativeElement == e.target) { 
+    if (this.el.nativeElement === e.target) {
       this.rd.removeClass(this.el.nativeElement, this.draggedClass);
     }
   }
