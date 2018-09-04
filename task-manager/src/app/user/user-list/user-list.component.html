@@ -1,9 +1,19 @@
-<p>
-  user-list works!
-</p>
-<ul>
-  <li *ngFor="let user of users | async" [routerLink]="['/users', user.id]">
-    <!-- <img [src]="user.photoUrl" alt=""> -->
-    {{user.username}}
-  </li>
-</ul>
+<table cdk-table [dataSource]="users | async"  class="mat-elevation-z8">
+
+  <ng-container cdkColumnDef="username">
+    <th cdk-header-cell *cdkHeaderCellDef> User name </th>
+    <td cdk-cell *cdkCellDef="let row"> 
+      {{row.username}} 
+    </td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="pic">
+    <th cdk-header-cell *cdkHeaderCellDef> Pic </th>
+    <td cdk-cell *cdkCellDef="let row">
+       <img [src]="row.photoUrl" alt="" style="max-width: 100px;"> 
+    </td>
+  </ng-container>
+
+  <tr cdk-header-row *cdkHeaderRowDef="['username','pic']"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: ['username','pic']" [routerLink]="['/users', row.id]"></tr>
+</table>

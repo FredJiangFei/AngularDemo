@@ -30,7 +30,10 @@ import { CounterComponent } from './counter/counter.component';
 import { DelModalComponent } from './del-modal/del-modal.component';
 import { IdentityInputComponent } from './identity-input/identity-input.component';
 import { FileUploadModule } from 'ng2-file-upload';
-
+import { TimeAgoPipe} from 'time-ago-pipe';
+import { CdkTableModule} from '@angular/cdk/table';
+import { MatTabsModule} from '@angular/material/tabs';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   imports: [
@@ -56,6 +59,9 @@ import { FileUploadModule } from 'ng2-file-upload';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    CdkTableModule,
+    MatTabsModule,
+    MatBadgeModule,
 
     FileUploadModule,
 
@@ -84,6 +90,9 @@ import { FileUploadModule } from 'ng2-file-upload';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    CdkTableModule,
+    MatTabsModule,
+    MatBadgeModule,
 
     FileUploadModule,
     DirectiveModule,
@@ -93,6 +102,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     DelModalComponent,
     IdentityInputComponent,
     NotFoundComponent,
+    TimeAgoPipe,
   ],
   declarations:
     [
@@ -100,7 +110,8 @@ import { FileUploadModule } from 'ng2-file-upload';
       CounterComponent,
       DelModalComponent,
       IdentityInputComponent,
-      NotFoundComponent
+      NotFoundComponent,
+      TimeAgoPipe
     ],
   entryComponents: [DelModalComponent]
 })

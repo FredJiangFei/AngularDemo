@@ -1,15 +1,23 @@
-<p>
-  user-detail works!
-</p>
 
-<img src="{{user.photoUrl}}" alt="">
+<mat-tab-group>
+    <mat-tab label="Detail"> 
+        <img src="{{user.photoUrl}}" alt="">
+        <p>lastActive: {{user.lastActive | timeAgo}}</p>
+    </mat-tab>
+    <mat-tab label="Edit"> 
+        <p *ngIf="editForm.dirty">Unsaved change will lost.</p>
+        <form #editForm="ngForm" (ngSubmit)="saveUser()">
+          <mat-form-field>
+              <textarea matInput name="introduction" [(ngModel)]="user.introduction"></textarea>
+          </mat-form-field>
+          <button mat-button type="submit">Save</button>
+        </form>
+    </mat-tab>
+    <mat-tab label="Photos"> 
+        <app-photo-editor [photos]="user.photos"></app-photo-editor>
+    </mat-tab>
+  </mat-tab-group>
 
-<p *ngIf="editForm.dirty">Unsaved change will lost.</p>
 
-<form #editForm="ngForm" (ngSubmit)="saveUser()">
-  <textarea name="introduction" [(ngModel)]="user.introduction"></textarea>
-  <button type="submit">Save</button>
-</form>
 
-<app-photo-editor [photos]="user.photos"></app-photo-editor>
 
