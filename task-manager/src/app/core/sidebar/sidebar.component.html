@@ -1,31 +1,14 @@
 <mat-nav-list>
     <!-- dense -->
-  <h3 mat-subheader>Product</h3>
+  <h3 mat-subheader>Nav</h3>
   <mat-list-item (click)="navigateTo('/products')">
       <mat-icon mat-list-icon>home</mat-icon> 
-      <span mat-line>Index</span>
+      <span mat-line>Products</span>
       <span mat-line mat-subheader>Show index page of project</span>
   </mat-list-item>
   <mat-list-item (click)="navigateTo('/users')">
-    <mat-icon mat-list-icon>home</mat-icon> 
+    <mat-icon mat-list-icon>face</mat-icon> 
     <span mat-line>Users</span>
     <span mat-line mat-subheader>Show users</span>
  </mat-list-item>
-  
-  <h3 mat-subheader>Calendar</h3>
-  <mat-list-item>
-      <mat-icon mat-list-icon svgIcon="month"></mat-icon> 
-      <span mat-line>Month</span>
-      <span mat-line mat-subheader>Month view of calendar</span>
-  </mat-list-item>
-  <mat-list-item>
-      <mat-icon mat-list-icon svgIcon="week"></mat-icon> 
-      <span mat-line>Week</span>
-      <span mat-line mat-subheader>Week view of calendar</span>
-  </mat-list-item>
-  <mat-list-item>
-      <mat-icon mat-list-icon svgIcon="day"></mat-icon> 
-      <span mat-line>Day</span>
-      <span mat-line mat-subheader>Day view of calendar</span>
-  </mat-list-item>
 </mat-nav-list>
