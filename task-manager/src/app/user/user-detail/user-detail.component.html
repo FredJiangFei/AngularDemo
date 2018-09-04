@@ -1,7 +1,7 @@
 
 <mat-tab-group>
     <mat-tab label="Detail"> 
-        <img src="{{user.photoUrl}}" alt="">
+        <img src="{{user.photoUrl | userimage}}" alt="">
         <p>lastActive: {{user.lastActive | timeAgo}}</p>
     </mat-tab>
     <mat-tab label="Edit"> 

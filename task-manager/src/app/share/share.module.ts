@@ -36,6 +36,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { TimeAgoPipe} from 'time-ago-pipe';
 import { CdkTableModule} from '@angular/cdk/table';
 import { PaginationModule } from 'ngx-bootstrap';
+import { ImagePipe } from './pipes/image.pipe';
 
 @NgModule({
   imports: [
@@ -109,6 +110,7 @@ import { PaginationModule } from 'ngx-bootstrap';
     IdentityInputComponent,
     NotFoundComponent,
     TimeAgoPipe,
+    ImagePipe
   ],
   declarations:
     [
@@ -117,7 +119,8 @@ import { PaginationModule } from 'ngx-bootstrap';
       DelModalComponent,
       IdentityInputComponent,
       NotFoundComponent,
-      TimeAgoPipe
+      TimeAgoPipe,
+      ImagePipe
     ],
   entryComponents: [DelModalComponent]
 })

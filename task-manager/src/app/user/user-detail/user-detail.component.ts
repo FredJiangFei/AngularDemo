@@ -29,8 +29,6 @@ export class UserDetailComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
-
-    this.loginService.currentPhotoUrl.subscribe(x => this.user.photoUrl = x);
   }
 
   saveUser() {

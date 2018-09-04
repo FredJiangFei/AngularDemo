@@ -14,7 +14,7 @@ export class DelModalComponent implements OnInit {
   }
 
 
-  delete(){
+  delete() {
     this.def.close(true);
   }
 }

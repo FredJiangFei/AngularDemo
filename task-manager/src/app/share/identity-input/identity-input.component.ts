@@ -49,8 +49,9 @@ export class IdentityInputComponent
   ];
   identity: Identity = { identityType: null, identityNo: null };
   private sub: Subscription;
-
   private _idType = new Subject<IdentityType>();
+  private _idNo = new Subject<string>();
+
   get IdType(): Observable<IdentityType> {
     return this._idType.asObservable();
   }
@@ -58,7 +59,6 @@ export class IdentityInputComponent
     this._idType.next(idType);
   }
 
-  private _idNo = new Subject<string>();
   get IdNo(): Observable<string> {
     return this._idNo.asObservable();
   }

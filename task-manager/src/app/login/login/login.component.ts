@@ -2,8 +2,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QuoteService } from '../../service/quote.service';
 import { Quote } from '../../domain/quote.domain';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { User } from '../../domain/user.domain';
-import { UserService } from '../../service/user.service';
 import { LoginService } from '../../service/login.service';
 
 @Component({
