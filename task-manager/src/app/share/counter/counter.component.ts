@@ -20,7 +20,7 @@ import { createCounterRangeValidator } from '../../validate/validate';
   ]
 })
 
-export class CounterComponent implements ControlValueAccessor,Validator,OnInit,OnChanges {
+export class CounterComponent implements ControlValueAccessor, Validator, OnInit, OnChanges {
   @Input() min: number;
   @Input() max: number;
 
@@ -40,11 +40,11 @@ export class CounterComponent implements ControlValueAccessor,Validator,OnInit,O
   }
 
   @Input() _count: number = 0;
-  set count(val:number){
+  set count(val: number) {
     this._count = val;
     this.propagateChange(this.count);
   }
-  get count(){  return this._count; }
+  get count() {  return this._count; }
 
   increment() {  this.count++; }
   decrement() {  this.count--;  }

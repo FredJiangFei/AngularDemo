@@ -1,4 +1,12 @@
-<table cdk-table [dataSource]="users | async"  class="mat-elevation-z8">
+  <mat-card *ngFor="let user of users | async"  class="example-card">
+      <img mat-card-md-image [src]="user.photoUrl"> 
+      <mat-card-content>
+        <br/>
+        <p class="text-center"> {{user.username}} </p>
+      </mat-card-content>
+  </mat-card>
+
+<!-- <table cdk-table [dataSource]="users | async"  class="mat-elevation-z8">
 
   <ng-container cdkColumnDef="username">
     <th cdk-header-cell *cdkHeaderCellDef> User name </th>
@@ -16,4 +24,4 @@
 
   <tr cdk-header-row *cdkHeaderRowDef="['username','pic']"></tr>
   <tr cdk-row *cdkRowDef="let row; columns: ['username','pic']" [routerLink]="['/users', row.id]"></tr>
-</table>
+</table> -->
