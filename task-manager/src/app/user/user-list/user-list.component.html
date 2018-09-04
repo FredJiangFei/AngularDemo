@@ -1,4 +1,4 @@
-  <mat-card *ngFor="let user of users | async"  class="example-card">
+  <mat-card *ngFor="let user of users | async" [routerLink]="['/users', user.id]">
       <img mat-card-md-image [src]="user.photoUrl"> 
       <mat-card-content>
         <br/>
