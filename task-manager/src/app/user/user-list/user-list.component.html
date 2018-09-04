@@ -8,13 +8,18 @@
         </mat-card-content>
     </mat-card>
   </div>  
-  <mat-paginator [length]="totalItems" [pageSize]="pageSize" (page)="pageEvent = $event"></mat-paginator>
-  <div *ngIf="pageEvent">
-      <h5>Page Change Event Properties</h5>
-      <div>List length: {{pageEvent.length}}</div>
-      <div>Page size: {{pageEvent.pageSize}}</div>
-      <div>Page index: {{pageEvent.pageIndex}}</div>
+
+  <div class="d-flex justify-content-center">
+      <pagination
+          [boundaryLinks]="true"
+          [totalItems]="pagination.totalItems"
+          [(ngModel)]="pageNumber"
+          [itemsPerPage]="pageSize"
+          (pageChanged)="pageChanged($event)"
+        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+      </pagination>
     </div>
+  <!-- <mat-paginator [length]="totalItems" [pageSize]="pageSize" (page)="pageEvent = $event"></mat-paginator> -->
 <!-- <table cdk-table [dataSource]="users | async"  class="mat-elevation-z8">
 
   <ng-container cdkColumnDef="username">

@@ -35,6 +35,7 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
 import { FileUploadModule } from 'ng2-file-upload';
 import { TimeAgoPipe} from 'time-ago-pipe';
 import { CdkTableModule} from '@angular/cdk/table';
+import { PaginationModule } from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -68,6 +69,7 @@ import { CdkTableModule} from '@angular/cdk/table';
     FileUploadModule,
 
     DirectiveModule,
+    PaginationModule.forRoot()
   ],
   exports: [
     CommonModule,
@@ -97,6 +99,7 @@ import { CdkTableModule} from '@angular/cdk/table';
     MatBadgeModule,
     MatPaginatorModule,
 
+    PaginationModule,
     FileUploadModule,
     DirectiveModule,
 
