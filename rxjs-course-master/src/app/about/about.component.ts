@@ -19,18 +19,15 @@ import {createHttpObservable} from '../common/util';
 
 
 @Component({
-    selector: 'about',
+    selector: 'app-about-course',
     templateUrl: './about.component.html',
     styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-
     ngOnInit() {
 
 
     }
-
-
 }
 
 
