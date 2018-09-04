@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { User } from '../../domain/user.domain';
-import { Observable } from '../../../../node_modules/rxjs';
-import { PaginatedResult } from '../../domain/pagination';
+import { PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-user-list',
@@ -15,10 +14,15 @@ export class UserListComponent implements OnInit {
   users: User[];
   pageNumber = 1;
   pageSize = 5;
+  totalItems: number;
+  pageEvent: PageEvent;
 
   ngOnInit() {
     this.userServie.getUsers(this.pageNumber, this.pageSize).subscribe(
-      response => this.users = response.result
+      response => {
+        this.users = response.result;
+        this.totalItems = response.pagination.totalItems;
+      }
     );
   }
 }

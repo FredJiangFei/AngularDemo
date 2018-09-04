@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, 
-          NG_VALUE_ACCESSOR, 
-          NG_VALIDATORS, 
+import { ControlValueAccessor,
+          NG_VALUE_ACCESSOR,
+          NG_VALIDATORS,
           FormControl } from '@angular/forms';
 
 @Component({
@@ -27,7 +27,7 @@ export class ImageListSelectComponent implements ControlValueAccessor {
   choosedAavtar: string;
 
   selectAvatar(avatar) {
-    this.choosedAavtar = avatar
+    this.choosedAavtar = avatar;
     this.propagateChange(avatar);
   }
 

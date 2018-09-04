@@ -1,11 +1,20 @@
-  <mat-card *ngFor="let user of users" [routerLink]="['/users', user.id]">
-      <img mat-card-md-image [src]="user.photoUrl"> 
-      <mat-card-content>
-        <br/>
-        <p class="text-center"> {{user.username}} </p>
-      </mat-card-content>
-  </mat-card>
-
+  
+  <div class="user-container">
+      <mat-card *ngFor="let user of users" [routerLink]="['/users', user.id]">
+        <img mat-card-md-image [src]="user.photoUrl"> 
+        <mat-card-content>
+          <br/>
+          <p class="text-center"> {{user.username}} </p>
+        </mat-card-content>
+    </mat-card>
+  </div>  
+  <mat-paginator [length]="totalItems" [pageSize]="pageSize" (page)="pageEvent = $event"></mat-paginator>
+  <div *ngIf="pageEvent">
+      <h5>Page Change Event Properties</h5>
+      <div>List length: {{pageEvent.length}}</div>
+      <div>Page size: {{pageEvent.pageSize}}</div>
+      <div>Page index: {{pageEvent.pageIndex}}</div>
+    </div>
 <!-- <table cdk-table [dataSource]="users | async"  class="mat-elevation-z8">
 
   <ng-container cdkColumnDef="username">

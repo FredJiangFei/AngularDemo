@@ -19,7 +19,10 @@ import {
   MatRadioModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatSelectModule
+  MatSelectModule,
+  MatPaginatorModule,
+  MatTabsModule,
+  MatBadgeModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -32,8 +35,6 @@ import { IdentityInputComponent } from './identity-input/identity-input.componen
 import { FileUploadModule } from 'ng2-file-upload';
 import { TimeAgoPipe} from 'time-ago-pipe';
 import { CdkTableModule} from '@angular/cdk/table';
-import { MatTabsModule} from '@angular/material/tabs';
-import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   imports: [
@@ -62,6 +63,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     CdkTableModule,
     MatTabsModule,
     MatBadgeModule,
+    MatPaginatorModule,
 
     FileUploadModule,
 
@@ -93,6 +95,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     CdkTableModule,
     MatTabsModule,
     MatBadgeModule,
+    MatPaginatorModule,
 
     FileUploadModule,
     DirectiveModule,

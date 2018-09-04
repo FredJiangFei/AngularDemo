@@ -46,7 +46,7 @@ export class IdentityInputComponent
     {
       value: IdentityType.Other, label: 'Other'
     }
-  ]
+  ];
   identity: Identity = { identityType: null, identityNo: null };
   private sub: Subscription;
 
@@ -71,9 +71,9 @@ export class IdentityInputComponent
       return {
         identityType: _type,
         identityNo: _no
-      }
+      };
     });
-    let sub = val$.subscribe(id => this.propagateChange(id));
+    const sub = val$.subscribe(id => this.propagateChange(id));
   }
 
   ngOnDestroy(): void {
@@ -93,12 +93,12 @@ export class IdentityInputComponent
     this.propagateChange = fn;
   }
 
-  constructor(private _renderer: Renderer2, private _elementRef: ElementRef){
+  constructor(private _renderer: Renderer2, private _elementRef: ElementRef) {
 
   }
 
   registerOnTouched(fn: any): void { }
-  setDisabledState?(isDisabled: boolean): void { 
+  setDisabledState?(isDisabled: boolean): void {
     this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
   }
 
@@ -118,7 +118,7 @@ export class IdentityInputComponent
 
   validateCard(val: string): { [key: string]: any; } {
     console.log(val);
-    if (val.length != 18) {
+    if (val.length !== 18) {
       return { idInvalid: true };
     }
 
