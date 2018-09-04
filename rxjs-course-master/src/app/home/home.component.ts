@@ -5,7 +5,6 @@ import {catchError, delay, delayWhen, finalize, map, retryWhen, shareReplay, tap
 import {createHttpObservable} from '../common/util';
 import {Store} from '../common/store.service';
 
-
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -15,9 +14,7 @@ export class HomeComponent implements OnInit {
     beginnerCourses$: Observable<Course[]>;
     advancedCourses$: Observable<Course[]>;
 
-    constructor(private store: Store) {
-
-    }
+    constructor(private store: Store) { }
 
     ngOnInit() {
         const courses$ = this.store.courses$;

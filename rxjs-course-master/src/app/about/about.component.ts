@@ -25,8 +25,7 @@ import {createHttpObservable} from '../common/util';
 })
 export class AboutComponent implements OnInit {
     ngOnInit() {
-
-
+        const http$ = createHttpObservable('/api/courses');
     }
 }
 
