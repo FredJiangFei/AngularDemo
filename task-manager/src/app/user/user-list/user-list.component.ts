@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { User } from '../../domain/user.domain';
 import { PageEvent } from '@angular/material';
-import { Pagination } from '../../domain/pagination';
 
 @Component({
   selector: 'app-user-list',
@@ -15,10 +14,16 @@ export class UserListComponent implements OnInit {
   users: User[];
   pageNumber = 1;
   pageSize = 5;
-  pageEvent: PageEvent;
   pagination = {};
+  userParams: any = {};
+  user: User = JSON.parse(localStorage.getItem('user'));
+  genders = ['male', 'female'];
 
   ngOnInit() {
+    this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
+    this.userParams.minAge = 18;
+    this.userParams.maxAge = 99;
+    this.userParams.orderBy = 'lastActive';
     this.loadUsers();
   }
 
@@ -28,11 +33,19 @@ export class UserListComponent implements OnInit {
   }
 
   loadUsers() {
-    this.userServie.getUsers(this.pageNumber, this.pageSize).subscribe(
+    this.userServie.getUsers(this.pageNumber, this.pageSize, this.userParams).subscribe(
       response => {
         this.users = response.result;
         this.pagination = response.pagination;
       }
     );
   }
+
+  resetFilters() {
+    this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
+    this.userParams.minAge = 18;
+    this.userParams.maxAge = 99;
+    this.loadUsers();
+  }
+
 }
