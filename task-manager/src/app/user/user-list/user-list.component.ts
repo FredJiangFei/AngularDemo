@@ -17,10 +17,10 @@ export class UserListComponent implements OnInit {
   pagination = {};
   userParams: any = {};
   user: User = JSON.parse(localStorage.getItem('user'));
-  genders = ['male', 'female'];
+  genders = ['all', 'male', 'female'];
 
   ngOnInit() {
-    this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
+    this.userParams.gender = 'all';
     this.userParams.minAge = 18;
     this.userParams.maxAge = 99;
     this.userParams.orderBy = 'lastActive';
@@ -42,7 +42,7 @@ export class UserListComponent implements OnInit {
   }
 
   resetFilters() {
-    this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
+    this.userParams.gender = 'all';
     this.userParams.minAge = 18;
     this.userParams.maxAge = 99;
     this.loadUsers();

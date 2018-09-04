@@ -35,7 +35,7 @@ namespace DatingApp.API.Data
         public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
             var users = _context.Users.Include(p => p.Photos)
-                .Where(u => u.Id != userParams.UserId && u.Gender == userParams.Gender)
+                .Where(u => userParams.Gender == "all" || u.Gender == userParams.Gender)
                 .OrderByDescending(u => u.LastActive).AsQueryable();
 
             if (userParams.MinAge != 18 || userParams.MaxAge != 99)
