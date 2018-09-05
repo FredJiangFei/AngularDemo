@@ -10,6 +10,7 @@ import { ListsResolver } from '../share/resolvers/lists.resolver';
 import { UserCardComponent } from './user-card/user-card.component';
 import { MessagesResolver } from '../share/resolvers/messages.resolver';
 import { MessagesComponent } from './messages/messages.component';
+import { MessageModalComponent } from './message-modal/message-modal.component';
 
 @NgModule({
   imports: [
@@ -22,8 +23,10 @@ import { MessagesComponent } from './messages/messages.component';
      PhotoEditorComponent,
      LikeListComponent,
      UserCardComponent,
-     MessagesComponent
+     MessagesComponent,
+     MessageModalComponent
     ],
-  providers: [MemberDetailResolver, ListsResolver, MessagesResolver]
+  providers: [MemberDetailResolver, ListsResolver, MessagesResolver],
+  entryComponents: [MessageModalComponent]
 })
 export class UserModule { }

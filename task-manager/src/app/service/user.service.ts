@@ -106,7 +106,7 @@ export class UserService {
     return this.http.get<Message[]>(environment.baseUrl + '/users/' + id + '/messages/thread/' + recipientId);
   }
 
-  sendMessage(id: number, message: Message) {
+  sendMessage(id: number, message: any) {
     return this.http.post(environment.baseUrl + '/users/' + id + '/messages', message);
   }
 

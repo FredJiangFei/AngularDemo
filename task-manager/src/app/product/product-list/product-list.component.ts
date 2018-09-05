@@ -41,9 +41,9 @@ export class ProductListComponent implements OnInit {
       });
 
     dialogRef.afterClosed().subscribe((result: Product) => {
-      if(!result.id){
+      if (!result.id) {
         this.productService.add(result).subscribe(x => this.products = [...this.products, result]);
-      }else{
+      } else {
         this.productService.update(result).subscribe(x => this.loadProducts());
       }
     });
@@ -63,7 +63,7 @@ export class ProductListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
         this.productService.delete(productId).subscribe(x => {
-          this.products = this.products.filter(x => x.id != productId);
+          this.products = this.products.filter(x => x.id !== productId);
         });
       }
     });
