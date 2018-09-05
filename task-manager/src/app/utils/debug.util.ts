@@ -13,7 +13,7 @@ export const mydebug2 = (message: string) => <T>(source: Observable<T>) =>
   source.pipe(
     tap(x => console.log(x)),
     // map((x:Quote) => x.title = 'wo gar le'),
-    filter((x:Quote) => x.id > 1)
+    filter((x: Quote) => x.id > 1)
   );
 
 export const takeEveryNth = (n: number) => <T>(source: Observable<T>) =>
@@ -21,9 +21,11 @@ export const takeEveryNth = (n: number) => <T>(source: Observable<T>) =>
         let count = 0;
         return source.subscribe({
             next(x) {
-                if (count++ % n === 0) observer.next(x);
+                if (count++ % n === 0) {
+                    observer.next(x);
+                }
             },
             error(err) { observer.error(err); },
             complete() { observer.complete(); }
-        })
+        });
     });
