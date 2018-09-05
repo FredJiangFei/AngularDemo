@@ -36,7 +36,7 @@ namespace DatingApp.API.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> GetMessagesForUser(int userId, MessageParams messageParams)
+        public async Task<IActionResult> GetMessagesForUser(int userId, [FromQuery]MessageParams messageParams)
         { 
             messageParams.UserId = userId;
             var messagesFromRepo = await _repo.GetMessagesForUser(messageParams);

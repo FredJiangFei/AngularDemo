@@ -30,7 +30,7 @@ const routes: Routes = [
         component: MessagesComponent,
         canActivate: [AuthGurd],
         resolve: {
-            users: MessagesResolver
+            messages: MessagesResolver
         }
     },
     {
