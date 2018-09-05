@@ -36,13 +36,17 @@
     </form>
     <br>
   <div class="user-container">
-      <mat-card *ngFor="let user of users" [routerLink]="['/users', user.id]">
+      <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
+
+      <!-- <mat-card *ngFor="let user of users" [routerLink]="['/users', user.id]">
         <img mat-card-md-image [src]="user.photoUrl | userimage"> 
         <mat-card-content>
-          <br/>
-          <p class="text-center"> {{user.username}} </p>
+          <button mat-icon-button (click)="likeUser($event, user)" color="warn">
+              <mat-icon>favorite</mat-icon>
+          </button>
+          <p class="text-center no-margin"> {{user.username}} </p>
         </mat-card-content>
-    </mat-card>
+    </mat-card> -->
   </div>  
 
   <div class="d-flex justify-content-center">

@@ -4,12 +4,23 @@ import { UserRoutingModule } from './user-routing.module';
 import { ShareModule } from '../share/share.module';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
+import { LikeListComponent } from './like-list/like-list.component';
+import { MemberDetailResolver } from '../share/resolvers/member-detail.resolver';
+import { ListsResolver } from '../share/resolvers/lists.resolver';
+import { UserCardComponent } from './user-card/user-card.component';
 
 @NgModule({
   imports: [
     ShareModule,
     UserRoutingModule
   ],
-  declarations: [UserListComponent, UserDetailComponent, PhotoEditorComponent]
+  declarations: [
+     UserListComponent,
+     UserDetailComponent,
+     PhotoEditorComponent,
+     LikeListComponent,
+     UserCardComponent
+    ],
+  providers: [MemberDetailResolver, ListsResolver]
 })
 export class UserModule { }

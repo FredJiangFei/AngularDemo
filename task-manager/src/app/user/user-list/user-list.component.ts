@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../service/user.service';
 import { User } from '../../domain/user.domain';
 import { PageEvent } from '@angular/material';
+import { LoginService } from '../../service/login.service';
 
 @Component({
   selector: 'app-user-list',
@@ -10,7 +11,7 @@ import { PageEvent } from '@angular/material';
 })
 export class UserListComponent implements OnInit {
 
-  constructor(private userServie: UserService) { }
+  constructor(private userServie: UserService, private loginService: LoginService) { }
   users: User[];
   pageNumber = 1;
   pageSize = 5;
@@ -47,5 +48,4 @@ export class UserListComponent implements OnInit {
     this.userParams.maxAge = 99;
     this.loadUsers();
   }
-
 }

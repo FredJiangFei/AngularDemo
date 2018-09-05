@@ -7,7 +7,6 @@ import { ProductService } from './product.service';
 import { TaskService } from './task.service';
 import { UserService } from './user.service';
 import { LoginService } from './login.service';
-import { MemberDetailResolver } from '../share/resolvers/member-detail.resolver';
 import { UnsavedGuard } from '../share/guard/unsave.guard';
 
 @NgModule({
@@ -23,7 +22,6 @@ import { UnsavedGuard } from '../share/guard/unsave.guard';
     LoginService,
     AuthGurd,
     ErrorInterceptorProvider,
-    MemberDetailResolver,
     UnsavedGuard]
 })
 export class ServiceModule { }

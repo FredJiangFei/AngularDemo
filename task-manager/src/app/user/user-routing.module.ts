@@ -6,11 +6,20 @@ import { AuthGurd } from '../share/guard/auth.guard';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MemberDetailResolver } from '../share/resolvers/member-detail.resolver';
 import { UnsavedGuard } from '../share/guard/unsave.guard';
+import { LikeListComponent } from './like-list/like-list.component';
+import { ListsResolver } from '../share/resolvers/lists.resolver';
 
 const routes: Routes = [
     { path: 'users',
       component: UserListComponent,
       canActivate: [AuthGurd]
+    },
+    { path: 'likes',
+      component: LikeListComponent,
+      canActivate: [AuthGurd],
+      resolve: {
+          users: ListsResolver
+      }
     },
     {
         path: 'users/:id',
