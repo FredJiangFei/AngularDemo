@@ -8,6 +8,8 @@ import { LikeListComponent } from './like-list/like-list.component';
 import { MemberDetailResolver } from '../share/resolvers/member-detail.resolver';
 import { ListsResolver } from '../share/resolvers/lists.resolver';
 import { UserCardComponent } from './user-card/user-card.component';
+import { MessagesResolver } from '../share/resolvers/messages.resolver';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   imports: [
@@ -19,8 +21,9 @@ import { UserCardComponent } from './user-card/user-card.component';
      UserDetailComponent,
      PhotoEditorComponent,
      LikeListComponent,
-     UserCardComponent
+     UserCardComponent,
+     MessagesComponent
     ],
-  providers: [MemberDetailResolver, ListsResolver]
+  providers: [MemberDetailResolver, ListsResolver, MessagesResolver]
 })
 export class UserModule { }

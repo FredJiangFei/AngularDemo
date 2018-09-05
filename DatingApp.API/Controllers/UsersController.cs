@@ -50,8 +50,7 @@ namespace DatingApp.API.Controllers
          [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForUpdateDto)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            if (id != int.Parse(userId))
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
             var userFromRepo = await _repo.GetUser(id);
@@ -67,9 +66,6 @@ namespace DatingApp.API.Controllers
          [HttpPost("{id}/like/{recipientId}")]
         public async Task<IActionResult> LikeUser(int id, int recipientId)
         {
-            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
-                return Unauthorized();
-
             var like = await _repo.GetLike(id, recipientId);
             if (like != null)
                 return BadRequest("You already like this user");
