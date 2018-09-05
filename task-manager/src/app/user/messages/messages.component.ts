@@ -39,9 +39,6 @@ export class MessagesComponent implements OnInit {
   deleteMessage(id: number) {
     this.userService.deleteMessage(id, this.authService.decodedToken.nameid).subscribe(() => {
       this.messages.splice(this.messages.findIndex(m => m.id === id), 1);
-      console.log('Message has been deleted');
-    }, error => {
-      console.log('Failed to delete the message');
     });
   }
 
