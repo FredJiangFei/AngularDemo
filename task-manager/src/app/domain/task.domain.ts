@@ -1,8 +1,8 @@
-import { User } from "./user.domain";
+import { User } from './user.domain';
 
 export class Task {
-    public id: number; 
-    public taskListId: number; 
+    public id: number;
+    public taskListId: number;
     public title: string;
     public desc: string;
     public dueDate: Date;
@@ -10,7 +10,7 @@ export class Task {
 }
 
 export class TaskList {
-    public id: number; 
+    public id: number;
     public status: string;
     public productId: number;
     public tasks: Task[];

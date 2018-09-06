@@ -12,7 +12,7 @@ import { LoginService } from '../../service/login.service';
 })
 export class LoginComponent implements OnInit {
   quote: Quote;
-  user = { };
+  user: any = { };
   initCounter = 5;
 
   constructor(private quoteService: QuoteService,

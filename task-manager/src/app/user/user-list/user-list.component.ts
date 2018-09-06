@@ -15,7 +15,7 @@ export class UserListComponent implements OnInit {
   users: User[];
   pageNumber = 1;
   pageSize = 5;
-  pagination = {};
+  pagination: any = {};
   userParams: any = {};
   user: User = JSON.parse(localStorage.getItem('user'));
   genders = ['all', 'male', 'female'];
