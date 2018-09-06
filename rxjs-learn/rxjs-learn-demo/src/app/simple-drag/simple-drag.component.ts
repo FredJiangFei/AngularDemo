@@ -14,16 +14,16 @@ export class SimpleDragComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    const dragMousedown$ = fromEvent(this.dragElement.nativeElement, 'mousedown');
+    const dragMousedown$ = fromEvent<MouseEvent>(this.dragElement.nativeElement, 'mousedown');
 
     const body = document.body;
-    const bodyUp$ = fromEvent(body, 'mouseup');
-    const bodyMove$ = fromEvent(body, 'mousemove');
+    const bodyUp$ = fromEvent<MouseEvent>(body, 'mouseup');
+    const bodyMove$ = fromEvent<MouseEvent>(body, 'mousemove');
 
     const source$ = dragMousedown$.pipe(
           map(e => bodyMove$.pipe(takeUntil(bodyUp$))),
           concatAll(),
-          map(event => ({ x: event.srcElement.clientLeft, y: event.srcElement.clientTop }))
+          map(event => ({ x: event.clientX, y: event.clientY }))
     );
 
     source$.subscribe(pos => {
