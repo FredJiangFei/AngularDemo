@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { from, zip, interval } from 'rxjs';
-import { groupBy, map, mergeAll, reduce } from 'rxjs/operators';
+import { from, zip, interval, Subject, ReplaySubject } from 'rxjs';
+import { groupBy, map, mergeAll, reduce, take, share } from 'rxjs/operators';
+import { setHostBindings } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-root',
@@ -31,7 +32,15 @@ export class AppComponent implements OnInit {
       })))),
       mergeAll()
     );
-
     source$.subscribe(console.log);
+
+    const result = interval(1000).pipe(
+      take(6),
+      map(x => Math.random()),
+      //share()
+    ); // side-effect，平常有可能是呼叫 API 或其他 side effect
+
+    result.subscribe(x => console.log('A: ' + x));
+    result.subscribe(x => console.log('B: ' + x));
   }
 }
