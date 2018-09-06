@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
     const result = interval(1000).pipe(
       take(6),
       map(x => Math.random()),
-      //share()
+      // share()
     ); // side-effect，平常有可能是呼叫 API 或其他 side effect
 
     result.subscribe(x => console.log('A: ' + x));
