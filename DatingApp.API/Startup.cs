@@ -89,10 +89,10 @@ namespace DatingApp.API
             // Cloudinary account setting
             services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
 
-Mapper.Reset();
+            Mapper.Reset();
             services.AddAutoMapper();
 
-            services.AddScoped<IAuthRepository, AuthRepository>();
+            // services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
             services.AddScoped<LogUserActivity>();
 

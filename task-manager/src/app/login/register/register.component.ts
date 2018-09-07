@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   form: FormGroup;
-  user: any;
   avatars = ['man', 'lily', 'sugar', 'jenny', 'boy'];
 
   constructor(private fb: FormBuilder,
@@ -47,9 +46,11 @@ export class RegisterComponent implements OnInit {
   }
 
   register(value: any) {
-    // this.user = value;
-    // this.user.password = value.passwordGroup.password;
-    this.userService.register(this.user)
+    const user = {
+      username: value.username,
+      password: value.passwordGroup.password
+    };
+    this.userService.register(user)
     .subscribe(x => this.route.navigate(['\login']));
   }
 }

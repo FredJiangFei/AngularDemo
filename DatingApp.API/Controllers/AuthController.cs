@@ -21,19 +21,17 @@ namespace DatingApp.API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
-        public AuthController(IAuthRepository repo,
-        IConfiguration config,
-        IMapper mapper,
-        UserManager<User> userManager,
-        SignInManager<User> signInManager)
+        public AuthController(
+            IConfiguration config,
+            IMapper mapper,
+            UserManager<User> userManager,
+            SignInManager<User> signInManager)
         {
-            _repo = repo;
             _config = config;
             _mapper = mapper;
             _userManager = userManager;
@@ -42,23 +40,27 @@ namespace DatingApp.API.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserForRegisterDto dot)
+        public async Task<IActionResult> Register(UserForRegisterDto dto)
         {
-            dot.Username = dot.Username.ToLower();
-
-            if (await _repo.UserExist(dot.Username))
-            {
-                return BadRequest("User exist");
-            }
+            // if (await _repo.UserExist(dot.Username))
+            // {
+            //     return BadRequest("User exist");
+            // }
 
             var userToCreate = new User
             {
-                UserName = dot.Username
+                UserName = dto.Username
             };
+            var result = await _userManager.CreateAsync(userToCreate, dto.Password);
+            var userToReturn = _mapper.Map<UserForDetailedDto>(userToCreate);
+            if(result.Succeeded){
+                  return CreatedAtRoute("GetUser", 
+                  new { controller= "Users", id = userToReturn.Id  }, userToReturn); 
+            }
+            // var createdUser = await _repo.Register(userToCreate, dto.Password);
 
-            var createdUser = await _repo.Register(userToCreate, dot.Password);
-
-            return StatusCode(200);
+            // return StatusCode(200);
+            return BadRequest(result.Errors);
         }
 
         [HttpPost("login")]
@@ -81,7 +83,7 @@ namespace DatingApp.API.Controllers
                 return Ok(new
                 {
                     token = GenerateJwtToken(appUser),
-                    userToReturn
+                    user = userToReturn
                 });
             }
 
