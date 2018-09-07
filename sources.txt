@@ -18,3 +18,6 @@ pipe: https://github.com/ReactiveX/rxjs/blob/master/doc/pipeable-operators.md
 ngrx
 
 https://www.json-generator.com/
+
+angular ionic
+https://ionicframework.com/

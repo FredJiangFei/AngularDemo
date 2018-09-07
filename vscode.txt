@@ -1,3 +1,4 @@
-Ctrl+[£¬ Ctrl+]
-¡¾Ctrl+Shift+B¡¿ :vscode
+
 ng-router-featuremodule 
+
+npm outdated
