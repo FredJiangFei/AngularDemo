@@ -1,15 +1,17 @@
 using System.Collections.Generic;
 using DatingApp.API.Models;
+using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
 
 namespace DatingApp.API.Data
 {
     public class Seed
     {
-        private readonly DataContext _context;
-        public Seed(DataContext context)
+        private readonly UserManager<User> _userManager;
+
+        public Seed(UserManager<User> userManager)
         {
-            _context = context;
+            _userManager = userManager;
         }
 
         public void SeedUsers() 
@@ -18,26 +20,26 @@ namespace DatingApp.API.Data
             var users = JsonConvert.DeserializeObject<List<User>>(userData);
             foreach (var user in users)
             {
-                byte[] passwordHash, passwordSalt;
-                CreatePasswordHash("password", out passwordHash, out passwordSalt);
+                // byte[] passwordHash, passwordSalt;
+                // CreatePasswordHash("password", out passwordHash, out passwordSalt);
 
                 // user.PasswordHash = passwordHash;
                 // user.PasswordSalt = passwordSalt;
-                user.UserName = user.UserName.ToLower();
-
-                _context.Users.Add(user);
+                // user.UserName = user.UserName.ToLower();
+                // _userManager.Users.Add(user);
+                _userManager.CreateAsync(user, "password").Wait();
             }
 
-            _context.SaveChanges();
+            // _userManager.SaveChanges();
         }
 
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        {
-            using (var hmac = new System.Security.Cryptography.HMACSHA512())
-            {
-                passwordSalt = hmac.Key;
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            } 
-        }
+        // private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+        // {
+        //     using (var hmac = new System.Security.Cryptography.HMACSHA512())
+        //     {
+        //         passwordSalt = hmac.Key;
+        //         passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+        //     } 
+        // }
     }
 }
