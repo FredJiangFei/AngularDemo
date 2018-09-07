@@ -70,6 +70,12 @@ namespace DatingApp.API
                        ValidateAudience = false
                    };
                });
+
+            services.AddAuthorization(opt => {
+                 opt.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));   
+                 opt.AddPolicy("ModerateRole", policy => policy.RequireRole("Admin","Moderator"));   
+                 opt.AddPolicy("VIP", policy => policy.RequireRole("VIP"));   
+            });
             // Identity and role    
 
             services.AddMvc(opt => {
@@ -126,7 +132,7 @@ namespace DatingApp.API
             }
 
             // app.UseHttpsRedirection();
-            // seeder.SeedUsers();
+            seeder.SeedUsers();
             app.UseCors(x => x.WithOrigins("http://localhost:4200")
                             .AllowAnyMethod()
                             .AllowAnyHeader()
