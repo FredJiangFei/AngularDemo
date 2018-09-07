@@ -8,38 +8,36 @@ namespace DatingApp.API.Data
     public class Seed
     {
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<Role> _roleManager;
 
-        public Seed(UserManager<User> userManager)
+        public Seed(UserManager<User> userManager,
+        RoleManager<Role> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
-        public void SeedUsers() 
+        public void SeedUsers()
         {
             var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
             var users = JsonConvert.DeserializeObject<List<User>>(userData);
-            foreach (var user in users)
-            {
-                // byte[] passwordHash, passwordSalt;
-                // CreatePasswordHash("password", out passwordHash, out passwordSalt);
 
-                // user.PasswordHash = passwordHash;
-                // user.PasswordSalt = passwordSalt;
-                // user.UserName = user.UserName.ToLower();
-                // _userManager.Users.Add(user);
-                _userManager.CreateAsync(user, "password").Wait();
+            var roles = new List<Role>{
+                new Role { Name = "Member"},
+                new Role { Name = "Admin"},
+                new Role { Name = "Moderator"},
+                new Role { Name = "VIP"},
+            };
+            foreach (var role in roles)
+            {
+                _roleManager.CreateAsync(role).Wait();
             }
 
-            // _userManager.SaveChanges();
-        }
 
-        // private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-        // {
-        //     using (var hmac = new System.Security.Cryptography.HMACSHA512())
-        //     {
-        //         passwordSalt = hmac.Key;
-        //         passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-        //     } 
-        // }
+            foreach (var user in users)
+            {
+                _userManager.CreateAsync(user, "password").Wait();
+            }
+        }
     }
 }

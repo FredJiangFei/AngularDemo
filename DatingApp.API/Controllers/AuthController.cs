@@ -42,11 +42,6 @@ namespace DatingApp.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto dto)
         {
-            // if (await _repo.UserExist(dot.Username))
-            // {
-            //     return BadRequest("User exist");
-            // }
-
             var userToCreate = new User
             {
                 UserName = dto.Username
@@ -57,9 +52,6 @@ namespace DatingApp.API.Controllers
                   return CreatedAtRoute("GetUser", 
                   new { controller= "Users", id = userToReturn.Id  }, userToReturn); 
             }
-            // var createdUser = await _repo.Register(userToCreate, dto.Password);
-
-            // return StatusCode(200);
             return BadRequest(result.Errors);
         }
 
