@@ -22,7 +22,8 @@ import {
   MatSelectModule,
   MatPaginatorModule,
   MatTabsModule,
-  MatBadgeModule
+  MatBadgeModule,
+  MatChipsModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
@@ -66,6 +67,7 @@ import { ImagePipe } from './pipes/image.pipe';
     MatTabsModule,
     MatBadgeModule,
     MatPaginatorModule,
+    MatChipsModule,
 
     FileUploadModule,
 
@@ -100,6 +102,7 @@ import { ImagePipe } from './pipes/image.pipe';
     MatTabsModule,
     MatBadgeModule,
     MatPaginatorModule,
+    MatChipsModule,
 
     PaginationModule,
     ButtonsModule,

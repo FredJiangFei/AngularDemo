@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,13 @@ namespace DatingApp.API.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
+        private readonly DataContext _context;
+
+        public AdminController(DataContext dataContext)
+        {
+            _context = dataContext;
+        }
+
         [Authorize(Policy = "RequireAdminRole")]
         [HttpGet("userWithRoles")]
         public IActionResult GetUsersWithRoles()
@@ -33,6 +41,13 @@ namespace DatingApp.API.Controllers
         public IActionResult GetPhotosForModeration()
         {
            return Ok("Admins and moderators can see this");
+        }
+
+        [HttpGet("roles")]
+        public IActionResult GetRoles()
+        {
+            var roles = _context.Roles.Select(x => x.Name).ToListAsync().Result;
+           return Ok(roles);
         }
     }
 }

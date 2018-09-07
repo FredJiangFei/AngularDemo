@@ -8,12 +8,12 @@ import { TaskService } from './task.service';
 import { UserService } from './user.service';
 import { LoginService } from './login.service';
 import { UnsavedGuard } from '../share/guard/unsave.guard';
+import { AdminService } from './admin.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [],
   providers: [
     QuoteService,
     ProductService,
@@ -22,6 +22,8 @@ import { UnsavedGuard } from '../share/guard/unsave.guard';
     LoginService,
     AuthGurd,
     ErrorInterceptorProvider,
-    UnsavedGuard]
+    UnsavedGuard,
+    AdminService
+  ]
 })
 export class ServiceModule { }

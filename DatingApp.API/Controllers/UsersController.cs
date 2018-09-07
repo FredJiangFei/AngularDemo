@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -7,11 +8,12 @@ using DatingApp.API.Dtos;
 using DatingApp.API.Helpers;
 using DatingApp.API.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
-    [Authorize(Roles = "Member")]
+    // [Authorize(Roles = "Member")]
     [ServiceFilter(typeof(LogUserActivity))]
     [Route("api/[controller]")]
     [ApiController]
@@ -19,9 +21,18 @@ namespace DatingApp.API.Controllers
     {
         private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;
-        public UsersController(IDatingRepository repo, IMapper mapper)
+        private readonly DataContext _dataContext;
+        private readonly UserManager<User> _userManager;
+
+        public UsersController(
+            IDatingRepository repo, 
+            IMapper mapper, 
+            DataContext dataContext,
+            UserManager<User> userManager)
         {
             _mapper = mapper;
+            _dataContext = dataContext;
+            _userManager = userManager;
             _repo = repo;
         }
 
@@ -45,6 +56,42 @@ namespace DatingApp.API.Controllers
             var user = await _repo.GetUser(id);
             var userToReturn = _mapper.Map<UserForDetailedDto>(user);
             return Ok(userToReturn);
+        }
+
+        [HttpGet("{id}/roles")]
+        public async Task<IActionResult> GetUserRoles(int id)
+        {
+            var user = await _repo.GetUserWithRoles(id);
+           return Ok(user);
+        }
+
+        [HttpPut("{id}/editRoles")]
+        public async Task<IActionResult> GetUserRoles(int id, RoleEditDto dto)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            var addedRoles = dto.RoleNames.Except(userRoles);
+            var addRolesResponse = await _userManager.AddToRolesAsync(user, addedRoles);
+            if(!addRolesResponse.Succeeded){
+                return BadRequest("Falied to add roles");
+            }
+
+            var removedRoles = userRoles.Except(dto.RoleNames);
+            var removeRolesResponse = await _userManager.RemoveFromRolesAsync(user, removedRoles);
+             if(!removeRolesResponse.Succeeded){
+                return BadRequest("Falied to remove roles");
+            }
+            
+            return Ok(await _userManager.GetRolesAsync(user));
+        }
+
+        [HttpPut("{id}/roles")]
+        public async Task<IActionResult> UpdateUserRoles(int id)
+        {
+            var user = await _repo.GetUserWithRoles(id);
+           return Ok(user);
         }
 
          [HttpPut("{id}")]

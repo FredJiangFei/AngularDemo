@@ -15,6 +15,7 @@ import { JwtModule } from '../../../node_modules/@auth0/angular-jwt';
 import { BannerComponent } from './banner/banner.component';
 import { HeroJobAdComponent } from './banner/hero-job-ad.component';
 import { HeroProfileComponent } from './banner/hero-profile.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -41,13 +42,15 @@ export function tokenGetter() {
     SidebarComponent,
     BannerComponent,
     HeroJobAdComponent,
-    HeroProfileComponent
+    HeroProfileComponent,
+    ProfileComponent
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    BannerComponent
+    BannerComponent,
+    ProfileComponent
   ],
   entryComponents: [ HeroJobAdComponent, HeroProfileComponent],
   providers: [

@@ -1,0 +1,19 @@
+<p>
+  profile works!
+</p>
+
+<form action="">
+    <mat-form-field>
+        <mat-chip-list #chipList>
+            <mat-chip *ngFor="let role of userRoles"  (removed)="remove(role)">
+                    {{role}}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        <input type="text" matInput  [matChipInputFor]="chipList" [matAutocomplete]="auto">
+
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="optionSelect($event)">
+          <mat-option *ngFor="let role of roles | async" [value]="role">{{role}}</mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+</form>
