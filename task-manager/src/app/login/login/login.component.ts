@@ -28,9 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.quote$ = this.store$.pipe(select('quote'));
-    this.quoteService.getQuote().subscribe(res =>
-      this.store$.dispatch(new actions.LoadSuccessAction(res))
-    );
+    this.loadQuote(2);
   }
 
   login() {
@@ -41,6 +39,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate([returnUrl || '/']);
         }
       }
-      );
+    );
+  }
+
+  loadQuote(id: number) {
+    this.quoteService.getQuote(id).subscribe(res =>
+      this.store$.dispatch(new actions.LoadSuccessAction(res))
+    );
   }
 }

@@ -10,8 +10,9 @@ export class QuoteService {
   constructor(private http: HttpClient,
     @Inject('BASE_CONFIG') private config) { }
 
-  getQuote(): Observable<any> {
-    return this.http.get(`${this.config.host}/quotes/2`).pipe(
+  getQuote(idx: number): Observable<any> {
+    // const idx =  Math.floor(Math.random() * 10);
+    return this.http.get(`${this.config.host}/quotes/${idx}`).pipe(
       // mydebug2('ww'),
       map((res: Response) => res)
     );

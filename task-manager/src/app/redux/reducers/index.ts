@@ -31,10 +31,13 @@ export function reducer(state = initialState, action: any): State {
     // return developmentReducers(state, action);
 }
 
+
+export const getQuoteReducer = (state: State) => state.quote;
+
 @NgModule({
     declarations: [],
     imports: [
-        StoreModule.forRoot({ quote: fromQuote.reducer }),
+        StoreModule.forRoot(reducers),
         StoreRouterConnectingModule.forRoot(),
         StoreDevtoolsModule.instrument(),
     ]

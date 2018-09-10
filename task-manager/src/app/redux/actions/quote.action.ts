@@ -1,6 +1,7 @@
 
 import { Action } from '@ngrx/store';
 import { Quote } from '../../domain/quote.domain';
+
 export enum ActionTypes {
     LOAD = '[Quote] Load',
     LOAD_SUCCESS = '[Quote] Success',
@@ -26,8 +27,3 @@ export class LoadFailAction implements Action {
 }
 
 export type Actions  = LoadAction | LoadSuccessAction | LoadFailAction;
-
-
-export const QUOTE = 'Quote';
-export const QUOTE_SUCCESS = 'Quote Success';
-export const QUOTE_FAIL = 'Quote Fail';
