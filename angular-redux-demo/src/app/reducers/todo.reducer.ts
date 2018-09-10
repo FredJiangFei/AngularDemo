@@ -1,13 +1,27 @@
+import { Item } from './../models/item';
+import { TodoAction, AddTodo, TodoActionTypes } from './../actions/todo.actions';
 
+export const todoReducer = (state: Item[] = [], action: TodoAction) => {
+  switch (action.type) {
+    case TodoActionTypes.ADD_TODO:
+      return [...state, action.payload];
 
-export const todoReducer = (state = [], {type, payload} ) => {
-    switch (type) {
-        case 'ADD_TODO':
-            return [...state, payload];
-        default: {
-            return state;
+    case TodoActionTypes.REMOVE_TODO:
+      return state.filter(todo => todo.id !== action.payload.id);
+
+    case TodoActionTypes.TOGGLE_TODO:
+      return state.map(todo => {
+        if (todo.id !== action.payload.id) {
+          return todo;
         }
-    }
+        return Object.assign({}, todo, { completed: !todo.completed });
+      });
+
+    case TodoActionTypes.TOGGLE_ALL:
+      return state.map(todo => {
+        return Object.assign({}, todo, { completed: !todo.completed });
+      });
+    default:
+      return state;
+  }
 };
-
-

@@ -1,3 +1,4 @@
+import { AddTodo, RemoveTodo, ToggleTodo } from './../actions/todo.actions';
 import { Item } from './../models/item';
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from '../services/item.service';
@@ -25,6 +26,14 @@ export class ItemListComponent implements OnInit {
       name: 'item 1',
       description: 'This is description'
     };
-    this.store$.dispatch({type: 'ADD_TODO', payload: todoToAdd});
+    this.store$.dispatch(new AddTodo(todoToAdd));
+  }
+
+  removeTodo(item: Item) {
+    this.store$.dispatch(new RemoveTodo(item));
+  }
+
+  toggleTodo(item: Item) {
+    this.store$.dispatch(new ToggleTodo(item));
   }
 }
