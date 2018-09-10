@@ -34,7 +34,7 @@ export function reducer(state = initialState, action: any): State {
 @NgModule({
     declarations: [],
     imports: [
-        StoreModule.forRoot(reducer),
+        StoreModule.forRoot({ quote: fromQuote.reducer }),
         StoreRouterConnectingModule.forRoot(),
         StoreDevtoolsModule.instrument(),
     ]

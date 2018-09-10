@@ -27,10 +27,8 @@ export class LoginComponent implements OnInit {
     private store$: Store<fromRoot.State>) { }
 
   ngOnInit() {
-    this.quote$ = this.store$.pipe(select(state => {
-      console.log(state.quote.quote);
-      return state.quote.quote;
-    }));
+    this.quote$ = this.store$.pipe(select('quote'));
+    this.quote$.subscribe(console.log);
     // this.quote$ = this.store$.select(state => {
     //   console.log(state.quote.quote);
     //   return state.quote.quote;
