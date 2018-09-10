@@ -4,7 +4,7 @@ import { Quote } from '../../domain/quote.domain';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import * as fromRoot from '../../redux/reducers';
 import * as actions from '../../redux/actions/quote.action';
 
@@ -27,6 +27,10 @@ export class LoginComponent implements OnInit {
     private store$: Store<fromRoot.State>) { }
 
   ngOnInit() {
+    this.quote$ = this.store$.pipe(select(state => {
+      console.log(state.quote.quote);
+      return state.quote.quote;
+    }));
     // this.quote$ = this.store$.select(state => {
     //   console.log(state.quote.quote);
     //   return state.quote.quote;
