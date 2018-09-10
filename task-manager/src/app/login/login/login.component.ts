@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.quote$ = this.store$.pipe(select('quote'));
-    this.loadQuote(2);
+    this.loadQuote();
   }
 
   login() {
@@ -42,7 +42,12 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  loadQuote(id: number) {
+  getRandomInt() {
+    return Math.floor(Math.random() * 7) + 1;
+  }
+
+  loadQuote() {
+    const id = this.getRandomInt();
     this.quoteService.getQuote(id).subscribe(res =>
       this.store$.dispatch(new actions.LoadSuccessAction(res))
     );
