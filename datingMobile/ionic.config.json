@@ -1,0 +1,7 @@
+{
+  "name": "datingMobile",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
