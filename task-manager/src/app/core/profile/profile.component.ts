@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
 import { Observable } from 'rxjs';
-import { Role } from '../../domain/role.domain';
 import { MatChipInputEvent, MatAutocompleteSelectedEvent } from '@angular/material';
+import { LoginService } from '../../service/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,11 +12,14 @@ import { MatChipInputEvent, MatAutocompleteSelectedEvent } from '@angular/materi
 export class ProfileComponent implements OnInit {
   roles: Observable<string[]>;
   userRoles: string[] = [];
+  @ViewChild('roleInput') roleInput: ElementRef;
 
-  constructor(private adminService: AdminService) { }
+  constructor(private adminService: AdminService,
+              public authService: LoginService) { }
 
   ngOnInit() {
     this.loadRoles();
+    this.userRoles = this.authService.currentUser.roles;
   }
 
   loadRoles() {
@@ -27,15 +30,13 @@ export class ProfileComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    if ((value || '').trim()) {
+    if (!this.userRoles.includes(value)) {
       this.userRoles.push(value);
     }
 
     if (input) {
       input.value = '';
     }
-
-    console.log(this.userRoles);
   }
 
   remove(role: string): void {
@@ -46,6 +47,12 @@ export class ProfileComponent implements OnInit {
   }
 
   optionSelect (e: MatAutocompleteSelectedEvent) {
+    this.roleInput.nativeElement.blur();
     this.userRoles.push(e.option.value);
+  }
+
+  saveProfile () {
+    this.adminService.editRoles(this.authService.decodedToken.nameid, this.userRoles)
+    .subscribe(console.log);
   }
 }

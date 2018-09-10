@@ -72,13 +72,13 @@ namespace DatingApp.API.Controllers
 
             var userRoles = await _userManager.GetRolesAsync(user);
 
-            var addedRoles = dto.RoleNames.Except(userRoles);
+            var addedRoles = dto.Roles.Except(userRoles);
             var addRolesResponse = await _userManager.AddToRolesAsync(user, addedRoles);
             if(!addRolesResponse.Succeeded){
                 return BadRequest("Falied to add roles");
             }
 
-            var removedRoles = userRoles.Except(dto.RoleNames);
+            var removedRoles = userRoles.Except(dto.Roles);
             var removeRolesResponse = await _userManager.RemoveFromRolesAsync(user, removedRoles);
              if(!removeRolesResponse.Succeeded){
                 return BadRequest("Falied to remove roles");

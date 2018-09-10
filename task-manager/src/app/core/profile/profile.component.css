@@ -1,0 +1,15 @@
+mat-card{
+    width: 40em;
+}
+
+:host{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+  
+.example-container > * {
+    width: 100%;
+}

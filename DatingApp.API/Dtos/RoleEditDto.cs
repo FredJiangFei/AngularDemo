@@ -1,3 +1,3 @@
 public class RoleEditDto {
-    public string[] RoleNames { get; set; }  = new string[] {}; 
+    public string[] Roles { get; set; }  = new string[] {}; 
 }

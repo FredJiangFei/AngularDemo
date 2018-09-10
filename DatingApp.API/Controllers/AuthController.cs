@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,14 +61,16 @@ namespace DatingApp.API.Controllers
         public async Task<IActionResult> Login(UserForLoginDto dot)
         {
             var user = await _userManager.FindByNameAsync(dot.Username);
-            var result = await _signInManager
-            .CheckPasswordSignInAsync(user, dot.Password, false);
+            var result = await _signInManager.CheckPasswordSignInAsync(user, dot.Password, false);
             if (result.Succeeded)
             {
-                var appUser = await _userManager.Users.Include(p => p.Photos)
+                var appUser = await _userManager.Users
+                .Include(p => p.Photos)
                 .FirstOrDefaultAsync(u => u.NormalizedUserName == dot.Username.ToUpper());
-                var userToReturn = _mapper.Map<UserForListDto>(appUser);
 
+                var roles = await _userManager.GetRolesAsync(appUser);
+                var userToReturn = _mapper.Map<UserForListDto>(appUser);
+                userToReturn.Roles = roles.ToArray();
                 return Ok(new
                 {
                     token = GenerateJwtToken(appUser).Result,

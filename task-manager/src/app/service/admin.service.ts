@@ -14,4 +14,10 @@ export class AdminService {
     getRoles() {
        return this.http.get<string[]>(`${environment.baseUrl}/admin/roles`);
     }
+
+    editRoles(userId: number, roles: string[]) {
+       return this.http.put<string[]>(`${environment.baseUrl}/users/${userId}/editRoles`, {
+            roles : roles
+       });
+    }
 }
