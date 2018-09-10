@@ -69,23 +69,38 @@
   "quotes": [
     {
       "id": 1,
-      "title": "Helllo world",
-      "desc": "This is login page for task manager."
+      "title": "St. Jerome",
+      "desc": "Good, better, best. Never let it rest. 'Til your good is better and your better is best."
     },
     {
       "id": 2,
-      "title": "Helllo angular",
-      "desc": "Learning angular."
+      "title": "E. Joseph Cossman",
+      "desc": "The best way to remember your wife's birthday is to forget it once."
     },
     {
       "id": 3,
-      "title": "Helllo rxjs",
-      "desc": "Rxjs is not easy to learn"
+      "title": "Mark Twain",
+      "desc": "The secret of getting ahead is getting started."
     },
     {
       "id": 4,
-      "title": "Helllo iphone",
-      "desc": "I have a iphone 6."
+      "title": "George Sand",
+      "desc": "There is only one happiness in this life, to love and be loved."
+    },
+    {
+      "id": 5,
+      "title": "Albert Einstein",
+      "desc": "It is the supreme art of the teacher to awaken joy in creative expression and knowledge."
+    },
+    {
+      "id": 6,
+      "title": "Hugh Grant",
+      "desc": "I frequently dream of having tea with the Queen."
+    },
+    {
+      "id": 7,
+      "title": "Winston Churchill",
+      "desc": "Attitude is a little thing that makes a big difference."
     }
   ]
 }

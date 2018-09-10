@@ -11,7 +11,8 @@ export class QuoteService {
     @Inject('BASE_CONFIG') private config) { }
 
   getQuote(): Observable<any> {
-    return this.http.get(`${this.config.host}/quotes/2`).pipe(
+    const id = Math.floor(Math.random() * 7) + 1;
+    return this.http.get(`${this.config.host}/quotes/${id}`).pipe(
       // mydebug2('ww'),
       map((res: Response) => res)
     );

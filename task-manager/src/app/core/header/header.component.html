@@ -5,8 +5,18 @@
     <span *ngIf="loggedIn()">Welcome {{ loginService.decodedToken?.unique_name | titlecase}}</span>
    
     <span class="fill-remaining-place"></span>
-    <img *ngIf="loggedIn()" src="{{photoUrl}}" alt="">&nbsp;
+    <img *ngIf="loggedIn()" src="{{photoUrl}}" alt="">
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <span class="small" matBadge="4" matBadgeColor="accent" *ngIf="loggedIn()">Unread messages</span>
-    <button mat-button  *ngIf="loggedIn()" (click)="logout()">Logout</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button mat-icon-button *ngIf="loggedIn()" [matMenuTriggerFor]="appMenu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <mat-slide-toggle (change)="onChange($event.checked)">Dark</mat-slide-toggle>
+
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item (click)="logout()">Logout</button>
+        <button mat-menu-item (click)="editProfile()">Edit profile</button>
+      </mat-menu>
 </mat-toolbar>

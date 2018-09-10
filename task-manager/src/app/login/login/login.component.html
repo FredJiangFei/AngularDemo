@@ -25,12 +25,15 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        {{quote?.title}}
+        {{(quote$ | async)?.quote.title}}
       </mat-card-title>
       <mat-card-subtitle>
-        {{quote?.desc}}
+        {{(quote$ | async)?.quote.desc}}
       </mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="../../../assets/imgs/pexels-photo-1310181.jpeg">
+    <mat-card-actions>
+      <!-- <button mat-flat-button (click)="loadQuote()">Change</button> -->
+    </mat-card-actions>
   </mat-card>
 </form>

@@ -32,6 +32,21 @@ namespace DatingApp.API.Data
             return user;
         }
 
+         public async Task<Object> GetUserWithRoles(int id)
+        {
+            var userList = await (from u in _context.Users where u.Id == id
+                                 select new {
+                                    Id = u.Id,
+                                    UserName = u.UserName,
+                                    Roles = (from userRole in u.UserRoles 
+                                            join role in _context.Roles 
+                                            on userRole.RoleId equals role.Id
+                                            select role.Name).ToList() 
+                                }).ToListAsync();
+
+            return userList.FirstOrDefault();
+        }
+
         public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
             var users = _context.Users.Include(p => p.Photos)

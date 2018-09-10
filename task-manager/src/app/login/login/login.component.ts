@@ -3,6 +3,10 @@ import { QuoteService } from '../../service/quote.service';
 import { Quote } from '../../domain/quote.domain';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LoginService } from '../../service/login.service';
+import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
+import * as fromRoot from '../../redux/reducers';
+import { LoadAction, LoadSuccessAction } from '../../redux/actions/quote.action';
 
 @Component({
   selector: 'app-login',
@@ -11,17 +15,21 @@ import { LoginService } from '../../service/login.service';
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
-  quote: Quote;
-  user: any = { };
+  quote$: Observable<Quote>;
+  user: any = {};
   initCounter = 5;
 
-  constructor(private quoteService: QuoteService,
+  constructor(
+    private quoteService: QuoteService,
     private loginService: LoginService,
     private activedRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private store$: Store<fromRoot.State>) { }
 
   ngOnInit() {
-    this.quoteService.getQuote().subscribe(res => this.quote = res);
+    this.quote$ = this.store$.pipe(select('quote'));
+    this.store$.dispatch(new LoadAction(null));
+    // this.loadQuote();
   }
 
   login() {
@@ -32,6 +40,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate([returnUrl || '/']);
         }
       }
+    );
+  }
+
+  loadQuote() {
+    this.quoteService.getQuote().subscribe(res =>
+      this.store$.dispatch(new LoadSuccessAction(res))
     );
   }
 }
