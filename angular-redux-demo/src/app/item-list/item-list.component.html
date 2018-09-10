@@ -1,3 +1,8 @@
+
+<a (click)="all()">All</a> |
+<a (click)="completed()">Completed</a> |
+<a (click)="actived()">Active</a>
+
 <ul>
   <li *ngFor="let item of items | async">
     {{item.name}}
