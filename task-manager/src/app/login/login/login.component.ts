@@ -28,13 +28,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.quote$ = this.store$.pipe(select('quote'));
-    this.quote$.subscribe(console.log);
-    // this.quote$ = this.store$.select(state => {
-    //   console.log(state.quote.quote);
-    //   return state.quote.quote;
-    // });
     this.quoteService.getQuote().subscribe(res =>
-      this.store$.dispatch({ type: actions.QUOTE_SUCCESS, payload: res })
+      this.store$.dispatch(new actions.LoadSuccessAction(res))
     );
   }
 
