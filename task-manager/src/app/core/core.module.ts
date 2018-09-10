@@ -17,6 +17,7 @@ import { HeroJobAdComponent } from './banner/hero-job-ad.component';
 import { HeroProfileComponent } from './banner/hero-profile.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AppStoreModule } from '../redux/reducers';
+import { AppEffectsModule } from '../redux/effects';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -30,6 +31,7 @@ export function tokenGetter() {
     ServiceModule,
     BrowserAnimationsModule,
     AppStoreModule,
+    AppEffectsModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

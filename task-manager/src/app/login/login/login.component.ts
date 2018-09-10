@@ -6,7 +6,7 @@ import { LoginService } from '../../service/login.service';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import * as fromRoot from '../../redux/reducers';
-import * as actions from '../../redux/actions/quote.action';
+import { LoadAction, LoadSuccessAction } from '../../redux/actions/quote.action';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.quote$ = this.store$.pipe(select('quote'));
-    this.loadQuote();
+    this.store$.dispatch(new LoadAction(null));
+    // this.loadQuote();
   }
 
   login() {
@@ -42,14 +43,9 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  getRandomInt() {
-    return Math.floor(Math.random() * 7) + 1;
-  }
-
   loadQuote() {
-    const id = this.getRandomInt();
-    this.quoteService.getQuote(id).subscribe(res =>
-      this.store$.dispatch(new actions.LoadSuccessAction(res))
+    this.quoteService.getQuote().subscribe(res =>
+      this.store$.dispatch(new LoadSuccessAction(res))
     );
   }
 }
