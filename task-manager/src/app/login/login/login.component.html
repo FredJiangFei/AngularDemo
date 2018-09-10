@@ -25,10 +25,10 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>
-        {{(quote$ | async).title}}
+        {{(quote$ | async)?.title}}
       </mat-card-title>
       <mat-card-subtitle>
-        {{(quote$ | async).desc}}
+        {{(quote$ | async)?.desc}}
       </mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image src="../../../assets/imgs/pexels-photo-1310181.jpeg">

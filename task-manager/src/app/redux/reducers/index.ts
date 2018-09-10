@@ -25,9 +25,9 @@ const productionReducers: ActionReducer<State> = combineReducers(reducers);
 // const developmentReducers: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
 
 export function reducer(state = initialState, action: any): State {
-    if (environment.production) {
+    // if (environment.production) {
         return productionReducers(state, action);
-    }
+    // }
     // return developmentReducers(state, action);
 }
 
