@@ -41,11 +41,7 @@ export class ProductListComponent implements OnInit {
       });
 
     dialogRef.afterClosed().subscribe((result: Product) => {
-      if (!result.id) {
-        this.productService.add(result).subscribe(x => this.products = [...this.products, result]);
-      } else {
-        this.productService.update(result).subscribe(x => this.loadProducts());
-      }
+      this.productService.add(result).subscribe(_ => this.products = [...this.products, result]);
     });
   }
 
@@ -56,6 +52,9 @@ export class ProductListComponent implements OnInit {
           product: product
         }
       });
+      dialogRef.afterClosed().subscribe((result: Product) => {
+        this.productService.update(result).subscribe(x => this.loadProducts());
+      });
   }
 
   showDeleteModal(productId: number) {
@@ -63,7 +62,7 @@ export class ProductListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
         this.productService.delete(productId).subscribe(x => {
-          this.products = this.products.filter(x => x.id !== productId);
+          this.products = this.products.filter((product: Product) => product.id !== productId);
         });
       }
     });
