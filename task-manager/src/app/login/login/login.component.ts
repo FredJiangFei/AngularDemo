@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Quote } from '../../domain/quote.domain';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
@@ -9,7 +9,8 @@ import { LoadAction } from '../../redux/actions/quote.actions';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  //  encapsulation: ViewEncapsulation.Emulated
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {

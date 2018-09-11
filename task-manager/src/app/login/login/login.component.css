@@ -14,3 +14,8 @@ mat-card{
     margin: 10px;
     text-align: end;
 }
+
+.my-card-title{
+    color: blueviolet;
+}
+

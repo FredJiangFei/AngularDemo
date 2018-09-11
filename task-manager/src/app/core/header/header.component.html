@@ -1,23 +1,25 @@
-<mat-toolbar color="primary" *ngIf="loggedIn()">
-    <button mat-icon-button (click)="toggleMenu()">
-        <mat-icon>menu</mat-icon>
-    </button>
-    <span>Welcome {{ loginService.decodedToken?.unique_name | titlecase}}</span>
-    
-    <span class="fill-remaining-place"></span>
-    <img src="{{photoUrl}}" alt="">
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <span class="small" matBadge="4" matBadgeColor="accent">Unread messages</span>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <button mat-icon-button [matMenuTriggerFor]="appMenu">
-        <mat-icon>menu</mat-icon>
-    </button>
-    &nbsp;&nbsp;&nbsp;&nbsp;
-    <mat-slide-toggle (change)="onChange($event.checked)">Dark</mat-slide-toggle>
-
-    <mat-menu #appMenu="matMenu">
-        <button mat-menu-item (click)="logout()">Logout</button>
-        <button mat-menu-item [routerLink]="['users/profile']">Edit profile</button>
-        <button mat-menu-item [routerLink]="['roles']">Edit roles</button>
-    </mat-menu>
+<mat-toolbar color="primary">
+    <ng-container>
+            <button mat-icon-button (click)="toggleMenu()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                <span class="my-card-title">Welcome {{ loginService.decodedToken?.unique_name | titlecase}}</span>
+                
+                <span class="fill-remaining-place"></span>
+                <img src="{{photoUrl}}" alt="">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="small" matBadge="4" matBadgeColor="accent">Unread messages</span>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button mat-icon-button [matMenuTriggerFor]="appMenu">
+                    <mat-icon>menu</mat-icon>
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <mat-slide-toggle (change)="onChange($event.checked)">Dark</mat-slide-toggle>
+            
+                <mat-menu #appMenu="matMenu">
+                    <button mat-menu-item (click)="logout()">Logout</button>
+                    <button mat-menu-item [routerLink]="['users/profile']">Edit profile</button>
+                    <button mat-menu-item [routerLink]="['roles']">Edit roles</button>
+                </mat-menu>
+    </ng-container>
 </mat-toolbar>
