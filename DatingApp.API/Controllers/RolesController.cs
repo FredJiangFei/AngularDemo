@@ -24,11 +24,15 @@ namespace DatingApp.API.Controllers
     {
         private readonly DataContext _context;
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<Role> _roleManager;
 
-        public RolesController(DataContext dataContext, UserManager<User> userManager)
+        public RolesController(DataContext dataContext, 
+        UserManager<User> userManager,
+        RoleManager<Role> roleManager)
         {
             _context = dataContext;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -36,6 +40,20 @@ namespace DatingApp.API.Controllers
         {
             var roles = _context.Roles.ToListAsync().Result;
            return Ok(roles);
+        }
+
+        [HttpPost]
+        public IActionResult AddRole(string name)
+        {
+          var role = new Role { Name = name};
+          _roleManager.CreateAsync(role).Wait();
+           return Ok();
+        }
+        
+        [HttpDelete]
+        public IActionResult DeleteRole()
+        {
+           return Ok();
         }
     }
 }

@@ -9,6 +9,7 @@ import { UserService } from './user.service';
 import { LoginService } from './login.service';
 import { UnsavedGuard } from '../share/guard/unsave.guard';
 import { AdminService } from './admin.service';
+import { AdminGurd } from '../share/guard/admin.guard';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { AdminService } from './admin.service';
     UserService,
     LoginService,
     AuthGurd,
+    AdminGurd,
     ErrorInterceptorProvider,
     UnsavedGuard,
     AdminService

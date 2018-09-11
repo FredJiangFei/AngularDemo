@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { LoginService } from '../../service/login.service';
 
 
 @Component({
@@ -6,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
-  constructor() {
+  constructor(public loginService: LoginService) {
    }
 
-  ngOnInit() {
+  loggedIn() {
+    return this.loginService.loggedIn();
   }
-
 }

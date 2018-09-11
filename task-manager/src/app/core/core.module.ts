@@ -17,6 +17,7 @@ import { HeroJobAdComponent } from './banner/hero-job-ad.component';
 import { HeroProfileComponent } from './banner/hero-profile.component';
 import { AppStoreModule } from '../redux/reducers';
 import { AppEffectsModule } from '../redux/effects';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -44,6 +45,7 @@ export function tokenGetter() {
     FooterComponent,
     SidebarComponent,
     BannerComponent,
+    NotFoundComponent,
     HeroJobAdComponent,
     HeroProfileComponent
   ],
@@ -51,6 +53,7 @@ export function tokenGetter() {
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
+    NotFoundComponent,
     BannerComponent
   ],
   entryComponents: [ HeroJobAdComponent, HeroProfileComponent],

@@ -45,6 +45,12 @@ export class LoginService {
     return !  this.jwtService.isTokenExpired(token);
   }
 
+  isAdmin () {
+    const token = localStorage.getItem('token');
+    const user = this.jwtService.decodeToken(token);
+    return user.role.includes('Admin');
+  }
+
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);

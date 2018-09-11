@@ -9,16 +9,20 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { ProductModule } from './product/product.module';
 import { TaskModule } from './task/task.module';
 import { UserModule } from './user/user.module';
+import { RolesComponent } from './admin/roles/roles.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RolesComponent
   ],
   imports: [
     ShareModule,
     CoreModule,
     LoginModule,
     ProductModule,
+    AdminModule,
     TaskModule,
     UserModule,
     AppRoutingModule

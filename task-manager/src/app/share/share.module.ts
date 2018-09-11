@@ -1,4 +1,3 @@
-import { NotFoundComponent } from './not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -113,7 +112,6 @@ import { ImagePipe } from './pipes/image.pipe';
     CounterComponent,
     DelModalComponent,
     IdentityInputComponent,
-    NotFoundComponent,
     TimeAgoPipe,
     ImagePipe
   ],
@@ -123,7 +121,6 @@ import { ImagePipe } from './pipes/image.pipe';
       CounterComponent,
       DelModalComponent,
       IdentityInputComponent,
-      NotFoundComponent,
       TimeAgoPipe,
       ImagePipe
     ],
