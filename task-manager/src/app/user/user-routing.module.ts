@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { UserListComponent } from './user-list/user-list.component';
 import { AuthGurd } from '../share/guard/auth.guard';
 import { UserDetailComponent } from './user-detail/user-detail.component';
@@ -14,40 +13,45 @@ import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
     {
-        path: 'users',
-        component: UserListComponent,
-        canActivate: [AuthGurd]
-    },
-    {
-        path: 'likes',
-        component: LikeListComponent,
+        path: '',
         canActivate: [AuthGurd],
-        resolve: {
-            users: ListsResolver
-        }
+        children: [
+            {
+                path: '',
+                component: UserListComponent,
+            },
+            {
+                path: 'likes',
+                component: LikeListComponent,
+                resolve: {
+                    users: ListsResolver
+                },
+            },
+            {
+                path: 'messages',
+                component: MessagesComponent,
+                resolve: {
+                    messages: MessagesResolver
+                }
+            },
+            {
+                path: 'profile',
+                component: ProfileComponent
+            },
+            {
+                path: ':id',
+                component: UserDetailComponent,
+                resolve: {
+                    user: MemberDetailResolver
+                },
+                canDeactivate: [UnsavedGuard]
+            }
+        ]
     },
-    {
-        path: 'messages',
-        component: MessagesComponent,
-        canActivate: [AuthGurd],
-        resolve: {
-            messages: MessagesResolver
-        }
-    },
-    {
-        path: 'users/:id',
-        component: UserDetailComponent,
-        canActivate: [AuthGurd],
-        resolve: {
-            user: MemberDetailResolver
-        },
-        canDeactivate: [UnsavedGuard]
-    },
-    { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({
-    imports: [CommonModule, RouterModule.forChild(routes)],
+    imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
 export class UserRoutingModule { }

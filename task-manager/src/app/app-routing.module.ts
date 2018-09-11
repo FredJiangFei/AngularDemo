@@ -12,6 +12,7 @@ const routes: Routes = [
     //         {path: 'members', component: MemberListComponent},
     //     ]
     // },
+    { path: 'users', loadChildren: './user/user.module#UserModule' },
     { path: '**', component: NotFoundComponent }
 ];
 

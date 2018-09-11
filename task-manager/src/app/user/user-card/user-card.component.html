@@ -1,4 +1,4 @@
-<mat-card [routerLink]="['/users', user.id]">
+<mat-card [routerLink]="['./', user.id]">
   <img mat-card-md-image [src]="user.photoUrl | userimage"> 
   <mat-card-content>
     <button mat-icon-button (click)="likeUser($event, user)" color="warn">

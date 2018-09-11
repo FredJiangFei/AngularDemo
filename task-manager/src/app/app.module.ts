@@ -8,7 +8,6 @@ import { LoginModule } from './login/login.module';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { ProductModule } from './product/product.module';
 import { TaskModule } from './task/task.module';
-import { UserModule } from './user/user.module';
 import { RolesComponent } from './admin/roles/roles.component';
 import { AdminModule } from './admin/admin.module';
 
@@ -24,7 +23,6 @@ import { AdminModule } from './admin/admin.module';
     ProductModule,
     AdminModule,
     TaskModule,
-    UserModule,
     AppRoutingModule
   ],
   providers: [],
