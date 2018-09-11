@@ -10,6 +10,7 @@ import { LikeListComponent } from './like-list/like-list.component';
 import { ListsResolver } from '../share/resolvers/lists.resolver';
 import { MessagesResolver } from '../share/resolvers/messages.resolver';
 import { MessagesComponent } from './messages/messages.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
     {
@@ -41,7 +42,8 @@ const routes: Routes = [
             user: MemberDetailResolver
         },
         canDeactivate: [UnsavedGuard]
-    }
+    },
+    { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({

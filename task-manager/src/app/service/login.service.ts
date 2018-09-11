@@ -1,8 +1,8 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { User } from '../domain/user.domain';
 import { Router } from '@angular/router';
-import { tap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject } from 'rxjs';
 

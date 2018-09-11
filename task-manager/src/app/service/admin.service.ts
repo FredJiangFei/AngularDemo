@@ -6,18 +6,9 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AdminService {
-
-    constructor(private http: HttpClient) {
-
-    }
+    constructor(private http: HttpClient) { }
 
     getRoles() {
-       return this.http.get<string[]>(`${environment.baseUrl}/admin/roles`);
-    }
-
-    editRoles(userId: number, roles: string[]) {
-       return this.http.put<string[]>(`${environment.baseUrl}/users/${userId}/editRoles`, {
-            roles : roles
-       });
+       return this.http.get<Role[]>(`${environment.baseUrl}/roles`);
     }
 }

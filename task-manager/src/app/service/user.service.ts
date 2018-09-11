@@ -118,4 +118,10 @@ export class UserService {
     this.http.post(environment.baseUrl + '/users/' + userId + '/messages/' + messageId + '/read', {})
       .subscribe();
   }
+
+  editRoles(userId: number, roles: string[]) {
+    return this.http.put<string[]>(`${environment.baseUrl}/users/${userId}/editRoles`, {
+         roles : roles
+    });
+ }
 }

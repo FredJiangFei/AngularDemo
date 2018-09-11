@@ -66,10 +66,9 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpPut("{id}/editRoles")]
-        public async Task<IActionResult> GetUserRoles(int id, RoleEditDto dto)
+        public async Task<IActionResult> UpdateUserRoles(int id, RoleEditDto dto)
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
-
             var userRoles = await _userManager.GetRolesAsync(user);
 
             var addedRoles = dto.Roles.Except(userRoles);
@@ -88,7 +87,7 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpPut("{id}/roles")]
-        public async Task<IActionResult> UpdateUserRoles(int id)
+        public async Task<IActionResult> GetUserWithRoles(int id)
         {
             var user = await _repo.GetUserWithRoles(id);
            return Ok(user);
@@ -120,12 +119,11 @@ namespace DatingApp.API.Controllers
             if (await _repo.GetUser(recipientId) == null)
                 return NotFound();
 
-            like = new Like
+            _repo.Add<Like>(new Like
             {
                 LikerId = id,
                 LikeeId = recipientId
-            };
-            _repo.Add<Like>(like);
+            });
 
             if (await _repo.SaveAll())
                 return Ok();

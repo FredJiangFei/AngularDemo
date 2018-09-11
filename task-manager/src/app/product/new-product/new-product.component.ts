@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Category } from '../../domain/category.domain';
 import { Product } from '../../domain/product.domain';
 
 @Component({

@@ -20,13 +20,22 @@ namespace DatingApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AdminController : ControllerBase
+    public class RolesController : ControllerBase
     {
         private readonly DataContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public AdminController(DataContext dataContext)
+        public RolesController(DataContext dataContext, UserManager<User> userManager)
         {
             _context = dataContext;
+            _userManager = userManager;
+        }
+
+        [HttpGet]
+        public IActionResult GetRoles()
+        {
+            var roles = _context.Roles.ToListAsync().Result;
+           return Ok(roles);
         }
     }
 }

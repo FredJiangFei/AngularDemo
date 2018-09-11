@@ -12,6 +12,7 @@ import { MessagesResolver } from '../share/resolvers/messages.resolver';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageModalComponent } from './message-modal/message-modal.component';
 import { UserMessagesComponent } from './user-messages/user-messages.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { UserMessagesComponent } from './user-messages/user-messages.component';
      UserCardComponent,
      MessagesComponent,
      MessageModalComponent,
-     UserMessagesComponent
+     UserMessagesComponent,
+     ProfileComponent
     ],
   providers: [MemberDetailResolver, ListsResolver, MessagesResolver],
   entryComponents: [MessageModalComponent]
