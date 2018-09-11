@@ -1,5 +1,5 @@
 import { Quote } from '../../domain/quote.domain';
-import { QuoteActions, QuoteActionTypes } from '../actions/quote.action';
+import { QuoteActions, QuoteActionTypes } from '../actions/quote.actions';
 
 
 export const initialState: Quote = {

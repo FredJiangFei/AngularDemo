@@ -4,7 +4,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { LoadAction } from '../../redux/actions/quote.action';
+import { LoadAction } from '../../redux/actions/quote.actions';
 
 @Component({
   selector: 'app-login',

@@ -7,9 +7,11 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { compose } from '@ngrx/core';
 import { environment } from '../../../environments/environment.prod';
 import { quoteReducer } from './quote.reducer';
+import { authReducer } from './auth.reducer';
 
 const reducers = {
     quote: quoteReducer,
+    auth: authReducer,
 };
 
 @NgModule({

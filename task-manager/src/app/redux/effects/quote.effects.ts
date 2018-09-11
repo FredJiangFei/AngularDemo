@@ -3,7 +3,7 @@ import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
-import { QuoteActionTypes, LoadSuccessAction, LoadFailAction } from '../actions/quote.action';
+import { QuoteActionTypes, LoadSuccessAction, LoadFailAction } from '../actions/quote.actions';
 import { QuoteService } from '../../service/quote.service';
 
 @Injectable()

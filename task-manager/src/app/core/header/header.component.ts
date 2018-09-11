@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { LogoutAction } from '../../redux/actions/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -12,8 +14,10 @@ export class HeaderComponent implements OnInit {
   @Output() toggleTheme = new EventEmitter<boolean>();
   photoUrl: string;
 
-  constructor(public loginService: LoginService,
-   private router: Router) { }
+  constructor(
+    public loginService: LoginService,
+    private router: Router,
+    private store$: Store<any>) { }
 
   ngOnInit() {
     this.loginService.currentPhotoUrl.subscribe(x => this.photoUrl = x);
@@ -32,6 +36,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    // this.store$.dispatch(new LogoutAction());
     this.loginService.logout();
   }
 
