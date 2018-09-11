@@ -19,12 +19,6 @@
       "desc": "This is iphone 7.",
       "price": 2,
       "id": 1
-    },
-    {
-      "name": "233change",
-      "desc": "54433",
-      "price": 3333,
-      "id": 2
     }
   ],
   "tasklists": [

@@ -49,11 +49,13 @@ export class ProductListComponent implements OnInit {
     const dialogRef = this.dialog.open(NewProductComponent,
       {
         data: {
-          product: product
+          product: Object.assign({}, product)
         }
       });
       dialogRef.afterClosed().subscribe((result: Product) => {
-        this.productService.update(result).subscribe(x => this.loadProducts());
+        this.productService.update(result).subscribe(_ =>
+          Object.assign(this.products, this.products.map(x => x.id === result.id ? result : x))
+        );
       });
   }
 
