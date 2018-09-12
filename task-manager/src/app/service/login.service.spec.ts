@@ -1,39 +1,28 @@
 import { TestBed } from '@angular/core/testing';
 import { LoginService } from './login.service';
-import { HttpClient } from '@angular/common/http';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { environment } from '../../environments/environment';
+import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 describe('AuthService Test', () => {
-  let httpClient: HttpClient;
-  let httpTestingController: HttpTestingController;
+  let loginService: LoginService;
+  let userServiceSpy: jasmine.SpyObj<UserService>;
+
    beforeEach(() => {
+      const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
+      const spy = jasmine.createSpyObj('UserService', ['login']);
+
       TestBed.configureTestingModule({
-        imports: [HttpClientTestingModule],
         providers: [
-          LoginService
+          LoginService,
+          { provide: Router,      useValue: routerSpy },
+          { provide: UserService, useValue: spy }
         ]
       });
-      httpClient = TestBed.get(HttpClient);
-      httpTestingController = TestBed.get(HttpTestingController);
+      loginService = TestBed.get(LoginService);
+      userServiceSpy = TestBed.get(UserService);
    });
 
-   it('can test HttpClient.get', () => {
-    const testData = {name: 'Test Data'};
-
-    httpClient.get<any>(`${environment.baseUrl}/auth/login`)
-      .subscribe(data =>
-        expect(data).toEqual(testData)
-      );
-
-    const req = httpTestingController.expectOne(`${environment.baseUrl}/auth/login`);
-    expect(req.request.method).toEqual('GET');
-    req.flush(testData);
-    httpTestingController.verify();
-  });
-
-  afterEach(() => {
-    // After every test, assert that there are no more pending requests.
-    httpTestingController.verify();
-  });
+   it('get value', () => {
+      expect(loginService.getValue()).toEqual('123');
+   });
 });

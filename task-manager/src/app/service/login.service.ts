@@ -55,4 +55,8 @@ export class LoginService {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
   }
+
+  getValue() {
+    return '123';
+  }
 }
