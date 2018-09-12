@@ -4,7 +4,7 @@ import { User } from '../domain/user.domain';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class LoginService {
@@ -23,7 +23,7 @@ export class LoginService {
     this.photoUrl.next(photoUrl);
   }
 
-  login(model: any) {
+  login(model: any): Observable<any> {
     return this.userService.login(model).pipe(
       map((repsonse: any) => {
         const user = repsonse;

@@ -1,5 +1,6 @@
 import { authReducer, initialAuthState } from './auth.reducer';
 import { AuthActionTypes, LoginSuccessAction } from '../actions/auth.actions';
+import { User } from '../../domain/user.domain';
 
 
 describe('Test AuthReducer', () => {
@@ -13,7 +14,7 @@ describe('Test AuthReducer', () => {
 
     describe('Action login success', () => {
         it('should return success payload', async () => {
-            const payload = 'Login success';
+            const payload: User = { id: 1, username: 'fred' };
             const action = new LoginSuccessAction(payload);
 
             const result = authReducer(undefined, action);
