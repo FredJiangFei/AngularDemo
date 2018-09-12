@@ -33,7 +33,7 @@ export class LoginFailAction implements Action {
 export class RegisterAction implements Action {
     readonly type = AuthActionTypes.REGISTER;
 
-    constructor(public payload: User) { }
+    constructor(public payload: any) { }
 }
 
 export class RegisterSuccessAction implements Action {

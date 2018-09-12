@@ -48,7 +48,7 @@ export class LoginService {
   isAdmin () {
     const token = localStorage.getItem('token');
     const user = this.jwtService.decodeToken(token);
-    return user.role.includes('Admin');
+    return user.role && user.role.includes('Admin');
   }
 
   logout() {

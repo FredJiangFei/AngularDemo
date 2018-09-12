@@ -1,10 +1,9 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Quote } from '../../domain/quote.domain';
 import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
-import { LoginService } from '../../service/login.service';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { LoadAction } from '../../redux/actions/quote.actions';
+import { LoginAction } from '../../redux/actions/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -18,11 +17,7 @@ export class LoginComponent implements OnInit {
   user: any = {};
   initCounter = 5;
 
-  constructor(
-    private loginService: LoginService,
-    private activedRoute: ActivatedRoute,
-    private router: Router,
-    private store$: Store<any>) { }
+  constructor(private store$: Store<any>) { }
 
   ngOnInit() {
     this.quote$ = this.store$.pipe(select('quote'));
@@ -30,13 +25,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginService.login(this.user)
-      .subscribe(x => {
-        if (this.loginService.loggedIn()) {
-          const returnUrl = this.activedRoute.snapshot.queryParamMap.get('returnUrl');
-          this.router.navigate([returnUrl || '/']);
-        }
-      }
-    );
+    this.store$.dispatch(new LoginAction(this.user));
   }
 }

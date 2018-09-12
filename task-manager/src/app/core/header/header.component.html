@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-    <ng-container>
+    <ng-container *ngIf="loggedIn()">
             <button mat-icon-button (click)="toggleMenu()">
                     <mat-icon>menu</mat-icon>
                 </button>

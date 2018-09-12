@@ -5,6 +5,8 @@ import { User } from '../../domain/user.domain';
 import { debounceTime, filter } from 'rxjs/operators';
 import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { RegisterAction } from '../../redux/actions/auth.actions';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +21,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
   private userService: UserService,
-  private route: Router) { }
+  private route: Router,
+  private store$: Store<any>) { }
 
   ngOnInit() {
     this.form = this.fb.group(
@@ -50,7 +53,6 @@ export class RegisterComponent implements OnInit {
       username: value.username,
       password: value.passwordGroup.password
     };
-    this.userService.register(user)
-    .subscribe(x => this.route.navigate(['\login']));
+    this.store$.dispatch(new RegisterAction(user));
   }
 }
