@@ -1,0 +1,43 @@
+<form #form="ngForm" (ngSubmit)="login()" class="login-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> 
+        <span class="my-card-title">
+            Login panel 
+        </span>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="full-width" hintLabel="userName is required">
+        <input matInput placeholder="User name" [(ngModel)]= "user.username" name="username">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input type="password" matInput placeholder="Password" [(ngModel)]= "user.password" name="password">
+      </mat-form-field>
+      <!-- <app-counter [(ngModel)]="initCounter" name="counter" [max]="8" [min]="2"></app-counter>
+      <p *ngIf="!form.valid">Counter is invalid!</p> -->
+    </mat-card-content>
+
+    <mat-card-actions class="text-right"  style="display: flex;">
+        <button type="submit" mat-button>Login</button>
+        <span class="fill-remaining-place"></span>
+        <button mat-button type="button" [routerLink]="['/register']">
+          Register
+        </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        {{(quote$ | async).title}}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{(quote$ | async).desc}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="../../../assets/imgs/pexels-photo-1310181.jpeg">
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+</form>

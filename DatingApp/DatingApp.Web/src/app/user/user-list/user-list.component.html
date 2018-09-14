@@ -1,0 +1,82 @@
+  <div class="text-center mt-3">
+    <h2>Your matches - {{pagination.totalItems}} found</h2>
+  </div>
+  <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
+      <div class="form-group">
+        <label for="minAge">Age From</label>
+        <input type="number" class="form-control ml-1" style="width: 70px" id="minAge" name="minAge"
+          [(ngModel)]="userParams.minAge">
+      </div>
+    
+      <div class="form-group px-2">
+        <label for="maxAge">Age To</label>
+        <input type="number" class="form-control ml-1" style="width: 70px" id="maxAge" name="maxAge"
+        [(ngModel)]="userParams.maxAge">
+      </div>
+    
+      <div class="form-group px-2">
+        <label for="gender">Show: </label>
+        <select class="form-control ml-1" style="width: 130px" id="gender" name="gender" [(ngModel)]="userParams.gender">
+          <option *ngFor="let gender of genders">
+            {{gender}}
+          </option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
+      <button type="button" class="btn btn-info" (click)="resetFilters()" style="margin-left:10px">Reset Filter</button>
+
+      <div class="col">
+          <div class="btn-group float-right">
+            <button type="button" name="orderBy" class="btn btn-primary"
+              [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="lastActive">Last Active</button>
+            <button type="button" name="orderBy" class="btn btn-primary"
+              [(ngModel)]="userParams.orderBy" (click)="loadUsers()" btnRadio="created">Newest Members</button>
+          </div>
+        </div>
+    </form>
+    <br>
+  <div class="user-container">
+      <app-user-card *ngFor="let user of users" [user]="user"></app-user-card>
+
+      <!-- <mat-card *ngFor="let user of users" [routerLink]="['/users', user.id]">
+        <img mat-card-md-image [src]="user.photoUrl | userimage"> 
+        <mat-card-content>
+          <button mat-icon-button (click)="likeUser($event, user)" color="warn">
+              <mat-icon>favorite</mat-icon>
+          </button>
+          <p class="text-center no-margin"> {{user.username}} </p>
+        </mat-card-content>
+    </mat-card> -->
+  </div>  
+
+  <div class="d-flex justify-content-center">
+      <pagination
+          [boundaryLinks]="true"
+          [totalItems]="pagination.totalItems"
+          [(ngModel)]="pageNumber"
+          [itemsPerPage]="pageSize"
+          (pageChanged)="pageChanged($event)"
+        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+      </pagination>
+      <!-- <mat-paginator [length]="pagination.totalItems" [pageSize]="pageSize" (page)="pageEvent = $event"></mat-paginator> -->
+    </div>
+
+<!-- <table cdk-table [dataSource]="users | async"  class="mat-elevation-z8">
+
+  <ng-container cdkColumnDef="username">
+    <th cdk-header-cell *cdkHeaderCellDef> User name </th>
+    <td cdk-cell *cdkCellDef="let row"> 
+      {{row.username}} 
+    </td>
+  </ng-container>
+
+  <ng-container cdkColumnDef="pic">
+    <th cdk-header-cell *cdkHeaderCellDef> Pic </th>
+    <td cdk-cell *cdkCellDef="let row">
+       <img [src]="row.photoUrl" alt="" style="max-width: 100px;"> 
+    </td>
+  </ng-container>
+
+  <tr cdk-header-row *cdkHeaderRowDef="['username','pic']"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: ['username','pic']" [routerLink]="['/users', row.id]"></tr>
+</table> -->

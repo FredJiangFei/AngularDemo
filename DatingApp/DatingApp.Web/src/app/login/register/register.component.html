@@ -1,0 +1,39 @@
+<form  [formGroup]="form" (ngSubmit)="register(form.value)" class="register-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title> Register panel </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <mat-form-field class="full-width">
+        <input matInput placeholder="User name" formControlName="username">
+      </mat-form-field>
+
+      <ng-container formGroupName="passwordGroup">
+        <mat-form-field class="full-width">
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+        <mat-form-field  class="full-width">
+          <input type="password" matInput placeholder="Confirm Password" formControlName="confirmpassword">
+        </mat-form-field>
+      </ng-container>
+
+      <mat-form-field class="full-width">
+        <input matInput type="text" [matDatepicker]="birthDay" placeholder="Birth Day" formControlName="birthDay">
+        <mat-datepicker-toggle matSuffix [for]="birthDay"></mat-datepicker-toggle>
+        <mat-datepicker #birthDay></mat-datepicker>
+      </mat-form-field>
+
+      <!-- <app-counter formControlName="counter"></app-counter> -->
+      <app-image-list-select [avatars]="avatars" formControlName="avatar"></app-image-list-select>
+
+      <app-identity-input formControlName="identity"></app-identity-input>
+    </mat-card-content>
+
+    <mat-card-actions class="text-right" style="display: flex;">
+      <button type="submit" mat-raised-button>Register</button>
+      <span class="fill-remaining-place"></span>
+      <button type="button" mat-button [routerLink]="['/login']">Login</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,114 @@
+{
+  "users": [
+    {
+      "username": "Fred",
+      "passwordGroup": {
+        "password": "123",
+        "confirmpassword": "123"
+      },
+      "birthDay": "2018-08-06T16:00:00.000Z",
+      "avatar": "man",
+      "identity": "",
+      "password": "123",
+      "id": 2
+    }
+  ],
+  "products": [
+    {
+      "name": "Apple",
+      "desc": "This is iphone 7.",
+      "price": 2,
+      "id": 1
+    }
+  ],
+  "tasklists": [
+    {
+      "status": "develop",
+      "productId": "1",
+      "id": 3
+    },
+    {
+      "status": "test",
+      "productId": "1",
+      "id": 4
+    }
+  ],
+  "tasks": [
+    {
+      "title": "angular2",
+      "desc": "322",
+      "dueDate": "2018-08-20T16:00:00.000Z",
+      "assigned": {
+        "name": "lily",
+        "avatar": "lily"
+      },
+      "taskListId": 3,
+      "id": 1
+    },
+    {
+      "title": "Directly accessing Street View data",
+      "desc": "This is a test card",
+      "assigned": {
+        "name": "lily",
+        "avatar": "lily"
+      },
+      "taskListId": 4,
+      "id": 2
+    },
+    {
+      "title": "Place Autocomplete Address Form",
+      "desc": "rrrrrr",
+      "assigned": {
+        "name": "lily",
+        "avatar": "lily"
+      },
+      "taskListId": 4,
+      "id": 3
+    },
+    {
+      "title": "angular2",
+      "desc": "this is a angular 2 ",
+      "dueDate": "2018-09-18T16:00:00.000Z",
+      "assigned": {},
+      "taskListId": 4,
+      "id": 4
+    }
+  ],
+  "quotes": [
+    {
+      "id": 1,
+      "title": "St. Jerome",
+      "desc": "Good, better, best. Never let it rest. 'Til your good is better and your better is best."
+    },
+    {
+      "id": 2,
+      "title": "E. Joseph Cossman",
+      "desc": "The best way to remember your wife's birthday is to forget it once."
+    },
+    {
+      "id": 3,
+      "title": "Mark Twain",
+      "desc": "The secret of getting ahead is getting started."
+    },
+    {
+      "id": 4,
+      "title": "George Sand",
+      "desc": "There is only one happiness in this life, to love and be loved."
+    },
+    {
+      "id": 5,
+      "title": "Albert Einstein",
+      "desc": "It is the supreme art of the teacher to awaken joy in creative expression and knowledge."
+    },
+    {
+      "id": 6,
+      "title": "Hugh Grant",
+      "desc": "I frequently dream of having tea with the Queen."
+    },
+    {
+      "id": 7,
+      "title": "Winston Churchill",
+      "desc": "Attitude is a little thing that makes a big difference."
+    }
+  ]
+}

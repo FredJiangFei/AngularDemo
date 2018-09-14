@@ -1,0 +1,22 @@
+<mat-sidenav-container fullscreen [class.unicorn-dark-theme]="darkTheme">
+    
+    <mat-sidenav #sidenav mode="over">
+      <app-sidebar (closeSideBar)="sidenav.toggle()"></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="site">
+        <header>
+          <app-header (toggle)="sidenav.toggle()" (toggleTheme)="switchThem($event)"></app-header>
+        </header>
+        <main>
+          <router-outlet></router-outlet>
+          <app-banner></app-banner>
+          <!-- <div class="square" [@square]="squareState" (click)="onClick()"></div> -->
+        </main>
+        <footer>
+          <app-footer></app-footer>
+        </footer>
+      </div>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
