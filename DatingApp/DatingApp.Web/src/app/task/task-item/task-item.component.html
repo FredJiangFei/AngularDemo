@@ -1,6 +1,6 @@
 <mat-list-item (click)="openEditModal()" [app-drag]="true" [draggedClass]="'drag-start'" [dragData]="task">
-    <mat-checkbox class="task-check" (click)="whenCheckTask($event)"></mat-checkbox>
-    <p matLine>{{task.title}}</p>
-    <p matLine>{{task.desc}}</p>
+    <mat-checkbox class="task-check" (click)="whenCheckTask($event,task)"></mat-checkbox>
+    <p matLine [ngClass]="{'checked': task.checked}">{{task.title}}</p>
+    <p matLine [ngClass]="{'checked': task.checked}">{{task.desc}}</p>
     <mat-icon [svgIcon]="task.assigned.photoUrl" class="avatar"></mat-icon>
 </mat-list-item>

@@ -14,3 +14,7 @@ mat-icon.avatar{
     opacity: 0.5;
     border: #ff525b dashed 2px;
 }
+
+.checked{
+    text-decoration:line-through;
+}

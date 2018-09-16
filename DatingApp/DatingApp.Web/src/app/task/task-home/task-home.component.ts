@@ -23,6 +23,7 @@ export class TaskHomeComponent implements OnInit {
   @HostBinding('@routeAnim') state;
   assignedUser = new User();
   productId: number;
+  taskChecked = false;
 
   taskLists: TaskList[] = [];
   constructor(private dialogRef: MatDialog,

@@ -7,6 +7,7 @@ export class Task {
     public desc: string;
     public dueDate: Date;
     public assigned: User;
+    public checked: boolean;
 }
 
 export class TaskList {

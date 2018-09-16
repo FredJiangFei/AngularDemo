@@ -22,7 +22,8 @@ export class TaskItemComponent implements OnInit {
     this.editTask.emit();
   }
 
-  whenCheckTask(e: Event) {
+  whenCheckTask(e: Event, task: Task) {
     e.stopPropagation();
+    task.checked = !task.checked;
   }
 }

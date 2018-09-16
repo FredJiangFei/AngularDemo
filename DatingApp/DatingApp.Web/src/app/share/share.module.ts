@@ -38,6 +38,7 @@ import { CdkTableModule} from '@angular/cdk/table';
 import { PaginationModule, ButtonsModule } from 'ngx-bootstrap';
 import { ImagePipe } from './pipes/image.pipe';
 import { PopupComponent } from './popup/popup.component';
+import { TaskFilterPipe } from './pipes/task-filter.pipe';
 
 @NgModule({
   imports: [
@@ -115,7 +116,8 @@ import { PopupComponent } from './popup/popup.component';
     IdentityInputComponent,
     PopupComponent,
     TimeAgoPipe,
-    ImagePipe
+    ImagePipe,
+    TaskFilterPipe
   ],
   declarations:
     [
@@ -125,7 +127,8 @@ import { PopupComponent } from './popup/popup.component';
       IdentityInputComponent,
       TimeAgoPipe,
       ImagePipe,
-      PopupComponent
+      PopupComponent,
+      TaskFilterPipe,
     ],
   entryComponents: [DelModalComponent, PopupComponent]
 })
