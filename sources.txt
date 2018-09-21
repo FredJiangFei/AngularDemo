@@ -21,3 +21,6 @@ https://www.json-generator.com/
 
 angular ionic
 https://ionicframework.com/
+
+rxjs
+https://www.learnrxjs.io/operators/transformation/switchmap.html
