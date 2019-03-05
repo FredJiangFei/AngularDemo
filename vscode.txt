@@ -1,4 +1,0 @@
-
-ng-router-featuremodule 
-
-npm outdated
